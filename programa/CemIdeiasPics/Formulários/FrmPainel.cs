@@ -26,6 +26,7 @@ namespace CemIdeiasPics.Formulários
         {
             lblUsuario.Text = Program.Usuario;
             pictureBox1.Region = Misc.ImagemRedonda(pictureBox1.Width, pictureBox1.Height);
+            pictureBox1.ImageLocation = Program.ImgPerfil;
             rbnPortifolio.PerformClick();
         }
 

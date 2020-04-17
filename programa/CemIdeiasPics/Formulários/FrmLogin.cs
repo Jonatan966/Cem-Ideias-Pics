@@ -61,9 +61,11 @@ namespace CemIdeiasPics.Formulários
             if (!string.IsNullOrWhiteSpace(txbUsuario.Text) && !string.IsNullOrWhiteSpace(txbSenha.Text))
             {
                 tlpInferior.Enabled = false;
-                string resultado = await Task.Run(() => Program.Usuario = Servidor.EnviarComandoSQL($"SELECT USUNOME FROM USUARIOS WHERE USULOGIN = '{txbUsuario.Text}' AND USUSENHA = MD5('{txbSenha.Text}')"));
+                string resultado = await Task.Run(() => Servidor.EnviarComandoSQL($"SELECT USUNOME, USUIMG FROM USUARIOS WHERE USULOGIN = '{txbUsuario.Text}' AND USUSENHA = MD5('{txbSenha.Text}')"));
                 if (!string.IsNullOrWhiteSpace(resultado) && resultado != "false")
                 {
+                    Program.Usuario = resultado.Split('|')[0];
+                    Program.ImgPerfil = resultado.Split('|')[1];
                     DialogResult = DialogResult.Yes;
                 }
                 else

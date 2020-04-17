@@ -10,6 +10,7 @@ namespace CemIdeiasPics
     static class Program
     {
         public static string Usuario { get; set; }
+        public static string ImgPerfil { get; set; }
         /// <summary>
         /// Ponto de entrada principal para o aplicativo.
         /// </summary>
