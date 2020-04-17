@@ -58,17 +58,29 @@
     <Compile Include="Formulários\FrmPainel.Designer.cs">
       <DependentUpon>FrmPainel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formulários\Menus\FrmClientes.cs">
-      <SubType>Form</SubType>
+    <Compile Include="Formulários\Menus\MenuClientes.cs">
+      <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Formulários\Menus\FrmClientes.Designer.cs">
-      <DependentUpon>FrmClientes.cs</DependentUpon>
+    <Compile Include="Formulários\Menus\MenuClientes.Designer.cs">
+      <DependentUpon>MenuClientes.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formulários\Menus\FrmPortifolio.cs">
-      <SubType>Form</SubType>
+    <Compile Include="Formulários\Menus\MenuConfigs.cs">
+      <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Formulários\Menus\FrmPortifolio.Designer.cs">
-      <DependentUpon>FrmPortifolio.cs</DependentUpon>
+    <Compile Include="Formulários\Menus\MenuConfigs.Designer.cs">
+      <DependentUpon>MenuConfigs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formulários\Menus\MenuEnsaios.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Formulários\Menus\MenuEnsaios.Designer.cs">
+      <DependentUpon>MenuEnsaios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formulários\Menus\MenuPortifolio.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Formulários\Menus\MenuPortifolio.Designer.cs">
+      <DependentUpon>MenuPortifolio.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -118,11 +130,8 @@
     <EmbeddedResource Include="Formulários\FrmPainel.resx">
       <DependentUpon>FrmPainel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formulários\Menus\FrmClientes.resx">
-      <DependentUpon>FrmClientes.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Formulários\Menus\FrmPortifolio.resx">
-      <DependentUpon>FrmPortifolio.cs</DependentUpon>
+    <EmbeddedResource Include="Formulários\Menus\MenuPortifolio.resx">
+      <DependentUpon>MenuPortifolio.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Utils\Controles\FrmTestes.resx">
       <DependentUpon>FrmTestes.cs</DependentUpon>

@@ -26,15 +26,34 @@ namespace CemIdeiasPics.Formulários
         {
             lblUsuario.Text = Program.Usuario;
             pictureBox1.Region = Misc.ImagemRedonda(pictureBox1.Width, pictureBox1.Height);
+            rbnPortifolio.PerformClick();
         }
 
         #region Painel Lateral
-        private void btnSair_Click(object sender, EventArgs e)
+        private void BtnSair_Click(object sender, EventArgs e)
         {
             Application.Restart();
         }
 
+        private void RbnMenus_Click(object sender, EventArgs e)
+        {
+            pnlMenus.Controls.Clear();
+            switch (Convert.ToUInt16(((Control)sender).Tag))
+            {
+                case 0:
+                    pnlMenus.Controls.Add(new MenuPortifolio() { Dock = DockStyle.Fill });
+                    break;
+                case 1:
+                    pnlMenus.Controls.Add(new MenuClientes() { Dock = DockStyle.Fill });
+                    break;
+                case 2:
+                    pnlMenus.Controls.Add(new MenuEnsaios() { Dock = DockStyle.Fill });
+                    break;
+                case 3:
+                    pnlMenus.Controls.Add(new MenuConfigs() { Dock = DockStyle.Fill });
+                    break;
+            }
+        }
         #endregion
-
     }
 }

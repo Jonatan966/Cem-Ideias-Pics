@@ -39,6 +39,7 @@
             this.rbnPortifolio = new System.Windows.Forms.RadioButton();
             this.rbnConfig = new System.Windows.Forms.RadioButton();
             this.lblUsuario = new CemIdeiasPics.Utils.Controles.CIP_Label();
+            this.pnlMenus = new System.Windows.Forms.Panel();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
@@ -129,7 +130,7 @@
             this.btnSair.Text = "Sair";
             this.btnSair.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSair.UseVisualStyleBackColor = true;
-            this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
+            this.btnSair.Click += new System.EventHandler(this.BtnSair_Click);
             // 
             // rbnClientes
             // 
@@ -149,9 +150,11 @@
             this.rbnClientes.Name = "rbnClientes";
             this.rbnClientes.Size = new System.Drawing.Size(217, 79);
             this.rbnClientes.TabIndex = 8;
+            this.rbnClientes.Tag = "1";
             this.rbnClientes.Text = "Clientes";
             this.rbnClientes.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.rbnClientes.UseVisualStyleBackColor = true;
+            this.rbnClientes.Click += new System.EventHandler(this.RbnMenus_Click);
             // 
             // rbnEnsaios
             // 
@@ -171,9 +174,11 @@
             this.rbnEnsaios.Name = "rbnEnsaios";
             this.rbnEnsaios.Size = new System.Drawing.Size(217, 79);
             this.rbnEnsaios.TabIndex = 9;
+            this.rbnEnsaios.Tag = "2";
             this.rbnEnsaios.Text = "Ensaios";
             this.rbnEnsaios.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.rbnEnsaios.UseVisualStyleBackColor = true;
+            this.rbnEnsaios.Click += new System.EventHandler(this.RbnMenus_Click);
             // 
             // rbnPortifolio
             // 
@@ -193,9 +198,11 @@
             this.rbnPortifolio.Name = "rbnPortifolio";
             this.rbnPortifolio.Size = new System.Drawing.Size(217, 79);
             this.rbnPortifolio.TabIndex = 10;
+            this.rbnPortifolio.Tag = "0";
             this.rbnPortifolio.Text = "Portifólio";
             this.rbnPortifolio.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.rbnPortifolio.UseVisualStyleBackColor = true;
+            this.rbnPortifolio.Click += new System.EventHandler(this.RbnMenus_Click);
             // 
             // rbnConfig
             // 
@@ -217,9 +224,11 @@
             this.rbnConfig.Name = "rbnConfig";
             this.rbnConfig.Size = new System.Drawing.Size(217, 79);
             this.rbnConfig.TabIndex = 11;
+            this.rbnConfig.Tag = "3";
             this.rbnConfig.Text = "Opções";
             this.rbnConfig.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.rbnConfig.UseVisualStyleBackColor = false;
+            this.rbnConfig.Click += new System.EventHandler(this.RbnMenus_Click);
             // 
             // lblUsuario
             // 
@@ -233,10 +242,22 @@
             this.lblUsuario.Text = "Nome de Usuário";
             this.lblUsuario.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // pnlMenus
+            // 
+            this.pnlMenus.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlMenus.Location = new System.Drawing.Point(230, 63);
+            this.pnlMenus.Margin = new System.Windows.Forms.Padding(10, 10, 5, 10);
+            this.pnlMenus.Name = "pnlMenus";
+            this.pnlMenus.Size = new System.Drawing.Size(849, 605);
+            this.pnlMenus.TabIndex = 7;
+            // 
             // FrmPainel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.ClientSize = new System.Drawing.Size(1093, 715);
+            this.Controls.Add(this.pnlMenus);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.statusStrip1);
             this.MaximumSize = new System.Drawing.Size(1920, 1020);
@@ -244,6 +265,7 @@
             this.Load += new System.EventHandler(this.FrmPainel_Load);
             this.Controls.SetChildIndex(this.statusStrip1, 0);
             this.Controls.SetChildIndex(this.panel1, 0);
+            this.Controls.SetChildIndex(this.pnlMenus, 0);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -266,5 +288,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Button btnSair;
         private Utils.Controles.CIP_Label lblUsuario;
+        private System.Windows.Forms.Panel pnlMenus;
     }
 }
