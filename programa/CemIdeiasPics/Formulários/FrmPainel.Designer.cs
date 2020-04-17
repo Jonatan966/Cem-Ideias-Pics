@@ -239,7 +239,6 @@
             this.ClientSize = new System.Drawing.Size(1093, 715);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.statusStrip1);
-            this.IsMdiContainer = true;
             this.MaximumSize = new System.Drawing.Size(1920, 1020);
             this.Name = "FrmPainel";
             this.Load += new System.EventHandler(this.FrmPainel_Load);

@@ -26,7 +26,6 @@ namespace CemIdeiasPics.Formulários
         {
             lblUsuario.Text = Program.Usuario;
             pictureBox1.Region = Misc.ImagemRedonda(pictureBox1.Width, pictureBox1.Height);
-            new FrmPortifolio { MdiParent = this, Dock = DockStyle.Fill }.Show();
         }
 
         #region Painel Lateral
