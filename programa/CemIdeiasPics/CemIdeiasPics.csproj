@@ -128,6 +128,12 @@
     <Compile Include="Utils\Modelos\FrmModeloDialogo.Designer.cs">
       <DependentUpon>FrmModeloDialogo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Utils\Modelos\MdlEndereco.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Utils\Modelos\MdlEndereco.Designer.cs">
+      <DependentUpon>MdlEndereco.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Formulários\FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </EmbeddedResource>
@@ -151,6 +157,10 @@
     <EmbeddedResource Include="Utils\Modelos\FrmModeloDialogo.resx">
       <DependentUpon>FrmModeloDialogo.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Utils\Modelos\MdlEndereco.resx">
+      <DependentUpon>MdlEndereco.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
