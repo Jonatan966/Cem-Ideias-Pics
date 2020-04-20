@@ -7,6 +7,11 @@ using System.Windows.Forms;
 
 namespace CemIdeiasPics.Utils.Classes
 {
+    public enum MensagensPredefinidas
+    {
+        RESULTADO_NAO_ENCONTRADO = 0
+    }
+
     public static class Mensagens
     {
         private static string[] Tipos { get; } = 
@@ -21,10 +26,6 @@ namespace CemIdeiasPics.Utils.Classes
             MessageBoxIcon.Error, 
             MessageBoxIcon.Asterisk 
         };
-        public enum MensagensPredefinidas 
-        {
-            RESULTADO_NAO_ENCONTRADO = 0
-        }
         private static string[] Predefinidos { get; } =
         {
             "1§O resultado da busca não foi encontrado."
