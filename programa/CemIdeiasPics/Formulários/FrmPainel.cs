@@ -24,9 +24,9 @@ namespace CemIdeiasPics.Formulários
 
         private void FrmPainel_Load(object sender, EventArgs e)
         {
-            lblUsuario.Text = Program.Usuario;
+            lblUsuario.Text = Program.Usuario.USUNOME;
             pictureBox1.Region = Misc.ImagemRedonda(pictureBox1.Width, pictureBox1.Height);
-            pictureBox1.ImageLocation = Program.ImgPerfil;
+            pictureBox1.ImageLocation = Program.Usuario.USUIMG;
             rbnPortifolio.PerformClick();
         }
 

@@ -1,5 +1,7 @@
 ﻿using CemIdeiasPics.Utils.Classes;
+using CemIdeiasPics.Utils.Consultas;
 using CemIdeiasPics.Utils.Controles;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -26,9 +28,10 @@ namespace CemIdeiasPics.Formulários
             Application.Exit();
         }
 
-        private async void FrmLogin_Load(object sender, EventArgs e)
+        async Task<bool> Carregamento()
         {
             int etapas = -1;
+            tbcPassos.SelectedIndex = 0;
             while (true)
             {
                 etapas++;
@@ -36,7 +39,7 @@ namespace CemIdeiasPics.Formulários
                 switch (etapas)
                 {
                     case 0:
-                        string validador = await Task.Run(() => Servidor.EnviarComandoSQL(""));
+                        string validador = await Servidor.EnviarComandoSQL("SELECT 'true'");
                         if (validador == "false"){
                             lblErro.Text = "Não foi possível conectar ao servidor";
                             tbcPassos.SelectedIndex = 2;
@@ -49,11 +52,17 @@ namespace CemIdeiasPics.Formulários
                 }
                 break;
             }
+            return true;
         }
 
-        private void btnReiniciar_Click(object sender, EventArgs e)
+        private async void FrmLogin_Load(object sender, EventArgs e)
         {
-            Application.Restart();
+            await Carregamento();
+        }
+
+        private async void btnReiniciar_Click(object sender, EventArgs e)
+        {
+            await Carregamento();
         }
 
         private async void btnFazerLogin_Click(object sender, EventArgs e)
@@ -61,11 +70,10 @@ namespace CemIdeiasPics.Formulários
             if (!string.IsNullOrWhiteSpace(txbUsuario.Text) && !string.IsNullOrWhiteSpace(txbSenha.Text))
             {
                 tlpInferior.Enabled = false;
-                string resultado = await Task.Run(() => Servidor.EnviarComandoSQL($"SELECT USUNOME, USUIMG FROM USUARIOS WHERE USULOGIN = '{txbUsuario.Text}' AND USUSENHA = MD5('{txbSenha.Text}')"));
+                string resultado = await Servidor.EnviarComandoSQL($"SELECT USUNOME, USUIMG FROM USUARIOS WHERE USULOGIN = '{txbUsuario.Text}' AND USUSENHA = MD5('{txbSenha.Text}')");
                 if (!string.IsNullOrWhiteSpace(resultado) && resultado != "false")
                 {
-                    Program.Usuario = resultado.Split('|')[0];
-                    Program.ImgPerfil = resultado.Split('|')[1];
+                    Program.Usuario = JsonConvert.DeserializeObject<Usuario>(resultado);
                     DialogResult = DialogResult.Yes;
                 }
                 else

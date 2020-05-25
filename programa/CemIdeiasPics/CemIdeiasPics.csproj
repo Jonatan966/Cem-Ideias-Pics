@@ -96,6 +96,7 @@
     <Compile Include="Utils\Classes\Misc.cs" />
     <Compile Include="Utils\Classes\Servidor.cs" />
     <Compile Include="Utils\Classes\ViaCEP.cs" />
+    <Compile Include="Utils\Consultas\Usuario.cs" />
     <Compile Include="Utils\Controles\CIP_BarraProgresso.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -140,12 +141,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formulários\FrmPainel.resx">
       <DependentUpon>FrmPainel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Formulários\Menus\MenuClientes.resx">
-      <DependentUpon>MenuClientes.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Formulários\Menus\MenuConfigs.resx">
-      <DependentUpon>MenuConfigs.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formulários\Menus\MenuPortifolio.resx">
       <DependentUpon>MenuPortifolio.cs</DependentUpon>

@@ -1,4 +1,5 @@
 ﻿using CemIdeiasPics.Formulários;
+using CemIdeiasPics.Utils.Consultas;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,8 +10,7 @@ namespace CemIdeiasPics
 {
     static class Program
     {
-        public static string Usuario { get; set; }
-        public static string ImgPerfil { get; set; }
+        public static Usuario Usuario { get; set; }
         /// <summary>
         /// Ponto de entrada principal para o aplicativo.
         /// </summary>
