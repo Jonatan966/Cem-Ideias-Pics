@@ -27,11 +27,12 @@ namespace CemIdeiasPics.Utils.Modelos
             }
         }
 
-        private void btnBuscar_Click(object sender, EventArgs e)
+        private async void btnBuscar_Click(object sender, EventArgs e)
         {
             if (txbCEP.Text.Length == txbCEP.MaxLength)
             {
-                CEP cep = ViaCEP.BuscarCEP(txbCEP.Text);
+                btnBuscar.Enabled = txbCEP.Enabled = false;
+                CEP cep = await ViaCEP.BuscarCEP(txbCEP.Text);
                 if (int.Parse(cep.Resultado) > 0)
                 {
                     txbBairro.Text = cep.Bairro;
@@ -39,6 +40,7 @@ namespace CemIdeiasPics.Utils.Modelos
                     txbUF.Text = cep.Uf;
                     txbLogradouro.Text = $"{cep.TipoLogradouro} {cep.Logradouro}";
                 }
+                btnBuscar.Enabled = txbCEP.Enabled = true;
             }
         }
     
