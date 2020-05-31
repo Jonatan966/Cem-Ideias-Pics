@@ -53,9 +53,9 @@
             this.statusStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.lblNomeUsuario});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 678);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 736);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1093, 37);
+            this.statusStrip1.Size = new System.Drawing.Size(1328, 37);
             this.statusStrip1.SizingGrip = false;
             this.statusStrip1.TabIndex = 5;
             this.statusStrip1.Text = "statusStrip1";
@@ -71,7 +71,10 @@
             // pictureBox1
             // 
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pictureBox1.ErrorImage = global::CemIdeiasPics.Properties.Resources._default;
+            this.pictureBox1.Image = global::CemIdeiasPics.Properties.Resources._default;
             this.pictureBox1.ImageLocation = "https://pbs.twimg.com/profile_images/1017511506253139969/q6FOlpkP.jpg";
+            this.pictureBox1.InitialImage = global::CemIdeiasPics.Properties.Resources._default;
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(0);
             this.pictureBox1.Name = "pictureBox1";
@@ -89,7 +92,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 50);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(217, 628);
+            this.panel1.Size = new System.Drawing.Size(217, 686);
             this.panel1.TabIndex = 6;
             // 
             // tableLayoutPanel1
@@ -110,7 +113,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(217, 397);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(217, 455);
             this.tableLayoutPanel1.TabIndex = 12;
             // 
             // btnSair
@@ -122,10 +125,10 @@
             this.btnSair.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSair.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSair.ForeColor = System.Drawing.Color.Gray;
-            this.btnSair.Location = new System.Drawing.Point(0, 316);
+            this.btnSair.Location = new System.Drawing.Point(0, 364);
             this.btnSair.Margin = new System.Windows.Forms.Padding(0);
             this.btnSair.Name = "btnSair";
-            this.btnSair.Size = new System.Drawing.Size(217, 81);
+            this.btnSair.Size = new System.Drawing.Size(217, 91);
             this.btnSair.TabIndex = 7;
             this.btnSair.Text = "Sair";
             this.btnSair.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -145,10 +148,10 @@
             this.rbnClientes.ForeColor = System.Drawing.Color.Gray;
             this.rbnClientes.Image = global::CemIdeiasPics.Properties.Resources.Clientes_Icon;
             this.rbnClientes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.rbnClientes.Location = new System.Drawing.Point(0, 79);
+            this.rbnClientes.Location = new System.Drawing.Point(0, 91);
             this.rbnClientes.Margin = new System.Windows.Forms.Padding(0);
             this.rbnClientes.Name = "rbnClientes";
-            this.rbnClientes.Size = new System.Drawing.Size(217, 79);
+            this.rbnClientes.Size = new System.Drawing.Size(217, 91);
             this.rbnClientes.TabIndex = 8;
             this.rbnClientes.Tag = "1";
             this.rbnClientes.Text = "Clientes";
@@ -169,10 +172,10 @@
             this.rbnEnsaios.ForeColor = System.Drawing.Color.Gray;
             this.rbnEnsaios.Image = global::CemIdeiasPics.Properties.Resources.Camera_Icone;
             this.rbnEnsaios.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.rbnEnsaios.Location = new System.Drawing.Point(0, 158);
+            this.rbnEnsaios.Location = new System.Drawing.Point(0, 182);
             this.rbnEnsaios.Margin = new System.Windows.Forms.Padding(0);
             this.rbnEnsaios.Name = "rbnEnsaios";
-            this.rbnEnsaios.Size = new System.Drawing.Size(217, 79);
+            this.rbnEnsaios.Size = new System.Drawing.Size(217, 91);
             this.rbnEnsaios.TabIndex = 9;
             this.rbnEnsaios.Tag = "2";
             this.rbnEnsaios.Text = "Ensaios";
@@ -196,7 +199,7 @@
             this.rbnPortifolio.Location = new System.Drawing.Point(0, 0);
             this.rbnPortifolio.Margin = new System.Windows.Forms.Padding(0);
             this.rbnPortifolio.Name = "rbnPortifolio";
-            this.rbnPortifolio.Size = new System.Drawing.Size(217, 79);
+            this.rbnPortifolio.Size = new System.Drawing.Size(217, 91);
             this.rbnPortifolio.TabIndex = 10;
             this.rbnPortifolio.Tag = "0";
             this.rbnPortifolio.Text = "Portifólio";
@@ -219,10 +222,10 @@
             this.rbnConfig.ForeColor = System.Drawing.Color.Gray;
             this.rbnConfig.Image = global::CemIdeiasPics.Properties.Resources.Configs_Icone;
             this.rbnConfig.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.rbnConfig.Location = new System.Drawing.Point(0, 237);
+            this.rbnConfig.Location = new System.Drawing.Point(0, 273);
             this.rbnConfig.Margin = new System.Windows.Forms.Padding(0);
             this.rbnConfig.Name = "rbnConfig";
-            this.rbnConfig.Size = new System.Drawing.Size(217, 79);
+            this.rbnConfig.Size = new System.Drawing.Size(217, 91);
             this.rbnConfig.TabIndex = 11;
             this.rbnConfig.Tag = "3";
             this.rbnConfig.Text = "Opções";
@@ -244,23 +247,22 @@
             // 
             // pnlMenus
             // 
-            this.pnlMenus.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pnlMenus.Location = new System.Drawing.Point(230, 63);
+            this.pnlMenus.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlMenus.Location = new System.Drawing.Point(217, 50);
             this.pnlMenus.Margin = new System.Windows.Forms.Padding(10, 10, 5, 10);
             this.pnlMenus.Name = "pnlMenus";
-            this.pnlMenus.Size = new System.Drawing.Size(849, 605);
+            this.pnlMenus.Padding = new System.Windows.Forms.Padding(25);
+            this.pnlMenus.Size = new System.Drawing.Size(1111, 686);
             this.pnlMenus.TabIndex = 7;
             // 
             // FrmPainel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
-            this.ClientSize = new System.Drawing.Size(1093, 715);
+            this.ClientSize = new System.Drawing.Size(1328, 773);
             this.Controls.Add(this.pnlMenus);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.statusStrip1);
-            this.MaximumSize = new System.Drawing.Size(1920, 1020);
+            this.MaximumSize = new System.Drawing.Size(1827, 1080);
             this.Name = "FrmPainel";
             this.Load += new System.EventHandler(this.FrmPainel_Load);
             this.Controls.SetChildIndex(this.statusStrip1, 0);

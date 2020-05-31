@@ -142,6 +142,12 @@
     <EmbeddedResource Include="Formulários\FrmPainel.resx">
       <DependentUpon>FrmPainel.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formulários\Menus\MenuClientes.resx">
+      <DependentUpon>MenuClientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formulários\Menus\MenuEnsaios.resx">
+      <DependentUpon>MenuEnsaios.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formulários\Menus\MenuPortifolio.resx">
       <DependentUpon>MenuPortifolio.cs</DependentUpon>
     </EmbeddedResource>
