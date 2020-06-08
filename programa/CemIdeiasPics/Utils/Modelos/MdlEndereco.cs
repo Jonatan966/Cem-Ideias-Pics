@@ -14,11 +14,18 @@ namespace CemIdeiasPics.Utils.Modelos
 {
     public partial class MdlEndereco : UserControl
     {
+        public CEP ResultCEP;
+        public string NumCEP = string.Empty;
         public MdlEndereco()
         {
             InitializeComponent();
         }
         
+        public string ConverteCEP()
+        {
+            return $"INSERT INTO ENDERECOS VALUES({NumCEP}, '{ResultCEP.Uf}', '{ResultCEP.Cidade}', '{ResultCEP.Bairro}', '{ResultCEP.TipoLogradouro} {ResultCEP.Logradouro}')";
+        }
+
         private void BloqueiaNumeros_Event(object sender, KeyPressEventArgs e)
         {
             if(Char.IsLetter(e.KeyChar) || Char.IsWhiteSpace(e.KeyChar))
@@ -32,13 +39,14 @@ namespace CemIdeiasPics.Utils.Modelos
             if (txbCEP.Text.Length == txbCEP.MaxLength)
             {
                 btnBuscar.Enabled = txbCEP.Enabled = false;
-                CEP cep = await ViaCEP.BuscarCEP(txbCEP.Text);
-                if (int.Parse(cep.Resultado) > 0)
+                ResultCEP = await BuscarCEP(txbCEP.Text);
+                if (int.Parse(ResultCEP.Resultado) > 0)
                 {
-                    txbBairro.Text = cep.Bairro;
-                    txbCidade.Text = cep.Cidade;
-                    txbUF.Text = cep.Uf;
-                    txbLogradouro.Text = $"{cep.TipoLogradouro} {cep.Logradouro}";
+                    txbBairro.Text = ResultCEP.Bairro;
+                    txbCidade.Text = ResultCEP.Cidade;
+                    txbUF.Text = ResultCEP.Uf;
+                    txbLogradouro.Text = $"{ResultCEP.TipoLogradouro} {ResultCEP.Logradouro}";
+                    NumCEP = txbCEP.Text;
                 }
                 btnBuscar.Enabled = txbCEP.Enabled = true;
             }
