@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Data;
 using System.IO;
 using System.Linq;
@@ -92,6 +93,23 @@ namespace CemIdeiasPics.Utils.Classes
                 lis.Add(array.GetValue(x));
             }
             return lis;
+        }
+
+        public static Array ConverteClasseEmArray(object classe)
+        {
+            return classe.GetType().GetProperties().Select(p => {
+                object value = p.GetValue(classe, null);
+                return value == null ? null : value.ToString();
+            }).Where(c => c != null).ToArray();
+        }
+        public static DataTable ConverteClassesEmTabela(object[] classes, string[] colunas)
+        {
+            List<Array> arrays = new List<Array>();
+            foreach (object classe in classes)
+            {
+                arrays.Add(ConverteClasseEmArray(classe));
+            }
+            return PreencherTabela(arrays.ToArray(), colunas);
         }
     }
 }
