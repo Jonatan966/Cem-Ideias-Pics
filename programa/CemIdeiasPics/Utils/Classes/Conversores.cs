@@ -102,7 +102,16 @@ namespace CemIdeiasPics.Utils.Classes
                 return value == null ? null : value.ToString();
             }).Where(c => c != null).ToArray();
         }
-        public static DataTable ConverteClassesEmTabela(object[] classes, string[] colunas)
+        public static Array[] ConverteClassesEmArray(object[] classes)
+        {
+            Array[] resultado = new Array[classes.Length];
+            for (int i = 0; i < classes.Length; i++)
+            {
+                resultado[i] = ConverteClasseEmArray(classes[i]);
+            }
+            return resultado;
+        }
+        public static DataTable ConverteClassesEmTabela(object[] classes, params string[] colunas)
         {
             List<Array> arrays = new List<Array>();
             foreach (object classe in classes)
