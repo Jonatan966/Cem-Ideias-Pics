@@ -31,5 +31,13 @@ namespace CemIdeiasPics.Utils.Classes
             gp.AddEllipse(5, 5, w - 15, h - 5);
             return new Region(gp);
         }
+
+        public static void OcultarColunas(ref DataGridView tabela, params string[] colunas)
+        {
+            foreach (string item in colunas)
+            {
+                tabela.Columns[item].Visible = false;
+            }
+        }
     }
 }
