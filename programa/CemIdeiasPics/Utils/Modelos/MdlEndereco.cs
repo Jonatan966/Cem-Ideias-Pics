@@ -26,6 +26,17 @@ namespace CemIdeiasPics.Utils.Modelos
             return $"INSERT INTO ENDERECOS VALUES({NumCEP}, '{ResultCEP.Uf}', '{ResultCEP.Cidade}', '{ResultCEP.Bairro}', '{ResultCEP.TipoLogradouro} {ResultCEP.Logradouro}')";
         }
 
+        public void CarregaCEP(string cep)
+        {
+            txbCEP.Clear();
+            for (int i = 0; i < txbCEP.MaxLength-cep.Length; i++)
+            {
+                txbCEP.Text += "0";
+            }
+            txbCEP.Text += cep;
+            btnBuscar.PerformClick();
+        }
+
         private void BloqueiaNumeros_Event(object sender, KeyPressEventArgs e)
         {
             if(Char.IsLetter(e.KeyChar) || Char.IsWhiteSpace(e.KeyChar))
