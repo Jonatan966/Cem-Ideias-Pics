@@ -29,12 +29,16 @@
         private void InitializeComponent()
         {
             this.panel2 = new System.Windows.Forms.Panel();
-            this.label6 = new System.Windows.Forms.Label();
-            this.btnPesquisar = new System.Windows.Forms.Button();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.txbPesquisa = new System.Windows.Forms.TextBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cbxFiltro = new System.Windows.Forms.ComboBox();
+            this.btnRecarregar = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
             this.btnDesmarcar = new System.Windows.Forms.Button();
             this.dgvClientes = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.mdlEndereco1 = new CemIdeiasPics.Utils.Modelos.MdlEndereco();
             this.cbxComplemento = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
             this.txbNumResidencia = new System.Windows.Forms.TextBox();
@@ -56,8 +60,9 @@
             this.txbTelefone = new System.Windows.Forms.MaskedTextBox();
             this.txbNome = new System.Windows.Forms.TextBox();
             this.txbCPF = new System.Windows.Forms.MaskedTextBox();
-            this.mdlEndereco1 = new CemIdeiasPics.Utils.Modelos.MdlEndereco();
             this.panel2.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).BeginInit();
             this.panel1.SuspendLayout();
             this.rbnSexo.SuspendLayout();
@@ -67,42 +72,29 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.panel2.Controls.Add(this.groupBox2);
+            this.panel2.Controls.Add(this.btnRecarregar);
             this.panel2.Controls.Add(this.label6);
-            this.panel2.Controls.Add(this.btnPesquisar);
-            this.panel2.Controls.Add(this.txbPesquisa);
             this.panel2.Controls.Add(this.btnDesmarcar);
             this.panel2.Controls.Add(this.dgvClientes);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(500, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(577, 654);
+            this.panel2.Size = new System.Drawing.Size(593, 653);
             this.panel2.TabIndex = 3;
             // 
-            // label6
+            // groupBox2
             // 
-            this.label6.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(0, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(577, 40);
-            this.label6.TabIndex = 9;
-            this.label6.Text = "Consulta";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // btnPesquisar
-            // 
-            this.btnPesquisar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnPesquisar.BackColor = System.Drawing.Color.Black;
-            this.btnPesquisar.FlatAppearance.BorderSize = 0;
-            this.btnPesquisar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPesquisar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPesquisar.ForeColor = System.Drawing.Color.Yellow;
-            this.btnPesquisar.Location = new System.Drawing.Point(391, 46);
-            this.btnPesquisar.Name = "btnPesquisar";
-            this.btnPesquisar.Size = new System.Drawing.Size(183, 37);
-            this.btnPesquisar.TabIndex = 3;
-            this.btnPesquisar.Text = "Pesquisar";
-            this.btnPesquisar.UseVisualStyleBackColor = false;
+            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Controls.Add(this.txbPesquisa);
+            this.groupBox2.Controls.Add(this.groupBox1);
+            this.groupBox2.Location = new System.Drawing.Point(6, 54);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(584, 91);
+            this.groupBox2.TabIndex = 12;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Filtragem";
             // 
             // txbPesquisa
             // 
@@ -110,10 +102,60 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txbPesquisa.BackColor = System.Drawing.Color.Silver;
             this.txbPesquisa.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txbPesquisa.Location = new System.Drawing.Point(3, 51);
+            this.txbPesquisa.Location = new System.Drawing.Point(6, 48);
             this.txbPesquisa.Name = "txbPesquisa";
-            this.txbPesquisa.Size = new System.Drawing.Size(376, 26);
+            this.txbPesquisa.Size = new System.Drawing.Size(413, 26);
             this.txbPesquisa.TabIndex = 2;
+            this.txbPesquisa.TextChanged += new System.EventHandler(this.txbPesquisa_TextChanged);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.cbxFiltro);
+            this.groupBox1.Location = new System.Drawing.Point(425, 25);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(153, 60);
+            this.groupBox1.TabIndex = 11;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Filtrar por";
+            // 
+            // cbxFiltro
+            // 
+            this.cbxFiltro.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cbxFiltro.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxFiltro.FormattingEnabled = true;
+            this.cbxFiltro.Location = new System.Drawing.Point(3, 22);
+            this.cbxFiltro.Name = "cbxFiltro";
+            this.cbxFiltro.Size = new System.Drawing.Size(147, 28);
+            this.cbxFiltro.TabIndex = 0;
+            this.cbxFiltro.SelectedIndexChanged += new System.EventHandler(this.txbPesquisa_TextChanged);
+            // 
+            // btnRecarregar
+            // 
+            this.btnRecarregar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnRecarregar.BackColor = System.Drawing.Color.Black;
+            this.btnRecarregar.FlatAppearance.BorderSize = 0;
+            this.btnRecarregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRecarregar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRecarregar.ForeColor = System.Drawing.Color.Yellow;
+            this.btnRecarregar.Location = new System.Drawing.Point(435, 600);
+            this.btnRecarregar.Name = "btnRecarregar";
+            this.btnRecarregar.Size = new System.Drawing.Size(155, 50);
+            this.btnRecarregar.TabIndex = 10;
+            this.btnRecarregar.Text = "Recarregar";
+            this.btnRecarregar.UseVisualStyleBackColor = false;
+            this.btnRecarregar.Click += new System.EventHandler(this.btnRecarregar_Click);
+            // 
+            // label6
+            // 
+            this.label6.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(0, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(593, 40);
+            this.label6.TabIndex = 9;
+            this.label6.Text = "Consulta";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnDesmarcar
             // 
@@ -124,12 +166,13 @@
             this.btnDesmarcar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDesmarcar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDesmarcar.ForeColor = System.Drawing.Color.Yellow;
-            this.btnDesmarcar.Location = new System.Drawing.Point(3, 601);
+            this.btnDesmarcar.Location = new System.Drawing.Point(3, 600);
             this.btnDesmarcar.Name = "btnDesmarcar";
-            this.btnDesmarcar.Size = new System.Drawing.Size(571, 50);
+            this.btnDesmarcar.Size = new System.Drawing.Size(426, 50);
             this.btnDesmarcar.TabIndex = 1;
             this.btnDesmarcar.Text = "Desmarcar";
             this.btnDesmarcar.UseVisualStyleBackColor = false;
+            this.btnDesmarcar.Click += new System.EventHandler(this.btnDesmarcar_Click);
             // 
             // dgvClientes
             // 
@@ -138,17 +181,20 @@
             this.dgvClientes.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvClientes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvClientes.BackgroundColor = System.Drawing.Color.Silver;
             this.dgvClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvClientes.Location = new System.Drawing.Point(3, 89);
+            this.dgvClientes.Location = new System.Drawing.Point(3, 151);
             this.dgvClientes.MultiSelect = false;
             this.dgvClientes.Name = "dgvClientes";
             this.dgvClientes.ReadOnly = true;
+            this.dgvClientes.RowHeadersVisible = false;
             this.dgvClientes.RowHeadersWidth = 62;
             this.dgvClientes.RowTemplate.Height = 28;
             this.dgvClientes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvClientes.Size = new System.Drawing.Size(571, 506);
+            this.dgvClientes.Size = new System.Drawing.Size(587, 443);
             this.dgvClientes.TabIndex = 0;
+            this.dgvClientes.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvClientes_CellClick);
             // 
             // panel1
             // 
@@ -175,8 +221,18 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(500, 654);
+            this.panel1.Size = new System.Drawing.Size(500, 653);
             this.panel1.TabIndex = 2;
+            // 
+            // mdlEndereco1
+            // 
+            this.mdlEndereco1.AutoSize = true;
+            this.mdlEndereco1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.mdlEndereco1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.mdlEndereco1.Location = new System.Drawing.Point(32, 212);
+            this.mdlEndereco1.Name = "mdlEndereco1";
+            this.mdlEndereco1.Size = new System.Drawing.Size(432, 175);
+            this.mdlEndereco1.TabIndex = 23;
             // 
             // cbxComplemento
             // 
@@ -350,12 +406,13 @@
             this.btnLimpar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLimpar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLimpar.ForeColor = System.Drawing.Color.Yellow;
-            this.btnLimpar.Location = new System.Drawing.Point(249, 601);
+            this.btnLimpar.Location = new System.Drawing.Point(249, 600);
             this.btnLimpar.Name = "btnLimpar";
             this.btnLimpar.Size = new System.Drawing.Size(246, 50);
             this.btnLimpar.TabIndex = 10;
             this.btnLimpar.Text = "Limpar";
             this.btnLimpar.UseVisualStyleBackColor = false;
+            this.btnLimpar.Click += new System.EventHandler(this.BtnLimpar_Click);
             // 
             // btnRegistrar
             // 
@@ -365,12 +422,13 @@
             this.btnRegistrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRegistrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRegistrar.ForeColor = System.Drawing.Color.Yellow;
-            this.btnRegistrar.Location = new System.Drawing.Point(5, 601);
+            this.btnRegistrar.Location = new System.Drawing.Point(5, 600);
             this.btnRegistrar.Name = "btnRegistrar";
             this.btnRegistrar.Size = new System.Drawing.Size(238, 50);
             this.btnRegistrar.TabIndex = 9;
             this.btnRegistrar.Text = "Registrar";
             this.btnRegistrar.UseVisualStyleBackColor = false;
+            this.btnRegistrar.Click += new System.EventHandler(this.BtnRegistrar_Click);
             // 
             // label5
             // 
@@ -457,16 +515,6 @@
             this.txbCPF.TabIndex = 0;
             this.txbCPF.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // mdlEndereco1
-            // 
-            this.mdlEndereco1.AutoSize = true;
-            this.mdlEndereco1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.mdlEndereco1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.mdlEndereco1.Location = new System.Drawing.Point(32, 212);
-            this.mdlEndereco1.Name = "mdlEndereco1";
-            this.mdlEndereco1.Size = new System.Drawing.Size(432, 175);
-            this.mdlEndereco1.TabIndex = 23;
-            // 
             // MenuClientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -474,9 +522,12 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Name = "MenuClientes";
-            this.Size = new System.Drawing.Size(1077, 654);
+            this.Size = new System.Drawing.Size(1093, 653);
+            this.Load += new System.EventHandler(this.MenuClientes_Load);
             this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -490,13 +541,10 @@
 
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Button btnPesquisar;
         private System.Windows.Forms.TextBox txbPesquisa;
         private System.Windows.Forms.Button btnDesmarcar;
         private System.Windows.Forms.DataGridView dgvClientes;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.ComboBox cbxComplemento;
-        private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox txbNumResidencia;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox txbEmail;
@@ -517,5 +565,11 @@
         private System.Windows.Forms.TextBox txbNome;
         private System.Windows.Forms.MaskedTextBox txbCPF;
         private Utils.Modelos.MdlEndereco mdlEndereco1;
+        private System.Windows.Forms.ComboBox cbxComplemento;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Button btnRecarregar;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.ComboBox cbxFiltro;
+        private System.Windows.Forms.GroupBox groupBox2;
     }
 }
