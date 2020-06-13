@@ -25,5 +25,7 @@ namespace CemIdeiasPics.Utils.Consultas
         public string CLINUMEROCASA { get; set; }
         [JsonProperty("CLICEP")]
         public string CLICEP { get; set; }
+        [JsonProperty("CLICOMPLEMENTO")]
+        public string CLICOMPLEMENTO { get; set; }
     }
 }
