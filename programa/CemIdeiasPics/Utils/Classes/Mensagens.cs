@@ -13,7 +13,8 @@ namespace CemIdeiasPics.Utils.Classes
         CPF_INVALIDO = 1,
         NOME_INVALIDO = 2,
         EMAIL_INVALIDO = 3,
-        OPERACAO_CONCLUIDA = 4
+        OPERACAO_CONCLUIDA = 4,
+        CONFIRMA_ACAO = 5
     }
 
     public static class Mensagens
@@ -35,17 +36,18 @@ namespace CemIdeiasPics.Utils.Classes
         private static string[] Predefinidos { get; } =
         {
             "1§O resultado da busca não foi encontrado.",
-            "2§CPF inválido.",
-            "2§Nome inválido.",
-            "2§Email inválido.",
-            "4§Operação concluída com sucesso!"
+            "1§CPF inválido.",
+            "1§Nome inválido.",
+            "1§Email inválido.",
+            "3§Operação concluída com sucesso!",
+            "2§Deseja mesmo executar essa ação? Ela não poderá ser desfeita."
         };
 
-        public static DialogResult MostrarMensagem(MensagensPredefinidas mensagem)
+        public static DialogResult MostrarMensagem(MensagensPredefinidas mensagem, MessageBoxButtons tipo = MessageBoxButtons.OK)
         {
             string[] msg = Predefinidos[(int)mensagem].Split('§');
             int type = int.Parse(msg[0]);
-            return MessageBox.Show(msg[1], Tipos[type], MessageBoxButtons.OK, Icones[type]);
+            return MessageBox.Show(msg[1], Tipos[type], tipo, Icones[type]);
         }
     }
 }
