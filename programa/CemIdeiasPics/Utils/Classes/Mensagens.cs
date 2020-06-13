@@ -9,7 +9,11 @@ namespace CemIdeiasPics.Utils.Classes
 {
     public enum MensagensPredefinidas
     {
-        RESULTADO_NAO_ENCONTRADO = 0
+        RESULTADO_NAO_ENCONTRADO = 0,
+        CPF_INVALIDO = 1,
+        NOME_INVALIDO = 2,
+        EMAIL_INVALIDO = 3,
+        OPERACAO_CONCLUIDA = 4
     }
 
     public static class Mensagens
@@ -18,17 +22,23 @@ namespace CemIdeiasPics.Utils.Classes
         { 
             "Aviso!", 
             "Erro!", 
-            "Confirmação" 
+            "Confirmação",
+            "Êxito!"
         };
         private static MessageBoxIcon[] Icones { get; } = 
         { 
             MessageBoxIcon.Warning, 
             MessageBoxIcon.Error, 
-            MessageBoxIcon.Asterisk 
+            MessageBoxIcon.Asterisk,
+            MessageBoxIcon.Exclamation
         };
         private static string[] Predefinidos { get; } =
         {
-            "1§O resultado da busca não foi encontrado."
+            "1§O resultado da busca não foi encontrado.",
+            "2§CPF inválido.",
+            "2§Nome inválido.",
+            "2§Email inválido.",
+            "4§Operação concluída com sucesso!"
         };
 
         public static DialogResult MostrarMensagem(MensagensPredefinidas mensagem)
