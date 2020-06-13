@@ -28,13 +28,12 @@ namespace CemIdeiasPics.Utils.Modelos
 
         public void CarregaCEP(string cep)
         {
-            txbCEP.Clear();
+            LimpaTudo();
             for (int i = 0; i < txbCEP.MaxLength-cep.Length; i++)
             {
                 txbCEP.Text += "0";
             }
             txbCEP.Text += cep;
-            btnBuscar.PerformClick();
         }
 
         public void LimpaTudo()
