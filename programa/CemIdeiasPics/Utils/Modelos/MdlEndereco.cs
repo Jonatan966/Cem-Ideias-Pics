@@ -37,6 +37,17 @@ namespace CemIdeiasPics.Utils.Modelos
             btnBuscar.PerformClick();
         }
 
+        public void LimpaTudo()
+        {
+            txbBairro.Clear();
+            txbCidade.Clear();
+            txbUF.Clear();
+            txbLogradouro.Clear();
+            txbCEP.Clear();
+            ResultCEP = null;
+            NumCEP = string.Empty;
+        }
+
         private void BloqueiaNumeros_Event(object sender, KeyPressEventArgs e)
         {
             if(Char.IsLetter(e.KeyChar) || Char.IsWhiteSpace(e.KeyChar))
