@@ -95,6 +95,7 @@
     <Compile Include="Utils\Classes\Mensagens.cs" />
     <Compile Include="Utils\Classes\Misc.cs" />
     <Compile Include="Utils\Classes\Servidor.cs" />
+    <Compile Include="Utils\Classes\Validadores.cs" />
     <Compile Include="Utils\Classes\ViaCEP.cs" />
     <Compile Include="Utils\Consultas\Cliente.cs" />
     <Compile Include="Utils\Consultas\Usuario.cs" />
