@@ -19,25 +19,25 @@ namespace CemIdeiasPics.Utils.Classes
 
         public class CEP
         {
-            [JsonProperty("resultado")]
+            [JsonProperty("resultado", NullValueHandling = NullValueHandling.Ignore)]
             public string Resultado { get; set; }
 
-            [JsonProperty("resultado_txt")]
+            [JsonProperty("resultado_txt", NullValueHandling = NullValueHandling.Ignore)]
             public string ResultadoTxt { get; set; }
 
-            [JsonProperty("uf")]
+            [JsonProperty("uf", NullValueHandling = NullValueHandling.Ignore)]
             public string Uf { get; set; }
 
-            [JsonProperty("cidade")]
+            [JsonProperty("cidade", NullValueHandling = NullValueHandling.Ignore)]
             public string Cidade { get; set; }
 
-            [JsonProperty("bairro")]
+            [JsonProperty("bairro", NullValueHandling = NullValueHandling.Ignore)]
             public string Bairro { get; set; }
 
-            [JsonProperty("tipo_logradouro")]
+            [JsonProperty("tipo_logradouro", NullValueHandling = NullValueHandling.Ignore)]
             public string TipoLogradouro { get; set; }
 
-            [JsonProperty("logradouro")]
+            [JsonProperty("logradouro", NullValueHandling = NullValueHandling.Ignore)]
             public string Logradouro { get; set; }
         }
     }
