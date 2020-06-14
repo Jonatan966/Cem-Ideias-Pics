@@ -95,12 +95,17 @@ namespace CemIdeiasPics.Utils.Classes
             return lis;
         }
 
-        public static Array ConverteClasseEmArray(object classe)
+        public static Array ConverteClasseEmArray(object classe, bool deleteNull = false)
         {
-            return classe.GetType().GetProperties().Select(p => {
+            IEnumerable<string> res = classe.GetType().GetProperties().Select(p => {
                 object value = p.GetValue(classe, null);
                 return value == null ? null : value.ToString();
-            }).Where(c => c != null).ToArray();
+            });
+            if (deleteNull)
+            {
+                res = res.Where(c => c != null);
+            }
+            return res.ToArray();
         }
         public static Array[] ConverteClassesEmArray(object[] classes)
         {
@@ -111,12 +116,12 @@ namespace CemIdeiasPics.Utils.Classes
             }
             return resultado;
         }
-        public static DataTable ConverteClassesEmTabela(object[] classes, params string[] colunas)
+        public static DataTable ConverteClassesEmTabela(object[] classes, bool deleteNull, params string[] colunas)
         {
             List<Array> arrays = new List<Array>();
             foreach (object classe in classes)
             {
-                arrays.Add(ConverteClasseEmArray(classe));
+                arrays.Add(ConverteClasseEmArray(classe, deleteNull));
             }
             return PreencherTabela(arrays.ToArray(), colunas);
         }
