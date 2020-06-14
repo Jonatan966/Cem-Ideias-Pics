@@ -70,15 +70,23 @@ namespace CemIdeiasPics.Formulários
             if (!string.IsNullOrWhiteSpace(txbUsuario.Text) && !string.IsNullOrWhiteSpace(txbSenha.Text))
             {
                 tlpInferior.Enabled = false;
-                string resultado = await Servidor.EnviarComandoSQL($"SELECT USUNOME, USUIMG FROM USUARIOS WHERE USULOGIN = '{txbUsuario.Text}' AND USUSENHA = MD5('{txbSenha.Text}')");
-                if (!string.IsNullOrWhiteSpace(resultado) && resultado != "false")
+                string resultado = await Servidor.EnviarComandoSQL($"SELECT USUID, USUNOME, USUIMG FROM USUARIOS WHERE USULOGIN = '{txbUsuario.Text}' AND USUSENHA = MD5('{txbSenha.Text}')");
+                if (!string.IsNullOrWhiteSpace(resultado))
                 {
-                    Program.Usuario = JsonConvert.DeserializeObject<Usuario[]>(resultado)[0];
-                    DialogResult = DialogResult.Yes;
+                    if (resultado != "false")
+                    {
+                        Program.Usuario = JsonConvert.DeserializeObject<Usuario[]>(resultado)[0];
+                        DialogResult = DialogResult.Yes;
+                    }
+                    else
+                    {
+                        Misc.DialogosPersonalizados(Misc.Dialogos.LoginIncorreto);
+                    }
                 }
                 else
                 {
-                    Misc.DialogosPersonalizados(Misc.Dialogos.LoginIncorreto);
+                    lblErro.Text = "Não foi possível conectar ao servidor";
+                    tbcPassos.SelectedIndex = 2;
                 }
                 tlpInferior.Enabled = true;
             }
