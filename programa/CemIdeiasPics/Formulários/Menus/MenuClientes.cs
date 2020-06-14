@@ -26,7 +26,7 @@ namespace CemIdeiasPics.Formulários.Menus
         {
             clientes = JsonConvert.DeserializeObject<Cliente[]>(
             await Servidor.EnviarComandoSQL("SELECT * FROM CLIENTES"));
-            dgvClientes.DataSource = Manipuladores.ConverteClassesEmTabela(clientes, 
+            dgvClientes.DataSource = Manipuladores.ConverteClassesEmTabela(clientes,false, 
                 "CPF", "Nome", "Sexo","Nasc", "Telefone", "Email","Num","CEP","Complemento");
             Misc.OcultarColunas(ref dgvClientes, "Nasc", "Num", "CEP", "Complemento");
             return true;
@@ -87,10 +87,10 @@ namespace CemIdeiasPics.Formulários.Menus
 
                 if (mdlEndereco1.ResultCEP != null ? int.Parse(mdlEndereco1.ResultCEP.Resultado)>0 : string.IsNullOrWhiteSpace(mdlEndereco1.NumCEP))
                 {
-                    await Servidor.EnviarComandoSQL(mdlEndereco1.ConverteCEP());
+                    await Servidor.EnviarComandoSQL(await mdlEndereco1.ConverteCEP());
                     string cmdInsert = $"INSERT INTO CLIENTES(CLICPF, CLINOME, CLISEXO, CLIDATANASCIMENTO, CLITELEFONE, CLIEMAIL, CLINUMEROCASA, CLICEP, CLICOMPLEMENTO) VALUES('{txbCPF.Text}', '{txbNome.Text}', {(rbnMasculino.Checked ? 1 : 2)}, '{dtpNascimento.Value:yy-MM-dd}', '{txbTelefone.Text}', '{txbEmail.Text}', {txbNumResidencia.Text}, {mdlEndereco1.NumCEP}, {cbxComplemento.SelectedIndex+1})";
                     string cmdEdit = $"UPDATE CLIENTES SET CLINOME = '{txbNome.Text}', CLISEXO = {(rbnMasculino.Checked ? 1 : 2)}, CLIDATANASCIMENTO = '{dtpNascimento.Value:yy-MM-dd}', CLITELEFONE = '{txbTelefone.Text}', CLIEMAIL = '{txbEmail.Text}', CLINUMEROCASA = {txbNumResidencia.Text}, CLICEP = {mdlEndereco1.NumCEP}, CLICOMPLEMENTO = {cbxComplemento.SelectedIndex + 1} WHERE CLICPF = '{txbCPF.Text}'";
-
+                    Clipboard.SetText(cmdEdit);
                     bool confirm = bool.Parse(await Servidor.EnviarComandoSQL(btnRegistrar.Text == "Registrar" ? cmdInsert : cmdEdit));
                     if (confirm)
                     {
@@ -99,6 +99,7 @@ namespace CemIdeiasPics.Formulários.Menus
                     }
                 }
             }
+            else Mensagens.MostrarMensagem(MensagensPredefinidas.PREENCHIMENTO_INCOMPLETO);
         }
 
         private async void MenuClientes_Load(object sender, EventArgs e)
@@ -118,7 +119,7 @@ namespace CemIdeiasPics.Formulários.Menus
             LimpaTudo();
         }
 
-        private void dgvClientes_CellClick(object sender, DataGridViewCellEventArgs e)
+        private async void dgvClientes_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dgvClientes.SelectedRows.Count > 0)
             {
@@ -132,8 +133,9 @@ namespace CemIdeiasPics.Formulários.Menus
                 txbNumResidencia.Text = clientes[selected].CLINUMEROCASA;
                 rbnMasculino.Checked = clientes[selected].CLISEXO == "M";
                 rbnFeminino.Checked = clientes[selected].CLISEXO == "F";
-                mdlEndereco1.CarregaCEP(clientes[selected].CLICEP);
                 cbxComplemento.SelectedItem = clientes[selected].CLICOMPLEMENTO;
+
+                await mdlEndereco1.CarregaCEP(clientes[selected].CLICEP);
 
                 btnRegistrar.Text = "Salvar";
                 btnLimpar.Text = "Excluir";
