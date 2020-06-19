@@ -6,10 +6,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - name: git-ftp push
-      uses: sebastianpopp/git-ftp-action@releases/v2
+    - name: Upload ftp
+      uses: sebastianpopp/ftp-action@releases/v2
       with:
-        url: ${{ secrets.HOSPEDAGEM }}
+        host: ${{ secrets.HOSPEDAGEM }}
         user: ${{ secrets.FTP_USER }}
         password: ${{ secrets.FTP_PWD }}
         localDir: "site"
