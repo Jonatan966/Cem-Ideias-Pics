@@ -28,7 +28,7 @@ namespace CemIdeiasPics.Utils.Consultas
         public string Ensnumlocal { get; set; }
 
         [JsonProperty("ENSDATA")]
-        public DateTimeOffset Ensdata { get; set; }
+        public string Ensdata { get; set; }
 
         [JsonProperty("ENSPRECO")]
         public string Enspreco { get; set; }
