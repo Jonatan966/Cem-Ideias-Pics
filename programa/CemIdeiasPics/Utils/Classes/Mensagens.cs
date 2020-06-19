@@ -14,7 +14,11 @@ namespace CemIdeiasPics.Utils.Classes
         NOME_INVALIDO = 2,
         EMAIL_INVALIDO = 3,
         OPERACAO_CONCLUIDA = 4,
-        CONFIRMA_ACAO = 5
+        CONFIRMA_ACAO = 5,
+        PREENCHIMENTO_INCOMPLETO = 6,
+        EXIGE_CADASTRO = 7,
+        CREDENCIAIS_INCORRETAS = 8,
+        ERRO_INESPERADO = 9
     }
 
     public static class Mensagens
@@ -40,7 +44,11 @@ namespace CemIdeiasPics.Utils.Classes
             "1§Nome inválido.",
             "1§Email inválido.",
             "3§Operação concluída com sucesso!",
-            "2§Deseja mesmo executar essa ação? Ela não poderá ser desfeita."
+            "2§Deseja mesmo executar essa ação? Ela não poderá ser desfeita.",
+            "0§Preencha todos os campos corretamente",
+            "1§Você só pode executar esta ação com itens já cadastrados.",
+            "1§Login incorreto",
+            "1§Ocorreu um erro inesperado."
         };
 
         public static DialogResult MostrarMensagem(MensagensPredefinidas mensagem, MessageBoxButtons tipo = MessageBoxButtons.OK)
