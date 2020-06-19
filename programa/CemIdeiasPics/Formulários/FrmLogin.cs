@@ -80,7 +80,7 @@ namespace CemIdeiasPics.Formulários
                     }
                     else
                     {
-                        Misc.DialogosPersonalizados(Misc.Dialogos.LoginIncorreto);
+                        Mensagens.MostrarMensagem(MensagensPredefinidas.CREDENCIAIS_INCORRETAS);
                     }
                 }
                 else
@@ -92,7 +92,7 @@ namespace CemIdeiasPics.Formulários
             }
             else
             {
-                Misc.DialogosPersonalizados(Misc.Dialogos.FaltandoInformação);
+                Mensagens.MostrarMensagem(MensagensPredefinidas.PREENCHIMENTO_INCOMPLETO);
             }
         }
 
