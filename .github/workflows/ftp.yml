@@ -5,11 +5,12 @@ jobs:
     name: Deploy
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v2
     - name: git-ftp push
-      uses: sebastianpopp/git-ftp-action@releases/v3
+      uses: sebastianpopp/git-ftp-action@releases/v2
       with:
         url: ${{ secrets.HOSPEDAGEM }}
         user: ${{ secrets.FTP_USER }}
         password: ${{ secrets.FTP_PWD }}
-        syncroot: "./site/"
+        localDir: "site"
+        remoteDir: "."
