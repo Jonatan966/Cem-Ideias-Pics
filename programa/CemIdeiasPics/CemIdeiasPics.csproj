@@ -61,6 +61,12 @@
     <Compile Include="Formulários\FrmPainel.Designer.cs">
       <DependentUpon>FrmPainel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formulários\Menus\MenuCadastroPortifolio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulários\Menus\MenuCadastroPortifolio.Designer.cs">
+      <DependentUpon>MenuCadastroPortifolio.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formulários\Menus\MenuClientes.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -146,6 +152,9 @@
     <EmbeddedResource Include="Formulários\FrmPainel.resx">
       <DependentUpon>FrmPainel.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formulários\Menus\MenuCadastroPortifolio.resx">
+      <DependentUpon>MenuCadastroPortifolio.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formulários\Menus\MenuClientes.resx">
       <DependentUpon>MenuClientes.cs</DependentUpon>
     </EmbeddedResource>
@@ -206,6 +215,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\default.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\none.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
