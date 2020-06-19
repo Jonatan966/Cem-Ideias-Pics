@@ -25,7 +25,7 @@ namespace CemIdeiasPics.Formulários.Menus
         async Task<bool> AtualizaLista()
         {
             clientes = JsonConvert.DeserializeObject<Cliente[]>(
-            await Servidor.EnviarComandoSQL("SELECT * FROM CLIENTES"));
+            await Servidor.EnviarItem("SELECT * FROM CLIENTES"));
             dgvClientes.DataSource = Manipuladores.ConverteClassesEmTabela(clientes,false, 
                 "CPF", "Nome", "Sexo","Nasc", "Telefone", "Email","Num","CEP","Complemento");
             Misc.OcultarColunas(ref dgvClientes, "Nasc", "Num", "CEP", "Complemento");
@@ -56,7 +56,7 @@ namespace CemIdeiasPics.Formulários.Menus
             {
                 if (Mensagens.MostrarMensagem(MensagensPredefinidas.CONFIRMA_ACAO, MessageBoxButtons.YesNoCancel) == DialogResult.Yes)
                 {
-                    if (bool.Parse(await Servidor.EnviarComandoSQL($"DELETE FROM CLIENTES WHERE CLICPF = '{txbCPF.Text}'")))
+                    if (bool.Parse(await Servidor.EnviarItem($"DELETE FROM CLIENTES WHERE CLICPF = '{txbCPF.Text}'")))
                     {
                         Mensagens.MostrarMensagem(MensagensPredefinidas.OPERACAO_CONCLUIDA);
                     }
@@ -87,11 +87,11 @@ namespace CemIdeiasPics.Formulários.Menus
 
                 if (mdlEndereco1.ResultCEP != null ? int.Parse(mdlEndereco1.ResultCEP.Resultado)>0 : string.IsNullOrWhiteSpace(mdlEndereco1.NumCEP))
                 {
-                    await Servidor.EnviarComandoSQL(await mdlEndereco1.ConverteCEP());
+                    await Servidor.EnviarItem(await mdlEndereco1.ConverteCEP());
                     string cmdInsert = $"INSERT INTO CLIENTES(CLICPF, CLINOME, CLISEXO, CLIDATANASCIMENTO, CLITELEFONE, CLIEMAIL, CLINUMEROCASA, CLICEP, CLICOMPLEMENTO) VALUES('{txbCPF.Text}', '{txbNome.Text}', {(rbnMasculino.Checked ? 1 : 2)}, '{dtpNascimento.Value:yy-MM-dd}', '{txbTelefone.Text}', '{txbEmail.Text}', {txbNumResidencia.Text}, {mdlEndereco1.NumCEP}, {cbxComplemento.SelectedIndex+1})";
                     string cmdEdit = $"UPDATE CLIENTES SET CLINOME = '{txbNome.Text}', CLISEXO = {(rbnMasculino.Checked ? 1 : 2)}, CLIDATANASCIMENTO = '{dtpNascimento.Value:yy-MM-dd}', CLITELEFONE = '{txbTelefone.Text}', CLIEMAIL = '{txbEmail.Text}', CLINUMEROCASA = {txbNumResidencia.Text}, CLICEP = {mdlEndereco1.NumCEP}, CLICOMPLEMENTO = {cbxComplemento.SelectedIndex + 1} WHERE CLICPF = '{txbCPF.Text}'";
                     Clipboard.SetText(cmdEdit);
-                    bool confirm = bool.Parse(await Servidor.EnviarComandoSQL(btnRegistrar.Text == "Registrar" ? cmdInsert : cmdEdit));
+                    bool confirm = bool.Parse(await Servidor.EnviarItem(btnRegistrar.Text == "Registrar" ? cmdInsert : cmdEdit));
                     if (confirm)
                     {
                         Mensagens.MostrarMensagem(MensagensPredefinidas.OPERACAO_CONCLUIDA);
