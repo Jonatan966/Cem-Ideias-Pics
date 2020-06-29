@@ -38,7 +38,10 @@
 					$sucess = unlink( $target );  
 				}
 				echo $sucess ? "true" : "false";
-    	    }
-    	}
-    }
+			}
+			else echo "false";
+			exit();
+		}
+	}
+	echo "false";
 ?>
