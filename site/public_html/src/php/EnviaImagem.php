@@ -1,46 +1,46 @@
 <?php
     $token = file("../../../src/txt/validar.txt");
-    //error_reporting(0);
+    error_reporting(0);
     if (isset($_POST["acesso"]) && isset($_POST["cmd"])){
     	if ($_POST["acesso"] == $token[0]){
     	    $opts = explode("|",$_POST["opt"]);
     	    $diretorioEnsaio = "../../../src/img/".$opts[0]."/";
-     	    if( is_dir($diretorioEnsaio) === false )
-            {
-                mkdir($diretorioEnsaio);
-            }
-    	    if ($opts[1] == "envia"){
-        	    $filename_path = md5(time().uniqid()).".jpg";
-                $decoded=base64_decode($_POST["cmd"]); 
-                file_put_contents($diretorioEnsaio.$filename_path,$decoded);   
-    	    }
-    	    else if($opts[1] == "recebe"){
-    	        $ensaio = scandir($diretorioEnsaio);
-    	        $jsonFinal = array();
-    	        foreach($ensaio as $foto){
-    	            if ($foto != "." && $foto != ".."){
-    	                $x =  base64_encode(file_get_contents($diretorioEnsaio.$foto));
-    	                array_push($jsonFinal,"{\"nomeImagem\":\"".$foto."\",\"imagem\":\"".$x."\"}");
-    	            }
-    	        }
-    	        echo "[".implode(",",$jsonFinal)."]";
-    	    }
-    	    else if($opts[1] == "exclui"){
-				$target = $diretorioEnsaio.$_POST["cmd"];
-				$sucess = false;
-				if(is_dir($target)){
-					$files = glob( $target . '*', GLOB_MARK );
-					foreach( $files as $file ){
-						unlink( $file );      
-					}
-					$sucess = rmdir( $target );
-				} elseif(is_file($target)) {
-					$sucess = unlink( $target );  
+			if(!is_dir($diretorioEnsaio)) mkdir($diretorioEnsaio);
+			 
+			if (count($opts) == 2){
+				if ($opts[1] == "envia"){
+					$filename_path = md5(time().uniqid()).".jpg";
+					$decoded=base64_decode($_POST["cmd"]); 
+					file_put_contents($diretorioEnsaio.$filename_path,$decoded);   
 				}
-				echo $sucess ? "true" : "false";
+				else if($opts[1] == "recebe"){
+					$ensaio = scandir($diretorioEnsaio);
+					$jsonFinal = array();
+					foreach($ensaio as $foto){
+						if ($foto != "." && $foto != ".."){
+							$x =  base64_encode(file_get_contents($diretorioEnsaio.$foto));
+							array_push($jsonFinal,"{\"nomeImagem\":\"".$foto."\",\"imagem\":\"".$x."\"}");
+						}
+					}
+					echo "[".implode(",",$jsonFinal)."]";
+				}
+				else if($opts[1] == "exclui"){
+					$target = $diretorioEnsaio.$_POST["cmd"];
+					$sucess = false;
+					if(is_dir($target)){
+						$files = glob( $target . '*', GLOB_MARK );
+						foreach( $files as $file ){
+							unlink( $file );      
+						}
+						$sucess = rmdir( $target );
+					} elseif(is_file($target)) {
+						$sucess = unlink( $target );  
+					}
+					echo $sucess ? "true" : "false";
+				}
+				else echo "false";
+				exit();	
 			}
-			else echo "false";
-			exit();
 		}
 	}
 	echo "false";
