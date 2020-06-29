@@ -56,7 +56,7 @@ namespace CemIdeiasPics.Utils.Classes
             
             public async Task CarregaImagens(string ensaioID)
             {
-                string response = await Servidor.EnviarItem("", $"{ensaioID}|recebe", TipoEnvio.Imagem);
+                string response = await EnviarItem("", $"{ensaioID}|recebe", TipoEnvio.Imagem);
                 portifolio = JsonConvert.DeserializeObject<Portifolio[]>(response);
                 if (portifolio.Length > 0)
                 {
@@ -74,7 +74,7 @@ namespace CemIdeiasPics.Utils.Classes
             public async Task AdicionaImagem(string filename, string ensaioID)
             {
                 string img = Manipuladores.ConverteImagemParaBase64(filename);
-                await Servidor.EnviarItem(img, $"{ensaioID}|envia", TipoEnvio.Imagem);
+                await EnviarItem(img, $"{ensaioID}|envia", TipoEnvio.Imagem);
                 await CarregaImagens(ensaioID);
             }
 
@@ -82,7 +82,7 @@ namespace CemIdeiasPics.Utils.Classes
             {
                 if (portifolio.Length > 0)
                 {
-                    if (bool.Parse(await Servidor.EnviarItem(portifolio[img].NomeImagem, $"{ensaioID}|exclui", TipoEnvio.Imagem)))
+                    if (bool.Parse(await EnviarItem(portifolio[img].NomeImagem, $"{ensaioID}|exclui", TipoEnvio.Imagem)))
                     {
                         Mensagens.MostrarMensagem(MensagensPredefinidas.OPERACAO_CONCLUIDA);
                         if (carregaImgs) await CarregaImagens(ensaioID);
