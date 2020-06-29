@@ -31,13 +31,13 @@
 				if(is_dir($target)){
 					$files = glob( $target . '*', GLOB_MARK );
 					foreach( $files as $file ){
-						delete_files( $file );      
+						unlink( $file );      
 					}
 					$sucess = rmdir( $target );
 				} elseif(is_file($target)) {
 					$sucess = unlink( $target );  
 				}
-				return $sucess ? "true" : "false";
+				echo $sucess ? "true" : "false";
     	    }
     	}
     }
