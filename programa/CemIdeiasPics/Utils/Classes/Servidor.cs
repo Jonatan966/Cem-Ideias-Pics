@@ -16,7 +16,7 @@ namespace CemIdeiasPics.Utils.Classes
     {
         public static string urlAddress = "http://cemideias-pics.000webhostapp.com/src/php/";
         private protected static string pwd = "7fe182bcddb67905fbd39db957e23116";
-
+        private static string[] tipoEnvioPg = new string[] { "ConexaoMySQL", "EnviaImagem" };
 
         public static async Task<string> EnviarItem(string item, string opcional = "", TipoEnvio tipoEnvio = TipoEnvio.ComandoSQL)
         {
@@ -34,8 +34,7 @@ namespace CemIdeiasPics.Utils.Classes
                     pagesource = Encoding.UTF8.GetString(await Task.Run(() => {
                         try
                         {
-                            return client.UploadValues(urlAddress+
-                                (tipoEnvio==TipoEnvio.ComandoSQL? "ConexaoMySQL.php":"EnviaImagem.php"),        postData);
+                            return client.UploadValues(urlAddress+tipoEnvioPg[(int)tipoEnvio]+".php", postData);
                         }
                         catch
                         {
