@@ -26,7 +26,18 @@
     	        echo "[".implode(",",$jsonFinal)."]";
     	    }
     	    else if($opts[1] == "exclui"){
-    	        echo unlink($diretorioEnsaio.$_POST["cmd"]) ? "true" : "false";
+				$target = $diretorioEnsaio.$_POST["cmd"];
+				$sucess = false;
+				if(is_dir($target)){
+					$files = glob( $target . '*', GLOB_MARK );
+					foreach( $files as $file ){
+						delete_files( $file );      
+					}
+					$sucess = rmdir( $target );
+				} elseif(is_file($target)) {
+					$sucess = unlink( $target );  
+				}
+				return $sucess ? "true" : "false";
     	    }
     	}
     }
