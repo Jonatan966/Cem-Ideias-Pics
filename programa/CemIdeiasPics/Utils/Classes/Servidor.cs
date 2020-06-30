@@ -94,6 +94,15 @@ namespace CemIdeiasPics.Utils.Classes
                 }
             }
 
+            public async Task ExcluiPortifolio(string ensaioID)
+            {
+                if (bool.Parse(await EnviarItem(string.Empty, $"{ensaioID}|exclui", TipoEnvio.Imagem)))
+                {
+                    Mensagens.MostrarMensagem(MensagensPredefinidas.OPERACAO_CONCLUIDA);
+                }
+                else Mensagens.MostrarMensagem(MensagensPredefinidas.ERRO_INESPERADO);
+            }
+
             public async Task AlteraImagem(int imgAtual, string novaImg, string ensaioID)
             {
                 await ExcluiImagem(imgAtual, ensaioID, false);
