@@ -52,6 +52,7 @@
     <Compile Include="Manipuladores\ManipulaDialogos.cs" />
     <Compile Include="Manipuladores\ManipulaImagem.cs" />
     <Compile Include="Manipuladores\ManipulaTabela.cs" />
+    <Compile Include="Online\ConectaCEP.cs" />
     <Compile Include="Online\ConectaPortifolio.cs" />
     <Compile Include="Online\ConectaServidor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

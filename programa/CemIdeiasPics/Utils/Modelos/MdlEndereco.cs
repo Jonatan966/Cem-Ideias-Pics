@@ -7,10 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static CemIdeiasPics.Utils.Classes.ViaCEP;
 using CemIdeiasPics.Utils.Classes;
 using Newtonsoft.Json;
 using CemIdeiasPics.Classes.Online;
+using static CemIdeiasPics.Classes.Online.ConectaCEP;
 
 namespace CemIdeiasPics.Utils.Modelos
 {
@@ -84,7 +84,7 @@ namespace CemIdeiasPics.Utils.Modelos
             if (txbCEP.Text.Length == txbCEP.MaxLength)
             {
                 btnBuscar.Enabled = txbCEP.Enabled = false;
-                ResultCEP = await BuscarCEP(txbCEP.Text);
+                ResultCEP = await ConectaCEP.BuscarCEP(txbCEP.Text);
                 if (int.Parse(ResultCEP.Resultado) > 0)
                 {
                     PreencheCEP();
