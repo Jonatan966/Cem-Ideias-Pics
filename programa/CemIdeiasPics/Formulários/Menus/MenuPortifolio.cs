@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using CemIdeiasPics.Utils.Classes;
 using Newtonsoft.Json;
 using CemIdeiasPics.Classes.Manipuladores;
+using CemIdeiasPics.Classes.Online;
 
 namespace CemIdeiasPics.Formulários.Menus
 {
@@ -38,7 +39,7 @@ namespace CemIdeiasPics.Formulários.Menus
 
         private async void MenuPortifolio_Load(object sender, EventArgs e)
         {
-            Ensaio[] ensaios = JsonConvert.DeserializeObject<Ensaio[]>(await Servidor.EnviarItem("SELECT ENSID, CONCAT(ENSID, ' - ', DATE(ENSDATA)) ENSCLIENTE FROM ENSAIOS"));
+            Ensaio[] ensaios = JsonConvert.DeserializeObject<Ensaio[]>(await ConectaServidor.EnviarItem("SELECT ENSID, CONCAT(ENSID, ' - ', DATE(ENSDATA)) ENSCLIENTE FROM ENSAIOS"));
             cbxEnsaios.DataSource = ManipulaTabela.ConverteClassesEmTabela(ensaios, true, "ID", "DESC");
         }
 

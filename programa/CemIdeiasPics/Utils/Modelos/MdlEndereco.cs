@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using static CemIdeiasPics.Utils.Classes.ViaCEP;
 using CemIdeiasPics.Utils.Classes;
 using Newtonsoft.Json;
+using CemIdeiasPics.Classes.Online;
 
 namespace CemIdeiasPics.Utils.Modelos
 {
@@ -40,7 +41,7 @@ namespace CemIdeiasPics.Utils.Modelos
         }
         async Task<bool> CarregaCEP()
         {
-            string cepJson = await Servidor.EnviarItem($"SELECT ENDCEP resultado_txt, ENDESTADO uf, ENDCIDADE cidade, ENDBAIRRO bairro, ENDLOGRADOURO logradouro FROM ENDERECOS WHERE ENDCEP = {txbCEP.Text}");
+            string cepJson = await ConectaServidor.EnviarItem($"SELECT ENDCEP resultado_txt, ENDESTADO uf, ENDCIDADE cidade, ENDBAIRRO bairro, ENDLOGRADOURO logradouro FROM ENDERECOS WHERE ENDCEP = {txbCEP.Text}");
             ResultCEP = JsonConvert.DeserializeObject<CEP[]>(cepJson)[0];
             NumCEP = txbCEP.Text;
             ResultCEP.Resultado = "1";
