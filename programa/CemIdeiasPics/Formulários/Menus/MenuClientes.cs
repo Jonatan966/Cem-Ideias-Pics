@@ -8,10 +8,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using CemIdeiasPics.Utils.Classes;
-using CemIdeiasPics.Utils.Consultas;
 using Newtonsoft.Json;
 using CemIdeiasPics.Classes.Manipuladores;
 using CemIdeiasPics.Classes.Online;
+using CemIdeiasPics.Classes.Consultas;
 
 namespace CemIdeiasPics.Formulários.Menus
 {
@@ -71,17 +71,17 @@ namespace CemIdeiasPics.Formulários.Menus
         {
             if (!string.IsNullOrWhiteSpace(txbCPF.Text) && !string.IsNullOrWhiteSpace(txbNome.Text) && !string.IsNullOrWhiteSpace(txbTelefone.Text) && !string.IsNullOrWhiteSpace(txbEmail.Text) && !string.IsNullOrWhiteSpace(txbNumResidencia.Text) && (rbnMasculino.Checked || rbnFeminino.Checked) && cbxComplemento.SelectedIndex >= 0)
             {
-                if (!Validadores.ValidaCPF(txbCPF.Text)) 
+                if (!ConsultaTexto.ValidaCPF(txbCPF.Text)) 
                 {
                     ManipulaMensagens.MostrarMensagem(MensagensPredefinidas.CPF_INVALIDO);
                     return; 
                 }
-                if (!Validadores.ValidaNome(txbNome.Text))
+                if (!ConsultaTexto.ValidaNome(txbNome.Text))
                 {
                     ManipulaMensagens.MostrarMensagem(MensagensPredefinidas.NOME_INVALIDO);
                     return;
                 }
-                if (!Validadores.ValidaEmail(txbEmail.Text))
+                if (!ConsultaTexto.ValidaEmail(txbEmail.Text))
                 {
                     ManipulaMensagens.MostrarMensagem(MensagensPredefinidas.EMAIL_INVALIDO);
                     return;

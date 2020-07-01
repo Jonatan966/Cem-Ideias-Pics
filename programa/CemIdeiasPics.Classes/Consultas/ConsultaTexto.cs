@@ -5,9 +5,9 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace CemIdeiasPics.Utils.Classes
+namespace CemIdeiasPics.Classes.Consultas
 {
-    public static class Validadores
+    public class ConsultaTexto
     {
         public static bool ValidaCPF(string CPF)
         {
@@ -41,7 +41,7 @@ namespace CemIdeiasPics.Utils.Classes
             {
                 string[] nomeCompleto = nome.Split(' ');
                 if (nomeCompleto.Length >= 2)
-                    return nomeCompleto.All(c=>c.Length>=2&&Regex.IsMatch(c, regexPatern));
+                    return nomeCompleto.All(c => c.Length >= 2 && Regex.IsMatch(c, regexPatern));
             }
             return false;
         }
