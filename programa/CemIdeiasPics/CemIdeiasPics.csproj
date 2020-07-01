@@ -97,13 +97,10 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Utils\Classes\DesignMDI.cs" />
-    <Compile Include="Utils\Classes\Mensagens.cs" />
     <Compile Include="Utils\Classes\Misc.cs" />
     <Compile Include="Utils\Classes\Validadores.cs" />
     <Compile Include="Utils\Classes\ViaCEP.cs" />
     <Compile Include="Utils\Consultas\Cliente.cs" />
-    <Compile Include="Utils\Consultas\Ensaio.cs" />
-    <Compile Include="Utils\Consultas\Portifolio.cs" />
     <Compile Include="Utils\Consultas\TipoEnsaio.cs" />
     <Compile Include="Utils\Consultas\Usuario.cs" />
     <Compile Include="Utils\Controles\CIP_BarraProgresso.cs">
