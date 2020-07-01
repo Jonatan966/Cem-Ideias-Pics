@@ -94,7 +94,7 @@ namespace CemIdeiasPics.Utils.Classes
                 }
             }
 
-            public async Task ExcluiPortifolio(string ensaioID)
+            public static async Task ExcluiPortifolio(string ensaioID)
             {
                 if (bool.Parse(await EnviarItem(string.Empty, $"{ensaioID}|exclui", TipoEnvio.Imagem)))
                 {
