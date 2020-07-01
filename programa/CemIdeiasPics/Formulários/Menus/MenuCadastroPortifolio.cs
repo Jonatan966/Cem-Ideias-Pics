@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Newtonsoft.Json;
+using CemIdeiasPics.Classes.Online;
 
 namespace CemIdeiasPics.Formulários.Menus
 {
@@ -17,7 +18,7 @@ namespace CemIdeiasPics.Formulários.Menus
     {
         public string EnsaioID;
         private int position = 0;
-        private Servidor.PortifolioLoader PortifolioLoader = new Servidor.PortifolioLoader();
+        private ConectaPortifolio PortifolioLoader = new ConectaPortifolio();
         public MenuCadastroPortifolio()
         {
             InitializeComponent();
