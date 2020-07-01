@@ -97,10 +97,13 @@ namespace CemIdeiasPics.Formulários.Menus
                 if (mdlEndereco1.ResultCEP != null ? int.Parse(mdlEndereco1.ResultCEP.Resultado) > 0 : string.IsNullOrWhiteSpace(mdlEndereco1.NumCEP))
                 {
                     await Servidor.EnviarItem(await mdlEndereco1.ConverteCEP());
-                    string cmdInsert = $"INSERT INTO ENSAIOS(ENSCLIENTE, ENSUSUARIO, ENSTIPO, ENSCEP, ENSNUMLOCAL, ENSDATA) VALUES('{cbxClientes.SelectedValue}', {Program.Usuario.USUID}, {cbxTipoEnsaio.SelectedValue}, {mdlEndereco1.NumCEP}, {txbNumeroRes.Text}, '{dtpDataEnsaio.Value:yy-MM-dd}')";
-                    string cmdEdit = $"UPDATE ENSAIOS SET ENSCLIENTE = '{cbxClientes.SelectedValue}',ENSUSUARIO = {Program.Usuario.USUID},ENSTIPO = {cbxTipoEnsaio.SelectedValue},ENSCEP = {mdlEndereco1.NumCEP},ENSNUMLOCAL = {txbNumeroRes.Text},ENSDATA = '{dtpDataEnsaio.Value:yy-MM-dd}' WHERE ENSID = {dgvEnsaios.SelectedRows[0].Cells[0].Value}";
+                    string cmd = $"INSERT INTO ENSAIOS(ENSCLIENTE, ENSUSUARIO, ENSTIPO, ENSCEP, ENSNUMLOCAL, ENSDATA) VALUES('{cbxClientes.SelectedValue}', {Program.Usuario.USUID}, {cbxTipoEnsaio.SelectedValue}, {mdlEndereco1.NumCEP}, {txbNumeroRes.Text}, '{dtpDataEnsaio.Value:yy-MM-dd}')";
+                    if (btnRegistrar.Text != "Registrar")
+                    {
+                        cmd = $"UPDATE ENSAIOS SET ENSCLIENTE = '{cbxClientes.SelectedValue}',ENSUSUARIO = {Program.Usuario.USUID},ENSTIPO = {cbxTipoEnsaio.SelectedValue},ENSCEP = {mdlEndereco1.NumCEP},ENSNUMLOCAL = {txbNumeroRes.Text},ENSDATA = '{dtpDataEnsaio.Value:yy-MM-dd}' WHERE ENSID = {dgvEnsaios.SelectedRows[0].Cells[0].Value}";
+                    }
 
-                    bool confirm = bool.Parse(await Servidor.EnviarItem(btnRegistrar.Text == "Registrar" ? cmdInsert : cmdEdit));
+                    bool confirm = bool.Parse(await Servidor.EnviarItem(cmd));
                     if (confirm)
                     {
                         Mensagens.MostrarMensagem(MensagensPredefinidas.OPERACAO_CONCLUIDA);
