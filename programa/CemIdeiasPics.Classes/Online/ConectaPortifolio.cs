@@ -68,4 +68,13 @@ namespace CemIdeiasPics.Classes.Online
             await AdicionaImagem(novaImg, ensaioID);
         }
     }
+
+    public class Portifolio
+    {
+        [JsonProperty("nomeImagem")]
+        public string NomeImagem { get; set; }
+        [JsonProperty("imagem")]
+        public string Imagem { get; set; }
+    }
+
 }

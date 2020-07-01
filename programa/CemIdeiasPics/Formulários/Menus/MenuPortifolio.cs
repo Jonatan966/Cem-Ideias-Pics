@@ -11,6 +11,7 @@ using CemIdeiasPics.Utils.Classes;
 using Newtonsoft.Json;
 using CemIdeiasPics.Classes.Manipuladores;
 using CemIdeiasPics.Classes.Online;
+using CemIdeiasPics.Utils.Consultas;
 
 namespace CemIdeiasPics.Formulários.Menus
 {
