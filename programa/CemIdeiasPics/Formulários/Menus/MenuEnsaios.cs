@@ -79,7 +79,7 @@ namespace CemIdeiasPics.Formulários.Menus
         {
             if (btnLimpar.Text == "Excluir")
             {
-                if (Mensagens.MostrarMensagem(MensagensPredefinidas.CONFIRMA_ACAO, MessageBoxButtons.YesNoCancel) == DialogResult.Yes)
+                if (ManipulaMensagens.MostrarMensagem(MensagensPredefinidas.CONFIRMA_ACAO, MessageBoxButtons.YesNoCancel) == DialogResult.Yes)
                 {
                     if (bool.Parse(await Servidor.EnviarItem($"DELETE FROM ENSAIOS WHERE ENSID = {dgvEnsaios.SelectedRows[0].Cells[0].Value}")))
                     {
@@ -106,12 +106,12 @@ namespace CemIdeiasPics.Formulários.Menus
                     bool confirm = bool.Parse(await Servidor.EnviarItem(cmd));
                     if (confirm)
                     {
-                        Mensagens.MostrarMensagem(MensagensPredefinidas.OPERACAO_CONCLUIDA);
+                        ManipulaMensagens.MostrarMensagem(MensagensPredefinidas.OPERACAO_CONCLUIDA);
                         btnRecarregar.PerformClick();
                     }
                 }
             }
-            else Mensagens.MostrarMensagem(MensagensPredefinidas.PREENCHIMENTO_INCOMPLETO);
+            else ManipulaMensagens.MostrarMensagem(MensagensPredefinidas.PREENCHIMENTO_INCOMPLETO);
         }
 
         private void txbPesquisa_TextChanged(object sender, EventArgs e)
@@ -143,7 +143,7 @@ namespace CemIdeiasPics.Formulários.Menus
         {
             if (btnLimpar.Text == "Limpar")
             {
-                Mensagens.MostrarMensagem(MensagensPredefinidas.EXIGE_CADASTRO);
+                ManipulaMensagens.MostrarMensagem(MensagensPredefinidas.EXIGE_CADASTRO);
                 return;
             }
             new MenuCadastroPortifolio 

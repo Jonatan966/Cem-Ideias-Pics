@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Newtonsoft.Json;
 using CemIdeiasPics.Classes.Online;
+using CemIdeiasPics.Classes.Manipuladores;
 
 namespace CemIdeiasPics.Formulários.Menus
 {
@@ -79,7 +80,7 @@ namespace CemIdeiasPics.Formulários.Menus
 
         private async void btnExcluir_Click(object sender, EventArgs e)
         {
-            if (Mensagens.MostrarMensagem(MensagensPredefinidas.CONFIRMA_ACAO, MessageBoxButtons.YesNoCancel) == DialogResult.Yes)
+            if (ManipulaMensagens.MostrarMensagem(MensagensPredefinidas.CONFIRMA_ACAO, MessageBoxButtons.YesNoCancel) == DialogResult.Yes)
             {
                 panel1.Enabled = false;
                 pbrProgresso.Style = ProgressBarStyle.Marquee;

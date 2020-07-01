@@ -1,6 +1,5 @@
 ﻿using CemIdeiasPics.Utils.Classes;
 using CemIdeiasPics.Utils.Consultas;
-using CemIdeiasPics.Utils.Controles;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -11,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using CemIdeiasPics.Classes.Online;
+using CemIdeiasPics.Classes.Manipuladores;
 
 namespace CemIdeiasPics.Formulários
 {
@@ -81,7 +81,7 @@ namespace CemIdeiasPics.Formulários
                     }
                     else
                     {
-                        Mensagens.MostrarMensagem(MensagensPredefinidas.CREDENCIAIS_INCORRETAS);
+                        ManipulaMensagens.MostrarMensagem(MensagensPredefinidas.CREDENCIAIS_INCORRETAS);
                     }
                 }
                 else
@@ -93,7 +93,7 @@ namespace CemIdeiasPics.Formulários
             }
             else
             {
-                Mensagens.MostrarMensagem(MensagensPredefinidas.PREENCHIMENTO_INCOMPLETO);
+                ManipulaMensagens.MostrarMensagem(MensagensPredefinidas.PREENCHIMENTO_INCOMPLETO);
             }
         }
 

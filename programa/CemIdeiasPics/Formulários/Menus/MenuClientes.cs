@@ -56,11 +56,11 @@ namespace CemIdeiasPics.Formulários.Menus
         {
             if (btnLimpar.Text == "Excluir")
             {
-                if (Mensagens.MostrarMensagem(MensagensPredefinidas.CONFIRMA_ACAO, MessageBoxButtons.YesNoCancel) == DialogResult.Yes)
+                if (ManipulaMensagens.MostrarMensagem(MensagensPredefinidas.CONFIRMA_ACAO, MessageBoxButtons.YesNoCancel) == DialogResult.Yes)
                 {
                     if (bool.Parse(await ConectaServidor.EnviarItem($"DELETE FROM CLIENTES WHERE CLICPF = '{txbCPF.Text}'")))
                     {
-                        Mensagens.MostrarMensagem(MensagensPredefinidas.OPERACAO_CONCLUIDA);
+                        ManipulaMensagens.MostrarMensagem(MensagensPredefinidas.OPERACAO_CONCLUIDA);
                     }
                 }
             }
@@ -73,17 +73,17 @@ namespace CemIdeiasPics.Formulários.Menus
             {
                 if (!Validadores.ValidaCPF(txbCPF.Text)) 
                 {
-                    Mensagens.MostrarMensagem(MensagensPredefinidas.CPF_INVALIDO);
+                    ManipulaMensagens.MostrarMensagem(MensagensPredefinidas.CPF_INVALIDO);
                     return; 
                 }
                 if (!Validadores.ValidaNome(txbNome.Text))
                 {
-                    Mensagens.MostrarMensagem(MensagensPredefinidas.NOME_INVALIDO);
+                    ManipulaMensagens.MostrarMensagem(MensagensPredefinidas.NOME_INVALIDO);
                     return;
                 }
                 if (!Validadores.ValidaEmail(txbEmail.Text))
                 {
-                    Mensagens.MostrarMensagem(MensagensPredefinidas.EMAIL_INVALIDO);
+                    ManipulaMensagens.MostrarMensagem(MensagensPredefinidas.EMAIL_INVALIDO);
                     return;
                 }
 
@@ -96,12 +96,12 @@ namespace CemIdeiasPics.Formulários.Menus
                     bool confirm = bool.Parse(await ConectaServidor.EnviarItem(btnRegistrar.Text == "Registrar" ? cmdInsert : cmdEdit));
                     if (confirm)
                     {
-                        Mensagens.MostrarMensagem(MensagensPredefinidas.OPERACAO_CONCLUIDA);
+                        ManipulaMensagens.MostrarMensagem(MensagensPredefinidas.OPERACAO_CONCLUIDA);
                         btnRecarregar.PerformClick();
                     }
                 }
             }
-            else Mensagens.MostrarMensagem(MensagensPredefinidas.PREENCHIMENTO_INCOMPLETO);
+            else ManipulaMensagens.MostrarMensagem(MensagensPredefinidas.PREENCHIMENTO_INCOMPLETO);
         }
 
         private async void MenuClientes_Load(object sender, EventArgs e)

@@ -43,23 +43,23 @@ namespace CemIdeiasPics.Classes.Online
             {
                 if (bool.Parse(await ConectaServidor.EnviarItem(portifolio[img].NomeImagem, $"{ensaioID}|exclui", TipoEnvio.Imagem)))
                 {
-                    Mensagens.MostrarMensagem(MensagensPredefinidas.OPERACAO_CONCLUIDA);
+                    ManipulaMensagens.MostrarMensagem(MensagensPredefinidas.OPERACAO_CONCLUIDA);
                     if (carregaImgs) await CarregaImagens(ensaioID);
                 }
                 else
                 {
-                    Mensagens.MostrarMensagem(MensagensPredefinidas.ERRO_INESPERADO);
+                    ManipulaMensagens.MostrarMensagem(MensagensPredefinidas.ERRO_INESPERADO);
                 }
             }
         }
 
         public static async Task ExcluiPortifolio(string ensaioID)
         {
-            if (bool.Parse(await EnviarItem(string.Empty, $"{ensaioID}|exclui", TipoEnvio.Imagem)))
+            if (bool.Parse(await ConectaServidor.EnviarItem(string.Empty, $"{ensaioID}|exclui", TipoEnvio.Imagem)))
             {
-                Mensagens.MostrarMensagem(MensagensPredefinidas.OPERACAO_CONCLUIDA);
+                ManipulaMensagens.MostrarMensagem(MensagensPredefinidas.OPERACAO_CONCLUIDA);
             }
-            else Mensagens.MostrarMensagem(MensagensPredefinidas.ERRO_INESPERADO);
+            else ManipulaMensagens.MostrarMensagem(MensagensPredefinidas.ERRO_INESPERADO);
         }
 
         public async Task AlteraImagem(int imgAtual, string novaImg, string ensaioID)
