@@ -83,7 +83,7 @@ namespace CemIdeiasPics.Formulários.Menus
                 {
                     if (bool.Parse(await Servidor.EnviarItem($"DELETE FROM ENSAIOS WHERE ENSID = {dgvEnsaios.SelectedRows[0].Cells[0].Value}")))
                     {
-                        Mensagens.MostrarMensagem(MensagensPredefinidas.OPERACAO_CONCLUIDA);
+                        await Servidor.PortifolioLoader.ExcluiPortifolio(dgvEnsaios.SelectedRows[0].Cells[0].Value.ToString());
                     }
                 }
             }
