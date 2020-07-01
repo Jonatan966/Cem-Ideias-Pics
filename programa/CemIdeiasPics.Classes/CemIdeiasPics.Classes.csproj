@@ -49,6 +49,7 @@
     <Compile Include="Consultas\Cliente.cs" />
     <Compile Include="Consultas\ConsultaTexto.cs" />
     <Compile Include="Consultas\Ensaio.cs" />
+    <Compile Include="Consultas\Usuario.cs" />
     <Compile Include="Manipuladores\ManipulaArray.cs" />
     <Compile Include="Manipuladores\ManipulaDialogos.cs" />
     <Compile Include="Manipuladores\ManipulaImagem.cs" />

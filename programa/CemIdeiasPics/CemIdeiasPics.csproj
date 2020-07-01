@@ -97,7 +97,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Utils\Classes\DesignMDI.cs" />
-    <Compile Include="Utils\Consultas\Usuario.cs" />
     <Compile Include="Utils\Controles\CIP_BarraProgresso.cs">
       <SubType>Component</SubType>
     </Compile>

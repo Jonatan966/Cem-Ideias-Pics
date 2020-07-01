@@ -1,6 +1,4 @@
-﻿using CemIdeiasPics.Utils.Classes;
-using CemIdeiasPics.Utils.Consultas;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using CemIdeiasPics.Classes.Online;
 using CemIdeiasPics.Classes.Manipuladores;
+using CemIdeiasPics.Classes.Consultas;
 
 namespace CemIdeiasPics.Formulários
 {

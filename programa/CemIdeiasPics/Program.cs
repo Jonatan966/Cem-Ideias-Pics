@@ -1,5 +1,5 @@
-﻿using CemIdeiasPics.Formulários;
-using CemIdeiasPics.Utils.Consultas;
+﻿using CemIdeiasPics.Classes.Consultas;
+using CemIdeiasPics.Formulários;
 using System;
 using System.Collections.Generic;
 using System.Linq;
