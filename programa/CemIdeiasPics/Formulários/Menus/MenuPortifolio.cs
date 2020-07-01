@@ -16,7 +16,7 @@ namespace CemIdeiasPics.Formulários.Menus
 {
     public partial class MenuPortifolio : UserControl
     {
-        Servidor.PortifolioLoader PortifolioLoader = new Servidor.PortifolioLoader();
+        ConectaPortifolio PortifolioLoader = new ConectaPortifolio();
         int position = 0;
 
         public MenuPortifolio()
