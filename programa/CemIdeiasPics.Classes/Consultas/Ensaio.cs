@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CemIdeiasPics.Utils.Consultas
 {
-    class Ensaio
+    public class Ensaio
     {
         [JsonProperty("ENSID")]
         public string Ensid { get; set; }
