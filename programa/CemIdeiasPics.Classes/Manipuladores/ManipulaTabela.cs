@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Windows.Forms;
 
 namespace CemIdeiasPics.Classes.Manipuladores
 {
@@ -44,6 +45,14 @@ namespace CemIdeiasPics.Classes.Manipuladores
                 arrays.Add(ManipulaArray.ConverteClasseEmArray(classe, deleteNull));
             }
             return PreencherTabela(arrays.ToArray(), colunas);
+        }
+
+        public static void OcultarColunas(ref DataGridView tabela, params string[] colunas)
+        {
+            foreach (string item in colunas)
+            {
+                tabela.Columns[item].Visible = false;
+            }
         }
     }
 }

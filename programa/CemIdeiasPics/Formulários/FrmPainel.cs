@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CemIdeiasPics.Classes.Manipuladores;
 using CemIdeiasPics.Formulários.Menus;
 using CemIdeiasPics.Utils.Classes;
 
@@ -25,7 +26,7 @@ namespace CemIdeiasPics.Formulários
         private void FrmPainel_Load(object sender, EventArgs e)
         {
             lblUsuario.Text = Program.Usuario.USUNOME;
-            pictureBox1.Region = Misc.ImagemRedonda(pictureBox1.Width, pictureBox1.Height);
+            pictureBox1.Region = ManipulaImagem.ImagemRedonda(pictureBox1.Width, pictureBox1.Height);
             pictureBox1.ImageLocation = Program.Usuario.USUIMG;
             rbnPortifolio.PerformClick();
         }

@@ -30,7 +30,7 @@ namespace CemIdeiasPics.Formulários.Menus
             await ConectaServidor.EnviarItem("SELECT * FROM CLIENTES"));
             dgvClientes.DataSource = ManipulaTabela.ConverteClassesEmTabela(clientes,false, 
                 "CPF", "Nome", "Sexo","Nasc", "Telefone", "Email","Num","CEP","Complemento");
-            Misc.OcultarColunas(ref dgvClientes, "Nasc", "Num", "CEP", "Complemento");
+            ManipulaTabela.OcultarColunas(ref dgvClientes, "Nasc", "Num", "CEP", "Complemento");
             return true;
         }
         void FiltraCliente(string filtro)

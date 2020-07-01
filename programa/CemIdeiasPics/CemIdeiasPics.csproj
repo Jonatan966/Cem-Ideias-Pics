@@ -97,7 +97,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Utils\Classes\DesignMDI.cs" />
-    <Compile Include="Utils\Classes\Misc.cs" />
     <Compile Include="Utils\Classes\Validadores.cs" />
     <Compile Include="Utils\Classes\ViaCEP.cs" />
     <Compile Include="Utils\Consultas\Cliente.cs" />

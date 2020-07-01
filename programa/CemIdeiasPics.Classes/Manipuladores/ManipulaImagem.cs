@@ -37,5 +37,12 @@ namespace CemIdeiasPics.Classes.Manipuladores
                 return image;
             }
         }
+
+        public static Region ImagemRedonda(int w, int h)
+        {
+            System.Drawing.Drawing2D.GraphicsPath gp = new System.Drawing.Drawing2D.GraphicsPath();
+            gp.AddEllipse(5, 5, w - 15, h - 5);
+            return new Region(gp);
+        }
     }
 }
