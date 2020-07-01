@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 
-namespace CemIdeiasPics.Utils.Consultas
+namespace CemIdeiasPics.Classes.Consultas
 {
     public partial class Cliente
     {

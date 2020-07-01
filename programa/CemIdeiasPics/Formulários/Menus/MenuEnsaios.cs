@@ -7,10 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using CemIdeiasPics.Utils.Consultas;
 using Newtonsoft.Json;
 using CemIdeiasPics.Classes.Manipuladores;
 using CemIdeiasPics.Classes.Online;
+using CemIdeiasPics.Classes.Consultas;
 
 namespace CemIdeiasPics.Formulários.Menus
 {
