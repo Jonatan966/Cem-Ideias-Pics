@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using CemIdeiasPics.Utils.Classes;
 using CemIdeiasPics.Utils.Consultas;
 using Newtonsoft.Json;
+using CemIdeiasPics.Classes.Manipuladores;
 
 namespace CemIdeiasPics.Formulários.Menus
 {
@@ -26,7 +27,7 @@ namespace CemIdeiasPics.Formulários.Menus
         {
             clientes = JsonConvert.DeserializeObject<Cliente[]>(
             await Servidor.EnviarItem("SELECT * FROM CLIENTES"));
-            dgvClientes.DataSource = Manipuladores.ConverteClassesEmTabela(clientes,false, 
+            dgvClientes.DataSource = ManipulaTabela.ConverteClassesEmTabela(clientes,false, 
                 "CPF", "Nome", "Sexo","Nasc", "Telefone", "Email","Num","CEP","Complemento");
             Misc.OcultarColunas(ref dgvClientes, "Nasc", "Num", "CEP", "Complemento");
             return true;

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using CemIdeiasPics.Utils.Consultas;
 using Newtonsoft.Json;
-using CemIdeiasPics.Utils.Classes;
+using CemIdeiasPics.Classes.Manipuladores;
 
 namespace CemIdeiasPics.Formulários.Menus
 {
@@ -24,7 +24,7 @@ namespace CemIdeiasPics.Formulários.Menus
         {
             ensaios = JsonConvert.DeserializeObject<Ensaio[]>(
             await Servidor.EnviarItem("SELECT ENSID, ENSCLIENTE, ENSUSUARIO, TPETIPO AS 'ENSTIPO', ENSCEP, ENSNUMLOCAL, ENSDATA, ENSPRECO, ENSDIRETORIO FROM ENSAIOS INNER JOIN TIPO_ENSAIO ON TPEID = ENSTIPO"));
-            dgvEnsaios.DataSource = Manipuladores.ConverteClassesEmTabela(ensaios,false,
+            dgvEnsaios.DataSource = ManipulaTabela.ConverteClassesEmTabela(ensaios,false,
                 "ID", "Cliente", "Usuario", "Tipo", "CEP", "Num", "Data", "Preco", "Diretorio");
             Misc.OcultarColunas(ref dgvEnsaios,"ID","Usuario","CEP","Num", "Diretorio");
             return true;
@@ -50,9 +50,9 @@ namespace CemIdeiasPics.Formulários.Menus
             await AtualizaLista();
             dgvEnsaios.ClearSelection();
             Cliente[] clientes = JsonConvert.DeserializeObject<Cliente[]>(await Servidor.EnviarItem("SELECT CLICPF, CONCAT(CLINOME,\" - \", CLICPF) CLINOME FROM CLIENTES GROUP BY CLICPF"));
-            cbxClientes.DataSource = Manipuladores.ConverteClassesEmTabela(clientes,true, "CPF", "NOME");
+            cbxClientes.DataSource = ManipulaTabela.ConverteClassesEmTabela(clientes,true, "CPF", "NOME");
 
-            cbxTipoEnsaio.DataSource = Manipuladores.ConverteClassesEmTabela((JsonConvert.DeserializeObject<TipoEnsaio[]>(await Servidor.EnviarItem("SELECT * FROM TIPO_ENSAIO"))),false, "ID", "TIPO");
+            cbxTipoEnsaio.DataSource = ManipulaTabela.ConverteClassesEmTabela((JsonConvert.DeserializeObject<TipoEnsaio[]>(await Servidor.EnviarItem("SELECT * FROM TIPO_ENSAIO"))),false, "ID", "TIPO");
 
             foreach (DataGridViewColumn coluna in dgvEnsaios.Columns)
             {
