@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CemIdeiasPics.Utils.Consultas
+namespace CemIdeiasPics.Classes.Consultas
 {
-    class Ensaio
+    public class Ensaio
     {
         [JsonProperty("ENSID")]
         public string Ensid { get; set; }
@@ -36,4 +36,12 @@ namespace CemIdeiasPics.Utils.Consultas
         [JsonProperty("ENSDIRETORIO")]
         public string Ensdiretorio { get; set; }
     }
+    public class TipoEnsaio
+    {
+        [JsonProperty("TPEID")]
+        public string ID { get; set; }
+        [JsonProperty("TPETIPO")]
+        public string Tipo { get; set; }
+    }
+
 }

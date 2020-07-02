@@ -7,9 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static CemIdeiasPics.Utils.Classes.ViaCEP;
 using CemIdeiasPics.Utils.Classes;
 using Newtonsoft.Json;
+using CemIdeiasPics.Classes.Online;
+using static CemIdeiasPics.Classes.Online.ConectaCEP;
 
 namespace CemIdeiasPics.Utils.Modelos
 {
@@ -40,7 +41,7 @@ namespace CemIdeiasPics.Utils.Modelos
         }
         async Task<bool> CarregaCEP()
         {
-            string cepJson = await Servidor.EnviarItem($"SELECT ENDCEP resultado_txt, ENDESTADO uf, ENDCIDADE cidade, ENDBAIRRO bairro, ENDLOGRADOURO logradouro FROM ENDERECOS WHERE ENDCEP = {txbCEP.Text}");
+            string cepJson = await ConectaServidor.EnviarItem($"SELECT ENDCEP resultado_txt, ENDESTADO uf, ENDCIDADE cidade, ENDBAIRRO bairro, ENDLOGRADOURO logradouro FROM ENDERECOS WHERE ENDCEP = {txbCEP.Text}");
             ResultCEP = JsonConvert.DeserializeObject<CEP[]>(cepJson)[0];
             NumCEP = txbCEP.Text;
             ResultCEP.Resultado = "1";
@@ -83,7 +84,7 @@ namespace CemIdeiasPics.Utils.Modelos
             if (txbCEP.Text.Length == txbCEP.MaxLength)
             {
                 btnBuscar.Enabled = txbCEP.Enabled = false;
-                ResultCEP = await BuscarCEP(txbCEP.Text);
+                ResultCEP = await ConectaCEP.BuscarCEP(txbCEP.Text);
                 if (int.Parse(ResultCEP.Resultado) > 0)
                 {
                     PreencheCEP();

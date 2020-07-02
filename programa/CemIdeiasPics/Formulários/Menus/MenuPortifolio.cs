@@ -7,15 +7,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using CemIdeiasPics.Utils.Classes;
 using Newtonsoft.Json;
-using CemIdeiasPics.Utils.Consultas;
+using CemIdeiasPics.Classes.Manipuladores;
+using CemIdeiasPics.Classes.Online;
+using CemIdeiasPics.Classes.Consultas;
 
 namespace CemIdeiasPics.Formulários.Menus
 {
     public partial class MenuPortifolio : UserControl
     {
-        Servidor.PortifolioLoader PortifolioLoader = new Servidor.PortifolioLoader();
+        ConectaPortifolio PortifolioLoader = new ConectaPortifolio();
         int position = 0;
 
         public MenuPortifolio()
@@ -38,8 +39,8 @@ namespace CemIdeiasPics.Formulários.Menus
 
         private async void MenuPortifolio_Load(object sender, EventArgs e)
         {
-            Ensaio[] ensaios = JsonConvert.DeserializeObject<Ensaio[]>(await Servidor.EnviarItem("SELECT ENSID, CONCAT(ENSID, ' - ', DATE(ENSDATA)) ENSCLIENTE FROM ENSAIOS"));
-            cbxEnsaios.DataSource = Manipuladores.ConverteClassesEmTabela(ensaios, true, "ID", "DESC");
+            Ensaio[] ensaios = JsonConvert.DeserializeObject<Ensaio[]>(await ConectaServidor.EnviarItem("SELECT ENSID, CONCAT(ENSID, ' - ', DATE(ENSDATA)) ENSCLIENTE FROM ENSAIOS"));
+            cbxEnsaios.DataSource = ManipulaTabela.ConverteClassesEmTabela(ensaios, true, "ID", "DESC");
         }
 
         private async void cbxEnsaios_SelectedIndexChanged(object sender, EventArgs e)

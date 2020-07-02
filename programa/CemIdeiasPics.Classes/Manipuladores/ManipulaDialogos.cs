@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace CemIdeiasPics.Utils.Classes
+namespace CemIdeiasPics.Classes.Manipuladores
 {
     public enum MensagensPredefinidas
     {
@@ -21,19 +21,19 @@ namespace CemIdeiasPics.Utils.Classes
         ERRO_INESPERADO = 9
     }
 
-    public static class Mensagens
+    public static class ManipulaMensagens
     {
-        private static string[] Tipos { get; } = 
-        { 
-            "Aviso!", 
-            "Erro!", 
+        private static string[] Tipos { get; } =
+        {
+            "Aviso!",
+            "Erro!",
             "Confirmação",
             "Êxito!"
         };
-        private static MessageBoxIcon[] Icones { get; } = 
-        { 
-            MessageBoxIcon.Warning, 
-            MessageBoxIcon.Error, 
+        private static MessageBoxIcon[] Icones { get; } =
+        {
+            MessageBoxIcon.Warning,
+            MessageBoxIcon.Error,
             MessageBoxIcon.Asterisk,
             MessageBoxIcon.Exclamation
         };

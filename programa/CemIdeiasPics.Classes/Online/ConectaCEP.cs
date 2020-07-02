@@ -1,10 +1,14 @@
 ﻿using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Net;
+using System.Text;
 using System.Threading.Tasks;
 
-namespace CemIdeiasPics.Utils.Classes
+namespace CemIdeiasPics.Classes.Online
 {
-    public static class ViaCEP
+    public class ConectaCEP
     {
         private static string URL { get; } = "http://cep.republicavirtual.com.br/web_cep.php?cep={0}&formato=json";
         public static async Task<CEP> BuscarCEP(string CEP)
@@ -12,7 +16,7 @@ namespace CemIdeiasPics.Utils.Classes
             var result = string.Empty;
             using (var webClient = new WebClient())
             {
-                await Task.Run(()=>result = webClient.DownloadString(string.Format(URL, CEP)));
+                await Task.Run(() => result = webClient.DownloadString(string.Format(URL, CEP)));
             }
             return JsonConvert.DeserializeObject<CEP>(result);
         }

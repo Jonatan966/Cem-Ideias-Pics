@@ -7,9 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using CemIdeiasPics.Utils.Consultas;
 using Newtonsoft.Json;
-using CemIdeiasPics.Utils.Classes;
+using CemIdeiasPics.Classes.Manipuladores;
+using CemIdeiasPics.Classes.Online;
+using CemIdeiasPics.Classes.Consultas;
 
 namespace CemIdeiasPics.Formulários.Menus
 {
@@ -23,10 +24,10 @@ namespace CemIdeiasPics.Formulários.Menus
         async Task<bool> AtualizaLista()
         {
             ensaios = JsonConvert.DeserializeObject<Ensaio[]>(
-            await Servidor.EnviarItem("SELECT ENSID, ENSCLIENTE, ENSUSUARIO, TPETIPO AS 'ENSTIPO', ENSCEP, ENSNUMLOCAL, ENSDATA, ENSPRECO, ENSDIRETORIO FROM ENSAIOS INNER JOIN TIPO_ENSAIO ON TPEID = ENSTIPO"));
-            dgvEnsaios.DataSource = Manipuladores.ConverteClassesEmTabela(ensaios,false,
+            await ConectaServidor.EnviarItem("SELECT ENSID, ENSCLIENTE, ENSUSUARIO, TPETIPO AS 'ENSTIPO', ENSCEP, ENSNUMLOCAL, ENSDATA, ENSPRECO, ENSDIRETORIO FROM ENSAIOS INNER JOIN TIPO_ENSAIO ON TPEID = ENSTIPO"));
+            dgvEnsaios.DataSource = ManipulaTabela.ConverteClassesEmTabela(ensaios,false,
                 "ID", "Cliente", "Usuario", "Tipo", "CEP", "Num", "Data", "Preco", "Diretorio");
-            Misc.OcultarColunas(ref dgvEnsaios,"ID","Usuario","CEP","Num", "Diretorio");
+            ManipulaTabela.OcultarColunas(ref dgvEnsaios,"ID","Usuario","CEP","Num", "Diretorio");
             return true;
         }
         void LimpaTudo()
@@ -49,10 +50,10 @@ namespace CemIdeiasPics.Formulários.Menus
         {
             await AtualizaLista();
             dgvEnsaios.ClearSelection();
-            Cliente[] clientes = JsonConvert.DeserializeObject<Cliente[]>(await Servidor.EnviarItem("SELECT CLICPF, CONCAT(CLINOME,\" - \", CLICPF) CLINOME FROM CLIENTES GROUP BY CLICPF"));
-            cbxClientes.DataSource = Manipuladores.ConverteClassesEmTabela(clientes,true, "CPF", "NOME");
+            Cliente[] clientes = JsonConvert.DeserializeObject<Cliente[]>(await ConectaServidor.EnviarItem("SELECT CLICPF, CONCAT(CLINOME,\" - \", CLICPF) CLINOME FROM CLIENTES GROUP BY CLICPF"));
+            cbxClientes.DataSource = ManipulaTabela.ConverteClassesEmTabela(clientes,true, "CPF", "NOME");
 
-            cbxTipoEnsaio.DataSource = Manipuladores.ConverteClassesEmTabela((JsonConvert.DeserializeObject<TipoEnsaio[]>(await Servidor.EnviarItem("SELECT * FROM TIPO_ENSAIO"))),false, "ID", "TIPO");
+            cbxTipoEnsaio.DataSource = ManipulaTabela.ConverteClassesEmTabela((JsonConvert.DeserializeObject<TipoEnsaio[]>(await ConectaServidor.EnviarItem("SELECT * FROM TIPO_ENSAIO"))),false, "ID", "TIPO");
 
             foreach (DataGridViewColumn coluna in dgvEnsaios.Columns)
             {
@@ -79,11 +80,11 @@ namespace CemIdeiasPics.Formulários.Menus
         {
             if (btnLimpar.Text == "Excluir")
             {
-                if (Mensagens.MostrarMensagem(MensagensPredefinidas.CONFIRMA_ACAO, MessageBoxButtons.YesNoCancel) == DialogResult.Yes)
+                if (ManipulaMensagens.MostrarMensagem(MensagensPredefinidas.CONFIRMA_ACAO, MessageBoxButtons.YesNoCancel) == DialogResult.Yes)
                 {
-                    if (bool.Parse(await Servidor.EnviarItem($"DELETE FROM ENSAIOS WHERE ENSID = {dgvEnsaios.SelectedRows[0].Cells[0].Value}")))
+                    if (bool.Parse(await ConectaServidor.EnviarItem($"DELETE FROM ENSAIOS WHERE ENSID = {dgvEnsaios.SelectedRows[0].Cells[0].Value}")))
                     {
-                        await Servidor.PortifolioLoader.ExcluiPortifolio(dgvEnsaios.SelectedRows[0].Cells[0].Value.ToString());
+                        await ConectaPortifolio.ExcluiPortifolio(dgvEnsaios.SelectedRows[0].Cells[0].Value.ToString());
                     }
                 }
             }
@@ -96,22 +97,22 @@ namespace CemIdeiasPics.Formulários.Menus
             {
                 if (mdlEndereco1.ResultCEP != null ? int.Parse(mdlEndereco1.ResultCEP.Resultado) > 0 : string.IsNullOrWhiteSpace(mdlEndereco1.NumCEP))
                 {
-                    await Servidor.EnviarItem(await mdlEndereco1.ConverteCEP());
+                    await ConectaServidor.EnviarItem(await mdlEndereco1.ConverteCEP());
                     string cmd = $"INSERT INTO ENSAIOS(ENSCLIENTE, ENSUSUARIO, ENSTIPO, ENSCEP, ENSNUMLOCAL, ENSDATA) VALUES('{cbxClientes.SelectedValue}', {Program.Usuario.USUID}, {cbxTipoEnsaio.SelectedValue}, {mdlEndereco1.NumCEP}, {txbNumeroRes.Text}, '{dtpDataEnsaio.Value:yy-MM-dd}')";
                     if (btnRegistrar.Text != "Registrar")
                     {
                         cmd = $"UPDATE ENSAIOS SET ENSCLIENTE = '{cbxClientes.SelectedValue}',ENSUSUARIO = {Program.Usuario.USUID},ENSTIPO = {cbxTipoEnsaio.SelectedValue},ENSCEP = {mdlEndereco1.NumCEP},ENSNUMLOCAL = {txbNumeroRes.Text},ENSDATA = '{dtpDataEnsaio.Value:yy-MM-dd}' WHERE ENSID = {dgvEnsaios.SelectedRows[0].Cells[0].Value}";
                     }
 
-                    bool confirm = bool.Parse(await Servidor.EnviarItem(cmd));
+                    bool confirm = bool.Parse(await ConectaServidor.EnviarItem(cmd));
                     if (confirm)
                     {
-                        Mensagens.MostrarMensagem(MensagensPredefinidas.OPERACAO_CONCLUIDA);
+                        ManipulaMensagens.MostrarMensagem(MensagensPredefinidas.OPERACAO_CONCLUIDA);
                         btnRecarregar.PerformClick();
                     }
                 }
             }
-            else Mensagens.MostrarMensagem(MensagensPredefinidas.PREENCHIMENTO_INCOMPLETO);
+            else ManipulaMensagens.MostrarMensagem(MensagensPredefinidas.PREENCHIMENTO_INCOMPLETO);
         }
 
         private void txbPesquisa_TextChanged(object sender, EventArgs e)
@@ -143,7 +144,7 @@ namespace CemIdeiasPics.Formulários.Menus
         {
             if (btnLimpar.Text == "Limpar")
             {
-                Mensagens.MostrarMensagem(MensagensPredefinidas.EXIGE_CADASTRO);
+                ManipulaMensagens.MostrarMensagem(MensagensPredefinidas.EXIGE_CADASTRO);
                 return;
             }
             new MenuCadastroPortifolio 

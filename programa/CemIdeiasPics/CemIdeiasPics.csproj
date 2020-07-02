@@ -96,18 +96,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Utils\Classes\Conversores.cs" />
-    <Compile Include="Utils\Classes\DesignMDI.cs" />
-    <Compile Include="Utils\Classes\Mensagens.cs" />
-    <Compile Include="Utils\Classes\Misc.cs" />
-    <Compile Include="Utils\Classes\Servidor.cs" />
-    <Compile Include="Utils\Classes\Validadores.cs" />
-    <Compile Include="Utils\Classes\ViaCEP.cs" />
-    <Compile Include="Utils\Consultas\Cliente.cs" />
-    <Compile Include="Utils\Consultas\Ensaio.cs" />
-    <Compile Include="Utils\Consultas\Portifolio.cs" />
-    <Compile Include="Utils\Consultas\TipoEnsaio.cs" />
-    <Compile Include="Utils\Consultas\Usuario.cs" />
+    <Compile Include="Utils\DesignMDI.cs" />
     <Compile Include="Utils\Controles\CIP_BarraProgresso.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -219,6 +208,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\none.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CemIdeiasPics.Classes\CemIdeiasPics.Classes.csproj">
+      <Project>{447375da-d0f1-4a7b-9a27-34d5da823ce5}</Project>
+      <Name>CemIdeiasPics.Classes</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
