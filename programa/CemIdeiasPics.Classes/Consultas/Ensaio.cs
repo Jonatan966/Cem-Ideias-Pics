@@ -36,11 +36,11 @@ namespace CemIdeiasPics.Classes.Consultas
         [JsonProperty("ENSDIRETORIO")]
         public string Ensdiretorio { get; set; }
     }
-    public class TipoEnsaio
+    public class TipoItens
     {
-        [JsonProperty("TPEID")]
+        [JsonProperty("TPID")]
         public string ID { get; set; }
-        [JsonProperty("TPETIPO")]
+        [JsonProperty("TPNOME")]
         public string Tipo { get; set; }
     }
 

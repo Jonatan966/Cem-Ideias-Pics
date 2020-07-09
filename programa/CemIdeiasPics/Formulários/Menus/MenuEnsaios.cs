@@ -50,16 +50,16 @@ namespace CemIdeiasPics.Formulários.Menus
         {
             await AtualizaLista();
             dgvEnsaios.ClearSelection();
-            Cliente[] clientes = JsonConvert.DeserializeObject<Cliente[]>(await ConectaServidor.EnviarItem("SELECT CLICPF, CONCAT(CLINOME,\" - \", CLICPF) CLINOME FROM CLIENTES GROUP BY CLICPF"));
-            cbxClientes.DataSource = ManipulaTabela.ConverteClassesEmTabela(clientes,true, "CPF", "NOME");
+            Cliente[] clientes = JsonConvert.DeserializeObject<Cliente[]>(await ConectaServidor.EnviarItem("SELECT CLICPF, CONCAT(CLINOME,' - ', CLICPF) CLINOME FROM CLIENTES GROUP BY CLICPF"));
 
-            cbxTipoEnsaio.DataSource = ManipulaTabela.ConverteClassesEmTabela((JsonConvert.DeserializeObject<TipoEnsaio[]>(await ConectaServidor.EnviarItem("SELECT * FROM TIPO_ENSAIO"))),false, "ID", "TIPO");
+            cbxClientes.DataSource = ManipulaTabela.ConverteClassesEmTabela(clientes,true, "CPF", "NOME");
+            cbxTipoEnsaio.DataSource = ManipulaTabela.ConverteClassesEmTabela((JsonConvert.DeserializeObject<TipoItens[]>(await ConectaServidor.EnviarItem("SELECT TPEID AS TPID, TPETIPO AS TPNOME FROM TIPO_ENSAIO"))),false, "ID", "TIPO");
+            cbxTipoAlbum.DataSource = ManipulaTabela.ConverteClassesEmTabela((JsonConvert.DeserializeObject<TipoItens[]>(await ConectaServidor.EnviarItem("SELECT ADRID AS TPID, ADRNOME AS TPNOME FROM ADERECOS"))), false, "ID", "TIPO");
 
             foreach (DataGridViewColumn coluna in dgvEnsaios.Columns)
             {
                 cbxFiltro.Items.Add(coluna.HeaderText);
             }
-            //cbxTipoAlbum.DataSource = Manipuladores.ConverteClassesEmTabela((JsonConvert.DeserializeObject<TipoEnsaio[]>(await Servidor.EnviarComandoSQL("SELECT * FROM TIPO_ADERECOS"))), "ID", "TIPO");
         }
 
         private async void btnRecarregar_Click(object sender, EventArgs e)
