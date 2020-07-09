@@ -9,8 +9,10 @@ using System.Windows.Forms;
 
 namespace CemIdeiasPics.Utils.Modelos
 {
+    public enum TipoDialogo { Simples, Completo }
     public partial class FrmModeloDialogo : CemIdeiasPics.FrmModeloBase
     {
+        public TipoDialogo TipoDoDialogo { get; set; } = TipoDialogo.Completo;
         public FrmModeloDialogo()
         {
             InitializeComponent();
@@ -61,6 +63,12 @@ namespace CemIdeiasPics.Utils.Modelos
 
         private void FrmModeloDialogo_Load(object sender, EventArgs e)
         {
+            switch (TipoDoDialogo)
+            {
+                case TipoDialogo.Simples:
+                    btnMaximizar.Enabled = btnMinimizar.Enabled = false;
+                    break;
+            }
             this.MaximumSize = Screen.PrimaryScreen.WorkingArea.Size;
             this.TopMost = false;
         }
