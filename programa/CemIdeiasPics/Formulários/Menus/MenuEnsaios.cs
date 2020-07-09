@@ -147,7 +147,7 @@ namespace CemIdeiasPics.Formulários.Menus
                 ManipulaMensagens.MostrarMensagem(MensagensPredefinidas.EXIGE_CADASTRO);
                 return;
             }
-            new MenuCadastroPortifolio 
+            new MenuCadPortifolio 
                 { EnsaioID = dgvEnsaios.SelectedRows[0].Cells[0].Value.ToString() }.ShowDialog();
         }
     }

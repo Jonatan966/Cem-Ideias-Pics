@@ -67,6 +67,12 @@
     <Compile Include="Formulários\Menus\MenuCadastroPortifolio.Designer.cs">
       <DependentUpon>MenuCadastroPortifolio.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formulários\Menus\MenuCadPortifolio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulários\Menus\MenuCadPortifolio.Designer.cs">
+      <DependentUpon>MenuCadPortifolio.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formulários\Menus\MenuClientes.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -144,6 +150,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formulários\Menus\MenuCadastroPortifolio.resx">
       <DependentUpon>MenuCadastroPortifolio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formulários\Menus\MenuCadPortifolio.resx">
+      <DependentUpon>MenuCadPortifolio.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formulários\Menus\MenuClientes.resx">
       <DependentUpon>MenuClientes.cs</DependentUpon>
