@@ -39,7 +39,6 @@
             this.dgvEnsaios = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.mdlEndereco1 = new CemIdeiasPics.Utils.Modelos.MdlEndereco();
             this.txbNumeroRes = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.btnPortifolio = new System.Windows.Forms.Button();
@@ -54,6 +53,8 @@
             this.btnLimpar = new System.Windows.Forms.Button();
             this.btnRegistrar = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
+            this.mdlEndereco1 = new CemIdeiasPics.Utils.Modelos.MdlEndereco();
+            this.btnFinalizarEnsaio = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -72,7 +73,7 @@
             this.panel2.Controls.Add(this.dgvEnsaios);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(352, 0);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(400, 453);
             this.panel2.TabIndex = 4;
@@ -84,9 +85,9 @@
             this.groupBox2.Controls.Add(this.txbPesquisa);
             this.groupBox2.Controls.Add(this.groupBox3);
             this.groupBox2.Location = new System.Drawing.Point(5, 28);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox2.Size = new System.Drawing.Size(389, 59);
             this.groupBox2.TabIndex = 13;
             this.groupBox2.TabStop = false;
@@ -99,7 +100,7 @@
             this.txbPesquisa.BackColor = System.Drawing.Color.Silver;
             this.txbPesquisa.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txbPesquisa.Location = new System.Drawing.Point(4, 31);
-            this.txbPesquisa.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txbPesquisa.Margin = new System.Windows.Forms.Padding(2);
             this.txbPesquisa.Name = "txbPesquisa";
             this.txbPesquisa.Size = new System.Drawing.Size(276, 20);
             this.txbPesquisa.TabIndex = 2;
@@ -110,9 +111,9 @@
             this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox3.Controls.Add(this.cbxFiltro);
             this.groupBox3.Location = new System.Drawing.Point(283, 16);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox3.Size = new System.Drawing.Size(102, 39);
             this.groupBox3.TabIndex = 11;
             this.groupBox3.TabStop = false;
@@ -124,7 +125,7 @@
             this.cbxFiltro.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxFiltro.FormattingEnabled = true;
             this.cbxFiltro.Location = new System.Drawing.Point(2, 15);
-            this.cbxFiltro.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbxFiltro.Margin = new System.Windows.Forms.Padding(2);
             this.cbxFiltro.Name = "cbxFiltro";
             this.cbxFiltro.Size = new System.Drawing.Size(98, 21);
             this.cbxFiltro.TabIndex = 0;
@@ -139,7 +140,7 @@
             this.btnRecarregar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRecarregar.ForeColor = System.Drawing.Color.Yellow;
             this.btnRecarregar.Location = new System.Drawing.Point(295, 419);
-            this.btnRecarregar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnRecarregar.Margin = new System.Windows.Forms.Padding(2);
             this.btnRecarregar.Name = "btnRecarregar";
             this.btnRecarregar.Size = new System.Drawing.Size(103, 32);
             this.btnRecarregar.TabIndex = 11;
@@ -169,7 +170,7 @@
             this.btnDesmarcar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDesmarcar.ForeColor = System.Drawing.Color.Yellow;
             this.btnDesmarcar.Location = new System.Drawing.Point(2, 419);
-            this.btnDesmarcar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnDesmarcar.Margin = new System.Windows.Forms.Padding(2);
             this.btnDesmarcar.Name = "btnDesmarcar";
             this.btnDesmarcar.Size = new System.Drawing.Size(289, 32);
             this.btnDesmarcar.TabIndex = 1;
@@ -188,7 +189,7 @@
             this.dgvEnsaios.BackgroundColor = System.Drawing.Color.Silver;
             this.dgvEnsaios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvEnsaios.Location = new System.Drawing.Point(2, 91);
-            this.dgvEnsaios.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dgvEnsaios.Margin = new System.Windows.Forms.Padding(2);
             this.dgvEnsaios.MultiSelect = false;
             this.dgvEnsaios.Name = "dgvEnsaios";
             this.dgvEnsaios.ReadOnly = true;
@@ -203,6 +204,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.panel1.Controls.Add(this.btnFinalizarEnsaio);
             this.panel1.Controls.Add(this.groupBox1);
             this.panel1.Controls.Add(this.btnPortifolio);
             this.panel1.Controls.Add(this.cbxTipoAlbum);
@@ -218,7 +220,7 @@
             this.panel1.Controls.Add(this.label5);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(352, 453);
             this.panel1.TabIndex = 3;
@@ -229,26 +231,13 @@
             this.groupBox1.Controls.Add(this.txbNumeroRes);
             this.groupBox1.Controls.Add(this.label10);
             this.groupBox1.Location = new System.Drawing.Point(23, 58);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox1.Size = new System.Drawing.Size(303, 159);
             this.groupBox1.TabIndex = 31;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Local do Ensaio";
-            // 
-            // mdlEndereco1
-            // 
-            this.mdlEndereco1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.mdlEndereco1.AutoSize = true;
-            this.mdlEndereco1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.mdlEndereco1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.mdlEndereco1.Location = new System.Drawing.Point(7, 14);
-            this.mdlEndereco1.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
-            this.mdlEndereco1.Name = "mdlEndereco1";
-            this.mdlEndereco1.Size = new System.Drawing.Size(290, 117);
-            this.mdlEndereco1.TabIndex = 30;
             // 
             // txbNumeroRes
             // 
@@ -284,9 +273,9 @@
             this.btnPortifolio.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPortifolio.ForeColor = System.Drawing.Color.Yellow;
             this.btnPortifolio.Location = new System.Drawing.Point(5, 383);
-            this.btnPortifolio.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnPortifolio.Margin = new System.Windows.Forms.Padding(2);
             this.btnPortifolio.Name = "btnPortifolio";
-            this.btnPortifolio.Size = new System.Drawing.Size(343, 32);
+            this.btnPortifolio.Size = new System.Drawing.Size(167, 32);
             this.btnPortifolio.TabIndex = 10;
             this.btnPortifolio.Text = "Abrir Portifolio";
             this.btnPortifolio.UseVisualStyleBackColor = false;
@@ -383,7 +372,7 @@
             this.cbxClientes.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxClientes.FormattingEnabled = true;
             this.cbxClientes.Location = new System.Drawing.Point(61, 31);
-            this.cbxClientes.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbxClientes.Margin = new System.Windows.Forms.Padding(2);
             this.cbxClientes.Name = "cbxClientes";
             this.cbxClientes.Size = new System.Drawing.Size(288, 24);
             this.cbxClientes.TabIndex = 12;
@@ -409,7 +398,7 @@
             this.btnLimpar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLimpar.ForeColor = System.Drawing.Color.Yellow;
             this.btnLimpar.Location = new System.Drawing.Point(175, 419);
-            this.btnLimpar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnLimpar.Margin = new System.Windows.Forms.Padding(2);
             this.btnLimpar.Name = "btnLimpar";
             this.btnLimpar.Size = new System.Drawing.Size(164, 32);
             this.btnLimpar.TabIndex = 10;
@@ -426,7 +415,7 @@
             this.btnRegistrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRegistrar.ForeColor = System.Drawing.Color.Yellow;
             this.btnRegistrar.Location = new System.Drawing.Point(13, 419);
-            this.btnRegistrar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnRegistrar.Margin = new System.Windows.Forms.Padding(2);
             this.btnRegistrar.Name = "btnRegistrar";
             this.btnRegistrar.Size = new System.Drawing.Size(159, 32);
             this.btnRegistrar.TabIndex = 9;
@@ -446,13 +435,43 @@
             this.label5.Text = "Dados do Ensaio";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // mdlEndereco1
+            // 
+            this.mdlEndereco1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.mdlEndereco1.AutoSize = true;
+            this.mdlEndereco1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.mdlEndereco1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.mdlEndereco1.Location = new System.Drawing.Point(7, 14);
+            this.mdlEndereco1.Margin = new System.Windows.Forms.Padding(1);
+            this.mdlEndereco1.Name = "mdlEndereco1";
+            this.mdlEndereco1.Size = new System.Drawing.Size(290, 117);
+            this.mdlEndereco1.TabIndex = 30;
+            // 
+            // btnFinalizarEnsaio
+            // 
+            this.btnFinalizarEnsaio.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnFinalizarEnsaio.BackColor = System.Drawing.Color.Black;
+            this.btnFinalizarEnsaio.FlatAppearance.BorderSize = 0;
+            this.btnFinalizarEnsaio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFinalizarEnsaio.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFinalizarEnsaio.ForeColor = System.Drawing.Color.Yellow;
+            this.btnFinalizarEnsaio.Location = new System.Drawing.Point(176, 383);
+            this.btnFinalizarEnsaio.Margin = new System.Windows.Forms.Padding(2);
+            this.btnFinalizarEnsaio.Name = "btnFinalizarEnsaio";
+            this.btnFinalizarEnsaio.Size = new System.Drawing.Size(172, 32);
+            this.btnFinalizarEnsaio.TabIndex = 32;
+            this.btnFinalizarEnsaio.Text = "Finalizar Ensaio";
+            this.btnFinalizarEnsaio.UseVisualStyleBackColor = false;
+            // 
             // MenuEnsaios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "MenuEnsaios";
             this.Size = new System.Drawing.Size(752, 453);
             this.Load += new System.EventHandler(this.MenuEnsaios_Load);
@@ -497,5 +516,6 @@
         private System.Windows.Forms.TextBox txbPesquisa;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.ComboBox cbxFiltro;
+        private System.Windows.Forms.Button btnFinalizarEnsaio;
     }
 }
