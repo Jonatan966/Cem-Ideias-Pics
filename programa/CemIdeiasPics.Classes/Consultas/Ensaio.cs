@@ -35,6 +35,9 @@ namespace CemIdeiasPics.Classes.Consultas
 
         [JsonProperty("ENSDIRETORIO")]
         public string Ensdiretorio { get; set; }
+
+        [JsonProperty("ENSADERECO")]
+        public string EnsAdereco { get; set; }
     }
     public class TipoItens
     {

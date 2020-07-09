@@ -24,10 +24,10 @@ namespace CemIdeiasPics.Formulários.Menus
         async Task<bool> AtualizaLista()
         {
             ensaios = JsonConvert.DeserializeObject<Ensaio[]>(
-            await ConectaServidor.EnviarItem("SELECT ENSID, ENSCLIENTE, ENSUSUARIO, TPETIPO AS 'ENSTIPO', ENSCEP, ENSNUMLOCAL, ENSDATA, ENSPRECO, ENSDIRETORIO FROM ENSAIOS INNER JOIN TIPO_ENSAIO ON TPEID = ENSTIPO"));
+            await ConectaServidor.EnviarItem("SELECT ENSID, ENSCLIENTE, ENSUSUARIO, TPETIPO AS 'ENSTIPO', ENSCEP, ENSNUMLOCAL, ENSDATA, ENSPRECO, ENSDIRETORIO, ENSADERECO FROM ENSAIOS INNER JOIN TIPO_ENSAIO ON TPEID = ENSTIPO"));
             dgvEnsaios.DataSource = ManipulaTabela.ConverteClassesEmTabela(ensaios,false,
-                "ID", "Cliente", "Usuario", "Tipo", "CEP", "Num", "Data", "Preco", "Diretorio");
-            ManipulaTabela.OcultarColunas(ref dgvEnsaios,"ID","Usuario","CEP","Num", "Diretorio");
+                "ID", "Cliente", "Usuario", "Tipo", "CEP", "Num", "Data", "Preco", "Diretorio", "Adereco");
+            ManipulaTabela.OcultarColunas(ref dgvEnsaios,"ID","Usuario","CEP","Num", "Diretorio","Adereco");
             return true;
         }
         void LimpaTudo()
@@ -98,10 +98,10 @@ namespace CemIdeiasPics.Formulários.Menus
                 if (mdlEndereco1.ResultCEP != null ? int.Parse(mdlEndereco1.ResultCEP.Resultado) > 0 : string.IsNullOrWhiteSpace(mdlEndereco1.NumCEP))
                 {
                     await ConectaServidor.EnviarItem(await mdlEndereco1.ConverteCEP());
-                    string cmd = $"INSERT INTO ENSAIOS(ENSCLIENTE, ENSUSUARIO, ENSTIPO, ENSCEP, ENSNUMLOCAL, ENSDATA) VALUES('{cbxClientes.SelectedValue}', {Program.Usuario.USUID}, {cbxTipoEnsaio.SelectedValue}, {mdlEndereco1.NumCEP}, {txbNumeroRes.Text}, '{dtpDataEnsaio.Value:yy-MM-dd}')";
+                    string cmd = $"INSERT INTO ENSAIOS(ENSCLIENTE, ENSUSUARIO, ENSTIPO, ENSCEP, ENSNUMLOCAL, ENSDATA, ENSADERECO) VALUES('{cbxClientes.SelectedValue}', {Program.Usuario.USUID}, {cbxTipoEnsaio.SelectedValue}, {mdlEndereco1.NumCEP}, {txbNumeroRes.Text}, '{dtpDataEnsaio.Value:yy-MM-dd}', {cbxTipoEnsaio.SelectedValue})";
                     if (btnRegistrar.Text != "Registrar")
                     {
-                        cmd = $"UPDATE ENSAIOS SET ENSCLIENTE = '{cbxClientes.SelectedValue}',ENSUSUARIO = {Program.Usuario.USUID},ENSTIPO = {cbxTipoEnsaio.SelectedValue},ENSCEP = {mdlEndereco1.NumCEP},ENSNUMLOCAL = {txbNumeroRes.Text},ENSDATA = '{dtpDataEnsaio.Value:yy-MM-dd}' WHERE ENSID = {dgvEnsaios.SelectedRows[0].Cells[0].Value}";
+                        cmd = $"UPDATE ENSAIOS SET ENSCLIENTE = '{cbxClientes.SelectedValue}',ENSUSUARIO = {Program.Usuario.USUID},ENSTIPO = {cbxTipoEnsaio.SelectedValue},ENSCEP = {mdlEndereco1.NumCEP},ENSNUMLOCAL = {txbNumeroRes.Text},ENSDATA = '{dtpDataEnsaio.Value:yy-MM-dd}', ENSADERECO = {cbxTipoAlbum.SelectedValue}, ENSTIPO = {cbxTipoEnsaio.SelectedValue} WHERE ENSID = {dgvEnsaios.SelectedRows[0].Cells[0].Value}";
                     }
 
                     bool confirm = bool.Parse(await ConectaServidor.EnviarItem(cmd));
@@ -128,9 +128,9 @@ namespace CemIdeiasPics.Formulários.Menus
 
                 cbxClientes.SelectedValue = ensaios[selected].Enscliente;
                 cbxTipoEnsaio.SelectedItem = ensaios[selected].Enstipo;
+                cbxTipoAlbum.SelectedValue = ensaios[selected].EnsAdereco;
                 dtpDataEnsaio.Value = DateTime.Parse(ensaios[selected].Ensdata);
                 txbNumeroRes.Text = ensaios[selected].Ensnumlocal;
-                //cbxTipoAlbum.SelectedValue = ensaios[selected];
 
                 btnRegistrar.Text = "Salvar";
                 btnLimpar.Text = "Excluir";
