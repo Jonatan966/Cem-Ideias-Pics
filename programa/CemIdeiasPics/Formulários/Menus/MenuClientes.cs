@@ -89,7 +89,6 @@ namespace CemIdeiasPics.Formulários.Menus
 
                 if (mdlEndereco1.ResultCEP != null ? int.Parse(mdlEndereco1.ResultCEP.Resultado)>0 : string.IsNullOrWhiteSpace(mdlEndereco1.NumCEP))
                 {
-                    await ConectaServidor.EnviarItem(await mdlEndereco1.ConverteCEP());
                     string cmdInsert = $"INSERT INTO CLIENTES(CLICPF, CLINOME, CLISEXO, CLIDATANASCIMENTO, CLITELEFONE, CLIEMAIL, CLINUMEROCASA, CLICEP, CLICOMPLEMENTO) VALUES('{txbCPF.Text}', '{txbNome.Text}', {(rbnMasculino.Checked ? 1 : 2)}, '{dtpNascimento.Value:yy-MM-dd}', '{txbTelefone.Text}', '{txbEmail.Text}', {txbNumResidencia.Text}, {mdlEndereco1.NumCEP}, {cbxComplemento.SelectedIndex+1})";
                     string cmdEdit = $"UPDATE CLIENTES SET CLINOME = '{txbNome.Text}', CLISEXO = {(rbnMasculino.Checked ? 1 : 2)}, CLIDATANASCIMENTO = '{dtpNascimento.Value:yy-MM-dd}', CLITELEFONE = '{txbTelefone.Text}', CLIEMAIL = '{txbEmail.Text}', CLINUMEROCASA = {txbNumResidencia.Text}, CLICEP = {mdlEndereco1.NumCEP}, CLICOMPLEMENTO = {cbxComplemento.SelectedIndex + 1} WHERE CLICPF = '{txbCPF.Text}'";
                     Clipboard.SetText(cmdEdit);
@@ -137,7 +136,7 @@ namespace CemIdeiasPics.Formulários.Menus
                 rbnFeminino.Checked = clientes[selected].CLISEXO == "F";
                 cbxComplemento.SelectedItem = clientes[selected].CLICOMPLEMENTO;
 
-                await mdlEndereco1.CarregaCEP(clientes[selected].CLICEP);
+                mdlEndereco1.PesquisaCEP(clientes[selected].CLICEP);
 
                 btnRegistrar.Text = "Salvar";
                 btnLimpar.Text = "Excluir";

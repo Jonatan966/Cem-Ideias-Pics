@@ -97,7 +97,6 @@ namespace CemIdeiasPics.Formulários.Menus
             {
                 if (mdlEndereco1.ResultCEP != null ? int.Parse(mdlEndereco1.ResultCEP.Resultado) > 0 : string.IsNullOrWhiteSpace(mdlEndereco1.NumCEP))
                 {
-                    await ConectaServidor.EnviarItem(await mdlEndereco1.ConverteCEP());
                     string cmd = $"INSERT INTO ENSAIOS(ENSCLIENTE, ENSUSUARIO, ENSTIPO, ENSCEP, ENSNUMLOCAL, ENSDATA, ENSADERECO) VALUES('{cbxClientes.SelectedValue}', {Program.Usuario.USUID}, {cbxTipoEnsaio.SelectedValue}, {mdlEndereco1.NumCEP}, {txbNumeroRes.Text}, '{dtpDataEnsaio.Value:yy-MM-dd}', {cbxTipoEnsaio.SelectedValue})";
                     if (btnRegistrar.Text != "Registrar")
                     {
@@ -136,7 +135,7 @@ namespace CemIdeiasPics.Formulários.Menus
                 btnLimpar.Text = "Excluir";
                 cbxClientes.Enabled = false;
 
-                await mdlEndereco1.CarregaCEP(ensaios[selected].Enscep);
+                mdlEndereco1.PesquisaCEP(ensaios[selected].Enscep);
             }
         }
 

@@ -43,6 +43,12 @@ namespace CemIdeiasPics.Classes.Online
 
             [JsonProperty("logradouro", NullValueHandling = NullValueHandling.Ignore)]
             public string Logradouro { get; set; }
+
+            public string RetornaComandoSQL(string cep)
+            {
+                string cmdInsert = "INSERT INTO ENDERECOS VALUES({0},'{1}','{2}','{3}','{4} {5}')";
+                return string.Format(cmdInsert, cep, Uf, Cidade, Bairro, TipoLogradouro, Logradouro);
+            }
         }
     }
 }

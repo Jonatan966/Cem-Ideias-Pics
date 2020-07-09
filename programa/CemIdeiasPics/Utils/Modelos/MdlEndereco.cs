@@ -11,6 +11,7 @@ using CemIdeiasPics.Utils.Classes;
 using Newtonsoft.Json;
 using CemIdeiasPics.Classes.Online;
 using static CemIdeiasPics.Classes.Online.ConectaCEP;
+using CemIdeiasPics.Classes.Manipuladores;
 
 namespace CemIdeiasPics.Utils.Modelos
 {
@@ -34,27 +35,46 @@ namespace CemIdeiasPics.Utils.Modelos
             NumCEP = string.Empty;
         }
 
+        public void PesquisaCEP(string cep)
+        {
+            txbCEP.Text = cep;
+            btnBuscar.PerformClick();
+        }
+
+        void MostraCEP()
+        {
+            txbBairro.Text = ResultCEP.Bairro;
+            txbCidade.Text = ResultCEP.Cidade;
+            txbUF.Text = ResultCEP.Uf;
+            txbLogradouro.Text = $"{ResultCEP.TipoLogradouro} {ResultCEP.Logradouro}";
+        }
+
         private void BloqueiaNumeros_Event(object sender, KeyPressEventArgs e)
         {
-            if(Char.IsLetter(e.KeyChar) || Char.IsWhiteSpace(e.KeyChar))
+            if (e.KeyChar != (char)13)
             {
-                e.Handled = true;
+                e.Handled = char.IsLetter(e.KeyChar) || char.IsWhiteSpace(e.KeyChar);
             }
+            else btnBuscar.PerformClick();
         }
 
         private async void btnBuscar_Click(object sender, EventArgs e)
         {
-            if (txbCEP.Text.Length == txbCEP.MaxLength)
+            string cmdSelect = $"SELECT ENDESTADO uf, ENDCIDADE cidade, ENDBAIRRO bairro, ENDLOGRADOURO logradouro FROM ENDERECOS WHERE ENDCEP = {txbCEP.Text}";
+            CEP[] results = JsonConvert.DeserializeObject<CEP[]>(await ConectaServidor.EnviarItem(cmdSelect));
+
+            btnBuscar.Enabled = false;
+            if (results.Length == 0)
             {
-                btnBuscar.Enabled = txbCEP.Enabled = false;
-                ResultCEP = await ConectaCEP.BuscarCEP(txbCEP.Text);
-                if (int.Parse(ResultCEP.Resultado) > 0)
-                {
-                    PreencheCEP();
-                }
-                btnBuscar.Enabled = txbCEP.Enabled = true;
+                ResultCEP = await BuscarCEP(txbCEP.Text);
+                if (ResultCEP.Resultado != "0")
+                    await ConectaServidor.EnviarItem(ResultCEP.RetornaComandoSQL(txbCEP.Text));
+                else
+                    ManipulaMensagens.MostrarMensagem(MensagensPredefinidas.RESULTADO_NAO_ENCONTRADO);
             }
+            else ResultCEP = results[0];
+            MostraCEP();
+            btnBuscar.Enabled = true;
         }
-    
     }
 }
