@@ -18,7 +18,6 @@ namespace CemIdeiasPics.Utils.Modelos
     public partial class MdlEndereco : UserControl
     {
         public CEP ResultCEP;
-        public string NumCEP = string.Empty;
         public MdlEndereco()
         {
             InitializeComponent();
@@ -32,7 +31,6 @@ namespace CemIdeiasPics.Utils.Modelos
             txbLogradouro.Clear();
             txbCEP.Clear();
             ResultCEP = null;
-            NumCEP = string.Empty;
         }
 
         public void PesquisaCEP(string cep)
