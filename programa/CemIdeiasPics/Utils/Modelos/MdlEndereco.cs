@@ -23,43 +23,6 @@ namespace CemIdeiasPics.Utils.Modelos
             InitializeComponent();
         }
         
-        public async Task<string> ConverteCEP()
-        {
-            if (ResultCEP == null)
-            {
-                await CarregaCEP();
-            }
-            return $"INSERT INTO ENDERECOS VALUES({NumCEP}, '{ResultCEP.Uf}', '{ResultCEP.Cidade}', '{ResultCEP.Bairro}', '{ResultCEP.TipoLogradouro??""} {ResultCEP.Logradouro}')";
-        }
-        void PreencheCEP()
-        {
-            txbBairro.Text = ResultCEP.Bairro;
-            txbCidade.Text = ResultCEP.Cidade;
-            txbUF.Text = ResultCEP.Uf;
-            txbLogradouro.Text = $"{ResultCEP.TipoLogradouro} {ResultCEP.Logradouro}";
-            NumCEP = txbCEP.Text;
-        }
-        async Task<bool> CarregaCEP()
-        {
-            string cepJson = await ConectaServidor.EnviarItem($"SELECT ENDCEP resultado_txt, ENDESTADO uf, ENDCIDADE cidade, ENDBAIRRO bairro, ENDLOGRADOURO logradouro FROM ENDERECOS WHERE ENDCEP = {txbCEP.Text}");
-            ResultCEP = JsonConvert.DeserializeObject<CEP[]>(cepJson)[0];
-            NumCEP = txbCEP.Text;
-            ResultCEP.Resultado = "1";
-            return true;
-        }
-        public async Task<bool> CarregaCEP(string cep)
-        {
-            LimpaTudo();
-            for (int i = 0; i < txbCEP.MaxLength-cep.Length; i++)
-            {
-                txbCEP.Text += "0";
-            }
-            txbCEP.Text += cep;
-            await CarregaCEP();
-            PreencheCEP();
-            return true;
-        }
-
         public void LimpaTudo()
         {
             txbBairro.Clear();
