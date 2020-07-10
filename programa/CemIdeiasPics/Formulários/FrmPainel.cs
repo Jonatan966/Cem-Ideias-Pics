@@ -12,7 +12,7 @@ using CemIdeiasPics.Utils.Classes;
 
 namespace CemIdeiasPics.Formulários
 {
-    public partial class FrmPainel : CemIdeiasPics.Utils.Modelos.FrmModeloDialogo
+    public partial class FrmPainel : Utils.Modelos.FrmModeloDialogo
     {
         public FrmPainel()
         {
@@ -26,8 +26,8 @@ namespace CemIdeiasPics.Formulários
         private void FrmPainel_Load(object sender, EventArgs e)
         {
             lblUsuario.Text = Program.Usuario.USUNOME;
-            pictureBox1.Region = ManipulaImagem.ImagemRedonda(pictureBox1.Width, pictureBox1.Height);
-            pictureBox1.ImageLocation = Program.Usuario.USUIMG;
+            pbxImgUsuario.Region = ManipulaImagem.ImagemRedonda(pbxImgUsuario.Width, pbxImgUsuario.Height);
+            pbxImgUsuario.ImageLocation = Program.Usuario.USUIMG;
             rbnPortifolio.PerformClick();
         }
 
