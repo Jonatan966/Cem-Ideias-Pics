@@ -17,6 +17,7 @@ namespace CemIdeiasPics.Utils.Modelos
 {
     public partial class MdlEndereco : UserControl
     {
+        public string NumCEP = string.Empty;
         public CEP ResultCEP;
         public MdlEndereco()
         {
@@ -58,7 +59,7 @@ namespace CemIdeiasPics.Utils.Modelos
 
         private async void btnBuscar_Click(object sender, EventArgs e)
         {
-            string cmdSelect = $"SELECT ENDESTADO uf, ENDCIDADE cidade, ENDBAIRRO bairro, ENDLOGRADOURO logradouro FROM ENDERECOS WHERE ENDCEP = {txbCEP.Text}";
+            string cmdSelect = $"SELECT 1 resultado, ENDESTADO uf, ENDCIDADE cidade, ENDBAIRRO bairro, ENDLOGRADOURO logradouro FROM ENDERECOS WHERE ENDCEP = {txbCEP.Text}";
             CEP[] results = JsonConvert.DeserializeObject<CEP[]>(await ConectaServidor.EnviarItem(cmdSelect));
 
             btnBuscar.Enabled = false;
@@ -66,11 +67,18 @@ namespace CemIdeiasPics.Utils.Modelos
             {
                 ResultCEP = await BuscarCEP(txbCEP.Text);
                 if (ResultCEP.Resultado != "0")
+                {
                     await ConectaServidor.EnviarItem(ResultCEP.RetornaComandoSQL(txbCEP.Text));
+                    NumCEP = txbCEP.Text;
+                }
                 else
                     ManipulaMensagens.MostrarMensagem(MensagensPredefinidas.RESULTADO_NAO_ENCONTRADO);
             }
-            else ResultCEP = results[0];
+            else
+            {
+                ResultCEP = results[0];
+                NumCEP = txbCEP.Text;
+            }
             MostraCEP();
             btnBuscar.Enabled = true;
         }
