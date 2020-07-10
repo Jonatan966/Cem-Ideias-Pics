@@ -73,7 +73,7 @@ namespace CemIdeiasPics.Formulários
                 string resultado = await ConectaServidor.EnviarItem($"SELECT USUID, USUNOME, USUIMG FROM USUARIOS WHERE USULOGIN = '{txbUsuario.Text}' AND USUSENHA = MD5('{txbSenha.Text}')");
                 if (!string.IsNullOrWhiteSpace(resultado))
                 {
-                    if (resultado != "false")
+                    if (resultado != "false" && resultado != "[]")
                     {
                         Program.Usuario = JsonConvert.DeserializeObject<Usuario[]>(resultado)[0];
                         DialogResult = DialogResult.Yes;
