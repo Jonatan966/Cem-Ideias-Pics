@@ -38,12 +38,9 @@
             this.lblUsuario = new CemIdeiasPics.Utils.Controles.CIP_Label();
             this.pbxImgUsuario = new System.Windows.Forms.PictureBox();
             this.pnlMenus = new System.Windows.Forms.Panel();
-            this.lblNomeUsuario = new System.Windows.Forms.ToolStripStatusLabel();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxImgUsuario)).BeginInit();
-            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -56,7 +53,7 @@
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(145, 476);
+            this.panel1.Size = new System.Drawing.Size(145, 500);
             this.panel1.TabIndex = 6;
             // 
             // tableLayoutPanel1
@@ -78,7 +75,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(145, 326);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(145, 350);
             this.tableLayoutPanel1.TabIndex = 12;
             // 
             // btnSair
@@ -90,10 +87,10 @@
             this.btnSair.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSair.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSair.ForeColor = System.Drawing.Color.Gray;
-            this.btnSair.Location = new System.Drawing.Point(0, 260);
+            this.btnSair.Location = new System.Drawing.Point(0, 280);
             this.btnSair.Margin = new System.Windows.Forms.Padding(0);
             this.btnSair.Name = "btnSair";
-            this.btnSair.Size = new System.Drawing.Size(145, 66);
+            this.btnSair.Size = new System.Drawing.Size(145, 70);
             this.btnSair.TabIndex = 7;
             this.btnSair.Text = "Sair";
             this.btnSair.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -113,10 +110,10 @@
             this.rbnClientes.ForeColor = System.Drawing.Color.Gray;
             this.rbnClientes.Image = global::CemIdeiasPics.Properties.Resources.Clientes_Icon;
             this.rbnClientes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.rbnClientes.Location = new System.Drawing.Point(0, 65);
+            this.rbnClientes.Location = new System.Drawing.Point(0, 70);
             this.rbnClientes.Margin = new System.Windows.Forms.Padding(0);
             this.rbnClientes.Name = "rbnClientes";
-            this.rbnClientes.Size = new System.Drawing.Size(145, 65);
+            this.rbnClientes.Size = new System.Drawing.Size(145, 70);
             this.rbnClientes.TabIndex = 8;
             this.rbnClientes.Tag = "1";
             this.rbnClientes.Text = "Clientes";
@@ -137,10 +134,10 @@
             this.rbnEnsaios.ForeColor = System.Drawing.Color.Gray;
             this.rbnEnsaios.Image = global::CemIdeiasPics.Properties.Resources.Camera_Icone;
             this.rbnEnsaios.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.rbnEnsaios.Location = new System.Drawing.Point(0, 130);
+            this.rbnEnsaios.Location = new System.Drawing.Point(0, 140);
             this.rbnEnsaios.Margin = new System.Windows.Forms.Padding(0);
             this.rbnEnsaios.Name = "rbnEnsaios";
-            this.rbnEnsaios.Size = new System.Drawing.Size(145, 65);
+            this.rbnEnsaios.Size = new System.Drawing.Size(145, 70);
             this.rbnEnsaios.TabIndex = 9;
             this.rbnEnsaios.Tag = "2";
             this.rbnEnsaios.Text = "Ensaios";
@@ -164,7 +161,7 @@
             this.rbnPortifolio.Location = new System.Drawing.Point(0, 0);
             this.rbnPortifolio.Margin = new System.Windows.Forms.Padding(0);
             this.rbnPortifolio.Name = "rbnPortifolio";
-            this.rbnPortifolio.Size = new System.Drawing.Size(145, 65);
+            this.rbnPortifolio.Size = new System.Drawing.Size(145, 70);
             this.rbnPortifolio.TabIndex = 10;
             this.rbnPortifolio.Tag = "0";
             this.rbnPortifolio.Text = "Portifólio";
@@ -187,10 +184,10 @@
             this.rbnConfig.ForeColor = System.Drawing.Color.Gray;
             this.rbnConfig.Image = global::CemIdeiasPics.Properties.Resources.Configs_Icone;
             this.rbnConfig.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.rbnConfig.Location = new System.Drawing.Point(0, 195);
+            this.rbnConfig.Location = new System.Drawing.Point(0, 210);
             this.rbnConfig.Margin = new System.Windows.Forms.Padding(0);
             this.rbnConfig.Name = "rbnConfig";
-            this.rbnConfig.Size = new System.Drawing.Size(145, 65);
+            this.rbnConfig.Size = new System.Drawing.Size(145, 70);
             this.rbnConfig.TabIndex = 11;
             this.rbnConfig.Tag = "3";
             this.rbnConfig.Text = "Opções";
@@ -231,31 +228,8 @@
             this.pnlMenus.Margin = new System.Windows.Forms.Padding(7, 6, 3, 6);
             this.pnlMenus.Name = "pnlMenus";
             this.pnlMenus.Padding = new System.Windows.Forms.Padding(17, 16, 17, 16);
-            this.pnlMenus.Size = new System.Drawing.Size(729, 476);
+            this.pnlMenus.Size = new System.Drawing.Size(729, 500);
             this.pnlMenus.TabIndex = 7;
-            // 
-            // lblNomeUsuario
-            // 
-            this.lblNomeUsuario.BackColor = System.Drawing.Color.Transparent;
-            this.lblNomeUsuario.ForeColor = System.Drawing.Color.White;
-            this.lblNomeUsuario.Name = "lblNomeUsuario";
-            this.lblNomeUsuario.Size = new System.Drawing.Size(57, 19);
-            this.lblNomeUsuario.Text = "Um coiso";
-            // 
-            // statusStrip1
-            // 
-            this.statusStrip1.AutoSize = false;
-            this.statusStrip1.BackColor = System.Drawing.Color.Black;
-            this.statusStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.lblNomeUsuario});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 476);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Padding = new System.Windows.Forms.Padding(1, 0, 9, 0);
-            this.statusStrip1.Size = new System.Drawing.Size(874, 24);
-            this.statusStrip1.SizingGrip = false;
-            this.statusStrip1.TabIndex = 5;
-            this.statusStrip1.Text = "statusStrip1";
             // 
             // FrmPainel
             // 
@@ -263,18 +237,14 @@
             this.ClientSize = new System.Drawing.Size(874, 500);
             this.Controls.Add(this.pnlMenus);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.statusStrip1);
             this.MaximumSize = new System.Drawing.Size(1218, 702);
             this.Name = "FrmPainel";
             this.Load += new System.EventHandler(this.FrmPainel_Load);
-            this.Controls.SetChildIndex(this.statusStrip1, 0);
             this.Controls.SetChildIndex(this.panel1, 0);
             this.Controls.SetChildIndex(this.pnlMenus, 0);
             this.panel1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbxImgUsuario)).EndInit();
-            this.statusStrip1.ResumeLayout(false);
-            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -290,7 +260,5 @@
         private Utils.Controles.CIP_Label lblUsuario;
         private System.Windows.Forms.Panel pnlMenus;
         private System.Windows.Forms.PictureBox pbxImgUsuario;
-        private System.Windows.Forms.ToolStripStatusLabel lblNomeUsuario;
-        private System.Windows.Forms.StatusStrip statusStrip1;
     }
 }
