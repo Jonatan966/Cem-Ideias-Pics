@@ -42,9 +42,10 @@
             // 
             this.lblContagem.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblContagem.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblContagem.Location = new System.Drawing.Point(129, 105);
+            this.lblContagem.Location = new System.Drawing.Point(86, 68);
+            this.lblContagem.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblContagem.Name = "lblContagem";
-            this.lblContagem.Size = new System.Drawing.Size(678, 40);
+            this.lblContagem.Size = new System.Drawing.Size(452, 26);
             this.lblContagem.TabIndex = 14;
             this.lblContagem.Text = "0 de 0";
             this.lblContagem.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -56,9 +57,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pbxImagem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.pbxImagem.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pbxImagem.Location = new System.Drawing.Point(129, 148);
+            this.pbxImagem.Location = new System.Drawing.Point(93, 96);
+            this.pbxImagem.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pbxImagem.Name = "pbxImagem";
-            this.pbxImagem.Size = new System.Drawing.Size(678, 395);
+            this.pbxImagem.Size = new System.Drawing.Size(453, 257);
             this.pbxImagem.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbxImagem.TabIndex = 13;
             this.pbxImagem.TabStop = false;
@@ -71,9 +73,10 @@
             this.btnAnterior.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAnterior.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAnterior.ForeColor = System.Drawing.Color.Yellow;
-            this.btnAnterior.Location = new System.Drawing.Point(129, 549);
+            this.btnAnterior.Location = new System.Drawing.Point(90, 357);
+            this.btnAnterior.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnAnterior.Name = "btnAnterior";
-            this.btnAnterior.Size = new System.Drawing.Size(337, 50);
+            this.btnAnterior.Size = new System.Drawing.Size(225, 32);
             this.btnAnterior.TabIndex = 15;
             this.btnAnterior.Tag = "-1";
             this.btnAnterior.Text = "<";
@@ -88,9 +91,10 @@
             this.btnProximo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnProximo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnProximo.ForeColor = System.Drawing.Color.Yellow;
-            this.btnProximo.Location = new System.Drawing.Point(472, 549);
+            this.btnProximo.Location = new System.Drawing.Point(321, 357);
+            this.btnProximo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnProximo.Name = "btnProximo";
-            this.btnProximo.Size = new System.Drawing.Size(335, 50);
+            this.btnProximo.Size = new System.Drawing.Size(225, 32);
             this.btnProximo.TabIndex = 16;
             this.btnProximo.Tag = "1";
             this.btnProximo.Text = ">";
@@ -102,9 +106,10 @@
             this.cbxEnsaios.DisplayMember = "DESC";
             this.cbxEnsaios.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxEnsaios.FormattingEnabled = true;
-            this.cbxEnsaios.Location = new System.Drawing.Point(6, 29);
+            this.cbxEnsaios.Location = new System.Drawing.Point(4, 19);
+            this.cbxEnsaios.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cbxEnsaios.Name = "cbxEnsaios";
-            this.cbxEnsaios.Size = new System.Drawing.Size(666, 28);
+            this.cbxEnsaios.Size = new System.Drawing.Size(445, 21);
             this.cbxEnsaios.TabIndex = 17;
             this.cbxEnsaios.ValueMember = "ID";
             this.cbxEnsaios.SelectedIndexChanged += new System.EventHandler(this.cbxEnsaios_SelectedIndexChanged);
@@ -113,25 +118,28 @@
             // 
             this.groupBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.groupBox1.Controls.Add(this.cbxEnsaios);
-            this.groupBox1.Location = new System.Drawing.Point(129, 20);
+            this.groupBox1.Location = new System.Drawing.Point(90, 13);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(678, 69);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Size = new System.Drawing.Size(456, 45);
             this.groupBox1.TabIndex = 18;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Ensaios";
             // 
             // MenuPortifolio
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.Control;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.lblContagem);
             this.Controls.Add(this.pbxImagem);
             this.Controls.Add(this.btnAnterior);
             this.Controls.Add(this.btnProximo);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "MenuPortifolio";
-            this.Size = new System.Drawing.Size(960, 619);
+            this.Size = new System.Drawing.Size(640, 402);
             this.Load += new System.EventHandler(this.MenuPortifolio_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbxImagem)).EndInit();
             this.groupBox1.ResumeLayout(false);
