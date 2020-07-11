@@ -27,6 +27,15 @@ namespace CemIdeiasPics.Utils.Modelos
         public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
         [DllImportAttribute("user32.dll")]
         public static extern bool ReleaseCapture();
+
+        private void pnlBarraTitulo_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left && this.Size == this.MinimumSize)
+            {
+                ReleaseCapture();
+                SendMessage(this.Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
+            }
+        }
         #endregion
 
         private void btnFechar_Click(object sender, EventArgs e)
@@ -42,23 +51,11 @@ namespace CemIdeiasPics.Utils.Modelos
 
         private void btnMaximizar_Click(object sender, EventArgs e)
         {
-            if (WindowState == FormWindowState.Normal)
-            {
-                this.WindowState = FormWindowState.Maximized;
-            }
+            if (this.Size == this.MinimumSize)
+                this.Size = this.MaximumSize = Screen.GetWorkingArea(this).Size;
             else
-            {
-                this.WindowState = FormWindowState.Normal;
-            }
-        }
-
-        private void pnlBarraTitulo_MouseDown(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left)
-            {
-                ReleaseCapture();
-                SendMessage(this.Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
-            }
+                this.Size = this.MinimumSize;
+            this.CenterToScreen();
         }
 
         private void FrmModeloDialogo_Load(object sender, EventArgs e)
@@ -69,8 +66,7 @@ namespace CemIdeiasPics.Utils.Modelos
                     btnMaximizar.Enabled = btnMinimizar.Enabled = false;
                     break;
             }
-            this.MaximumSize = Screen.PrimaryScreen.WorkingArea.Size;
-            this.TopMost = false;
+            this.MinimumSize = this.Size;
         }
     }
 }
