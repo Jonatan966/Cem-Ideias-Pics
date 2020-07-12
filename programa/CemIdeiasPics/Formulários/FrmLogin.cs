@@ -40,7 +40,7 @@ namespace CemIdeiasPics.Formulários
                 {
                     case 0:
                         string validador = await ConectaServidor.EnviarItem("SELECT 'true'");
-                        if (validador == "false"){
+                        if (validador == "false" || string.IsNullOrWhiteSpace(validador)){
                             lblErro.Text = "Não foi possível conectar ao servidor";
                             tbcPassos.SelectedIndex = 2;
                             break;

@@ -11,7 +11,7 @@ namespace CemIdeiasPics.Classes.Online
     public enum TipoEnvio { ComandoSQL, Imagem }
     public static class ConectaServidor
     {
-        public static string urlAddress = "http://cemideias-pics.000webhostapp.com/src/php/";
+        public static string urlAddress = "https://cemideias-pics.000webhostapp.com/src/php/";
         private static string pwd = "7fe182bcddb67905fbd39db957e23116";
         private static string[] tipoEnvioPg = new string[] { "ConexaoMySQL", "EnviaImagem" };
 
