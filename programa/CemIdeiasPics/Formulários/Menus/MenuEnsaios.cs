@@ -149,5 +149,10 @@ namespace CemIdeiasPics.Formulários.Menus
             new MenuCadPortifolio 
                 { EnsaioID = dgvEnsaios.SelectedRows[0].Cells[0].Value.ToString() }.ShowDialog();
         }
+
+        private void btnFinalizarEnsaio_Click(object sender, EventArgs e)
+        {
+            _ = new MenuFinalizaEnsaio().ShowDialog();
+        }
     }
 }

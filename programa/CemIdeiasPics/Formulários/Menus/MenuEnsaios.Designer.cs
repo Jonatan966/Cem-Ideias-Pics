@@ -38,7 +38,9 @@
             this.btnDesmarcar = new System.Windows.Forms.Button();
             this.dgvEnsaios = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnFinalizarEnsaio = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.mdlEndereco1 = new CemIdeiasPics.Utils.Modelos.MdlEndereco();
             this.txbNumeroRes = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.btnPortifolio = new System.Windows.Forms.Button();
@@ -53,8 +55,6 @@
             this.btnLimpar = new System.Windows.Forms.Button();
             this.btnRegistrar = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
-            this.mdlEndereco1 = new CemIdeiasPics.Utils.Modelos.MdlEndereco();
-            this.btnFinalizarEnsaio = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -225,6 +225,24 @@
             this.panel1.Size = new System.Drawing.Size(352, 453);
             this.panel1.TabIndex = 3;
             // 
+            // btnFinalizarEnsaio
+            // 
+            this.btnFinalizarEnsaio.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnFinalizarEnsaio.BackColor = System.Drawing.Color.Black;
+            this.btnFinalizarEnsaio.FlatAppearance.BorderSize = 0;
+            this.btnFinalizarEnsaio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFinalizarEnsaio.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFinalizarEnsaio.ForeColor = System.Drawing.Color.Yellow;
+            this.btnFinalizarEnsaio.Location = new System.Drawing.Point(176, 383);
+            this.btnFinalizarEnsaio.Margin = new System.Windows.Forms.Padding(2);
+            this.btnFinalizarEnsaio.Name = "btnFinalizarEnsaio";
+            this.btnFinalizarEnsaio.Size = new System.Drawing.Size(172, 32);
+            this.btnFinalizarEnsaio.TabIndex = 32;
+            this.btnFinalizarEnsaio.Text = "Finalizar Ensaio";
+            this.btnFinalizarEnsaio.UseVisualStyleBackColor = false;
+            this.btnFinalizarEnsaio.Click += new System.EventHandler(this.btnFinalizarEnsaio_Click);
+            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.mdlEndereco1);
@@ -238,6 +256,19 @@
             this.groupBox1.TabIndex = 31;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Local do Ensaio";
+            // 
+            // mdlEndereco1
+            // 
+            this.mdlEndereco1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.mdlEndereco1.AutoSize = true;
+            this.mdlEndereco1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.mdlEndereco1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.mdlEndereco1.Location = new System.Drawing.Point(7, 14);
+            this.mdlEndereco1.Margin = new System.Windows.Forms.Padding(1);
+            this.mdlEndereco1.Name = "mdlEndereco1";
+            this.mdlEndereco1.Size = new System.Drawing.Size(290, 117);
+            this.mdlEndereco1.TabIndex = 30;
             // 
             // txbNumeroRes
             // 
@@ -434,36 +465,6 @@
             this.label5.TabIndex = 8;
             this.label5.Text = "Dados do Ensaio";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // mdlEndereco1
-            // 
-            this.mdlEndereco1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.mdlEndereco1.AutoSize = true;
-            this.mdlEndereco1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.mdlEndereco1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.mdlEndereco1.Location = new System.Drawing.Point(7, 14);
-            this.mdlEndereco1.Margin = new System.Windows.Forms.Padding(1);
-            this.mdlEndereco1.Name = "mdlEndereco1";
-            this.mdlEndereco1.Size = new System.Drawing.Size(290, 117);
-            this.mdlEndereco1.TabIndex = 30;
-            // 
-            // btnFinalizarEnsaio
-            // 
-            this.btnFinalizarEnsaio.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnFinalizarEnsaio.BackColor = System.Drawing.Color.Black;
-            this.btnFinalizarEnsaio.FlatAppearance.BorderSize = 0;
-            this.btnFinalizarEnsaio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFinalizarEnsaio.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFinalizarEnsaio.ForeColor = System.Drawing.Color.Yellow;
-            this.btnFinalizarEnsaio.Location = new System.Drawing.Point(176, 383);
-            this.btnFinalizarEnsaio.Margin = new System.Windows.Forms.Padding(2);
-            this.btnFinalizarEnsaio.Name = "btnFinalizarEnsaio";
-            this.btnFinalizarEnsaio.Size = new System.Drawing.Size(172, 32);
-            this.btnFinalizarEnsaio.TabIndex = 32;
-            this.btnFinalizarEnsaio.Text = "Finalizar Ensaio";
-            this.btnFinalizarEnsaio.UseVisualStyleBackColor = false;
             // 
             // MenuEnsaios
             // 

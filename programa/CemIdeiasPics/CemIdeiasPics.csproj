@@ -113,6 +113,12 @@
     <Compile Include="Formulários\Menus\MenuEnsaios.Designer.cs">
       <DependentUpon>MenuEnsaios.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formulários\Menus\MenuFinalizaEnsaio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulários\Menus\MenuFinalizaEnsaio.Designer.cs">
+      <DependentUpon>MenuFinalizaEnsaio.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formulários\Menus\MenuPortifolio.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -178,6 +184,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formulários\Menus\MenuEnsaios.resx">
       <DependentUpon>MenuEnsaios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formulários\Menus\MenuFinalizaEnsaio.resx">
+      <DependentUpon>MenuFinalizaEnsaio.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formulários\Menus\MenuPortifolio.resx">
       <DependentUpon>MenuPortifolio.cs</DependentUpon>

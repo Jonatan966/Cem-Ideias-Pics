@@ -33,8 +33,8 @@
             this.btnMaximizar = new System.Windows.Forms.Button();
             this.btnFechar = new System.Windows.Forms.Button();
             this.pnlBarraTitulo = new System.Windows.Forms.Panel();
-            this.pbxCemIdeias = new System.Windows.Forms.PictureBox();
             this.lblTitulo = new System.Windows.Forms.Label();
+            this.pbxCemIdeias = new System.Windows.Forms.PictureBox();
             this.pnlBarraTitulo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxCemIdeias)).BeginInit();
             this.SuspendLayout();
@@ -103,23 +103,10 @@
             this.pnlBarraTitulo.Controls.Add(this.btnFechar);
             this.pnlBarraTitulo.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlBarraTitulo.Location = new System.Drawing.Point(0, 0);
-            this.pnlBarraTitulo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pnlBarraTitulo.Margin = new System.Windows.Forms.Padding(2);
             this.pnlBarraTitulo.Name = "pnlBarraTitulo";
             this.pnlBarraTitulo.Size = new System.Drawing.Size(533, 32);
             this.pnlBarraTitulo.TabIndex = 4;
-            this.pnlBarraTitulo.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlBarraTitulo_MouseDown);
-            // 
-            // pbxCemIdeias
-            // 
-            this.pbxCemIdeias.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pbxCemIdeias.Image = global::CemIdeiasPics.Properties.Resources.cemideiaspicks;
-            this.pbxCemIdeias.Location = new System.Drawing.Point(0, 0);
-            this.pbxCemIdeias.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.pbxCemIdeias.Name = "pbxCemIdeias";
-            this.pbxCemIdeias.Size = new System.Drawing.Size(145, 32);
-            this.pbxCemIdeias.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbxCemIdeias.TabIndex = 4;
-            this.pbxCemIdeias.TabStop = false;
             // 
             // lblTitulo
             // 
@@ -132,6 +119,20 @@
             this.lblTitulo.TabIndex = 5;
             this.lblTitulo.Text = "Formulário";
             this.lblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblTitulo.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlBarraTitulo_MouseDown);
+            // 
+            // pbxCemIdeias
+            // 
+            this.pbxCemIdeias.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pbxCemIdeias.Image = global::CemIdeiasPics.Properties.Resources.cemideiaspicks;
+            this.pbxCemIdeias.Location = new System.Drawing.Point(0, 0);
+            this.pbxCemIdeias.Margin = new System.Windows.Forms.Padding(2);
+            this.pbxCemIdeias.Name = "pbxCemIdeias";
+            this.pbxCemIdeias.Size = new System.Drawing.Size(145, 32);
+            this.pbxCemIdeias.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbxCemIdeias.TabIndex = 4;
+            this.pbxCemIdeias.TabStop = false;
+            this.pbxCemIdeias.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlBarraTitulo_MouseDown);
             // 
             // FrmModeloDialogo
             // 
@@ -140,7 +141,7 @@
             this.ClientSize = new System.Drawing.Size(533, 324);
             this.Controls.Add(this.pnlBarraTitulo);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.Margin = new System.Windows.Forms.Padding(1);
             this.Name = "FrmModeloDialogo";
             this.Load += new System.EventHandler(this.FrmModeloDialogo_Load);
             this.pnlBarraTitulo.ResumeLayout(false);
