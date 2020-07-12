@@ -218,7 +218,9 @@
             this.Controls.Add(this.lblContagem);
             this.Controls.Add(this.pbxImagem);
             this.MaximumSize = new System.Drawing.Size(1828, 1080);
+            this.MinimumSize = new System.Drawing.Size(533, 324);
             this.Name = "MenuCadPortifolio";
+            this.Text = "Portifolio";
             this.TipoDoDialogo = CemIdeiasPics.Utils.Modelos.TipoDialogo.Simples;
             this.Load += new System.EventHandler(this.MenuCadPortifolio_Load);
             this.Controls.SetChildIndex(this.pbxImagem, 0);

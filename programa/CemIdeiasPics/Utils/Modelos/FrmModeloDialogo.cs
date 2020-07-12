@@ -60,6 +60,7 @@ namespace CemIdeiasPics.Utils.Modelos
 
         private void FrmModeloDialogo_Load(object sender, EventArgs e)
         {
+            lblTitulo.Text = Text;
             switch (TipoDoDialogo)
             {
                 case TipoDialogo.Simples:

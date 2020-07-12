@@ -242,7 +242,7 @@
             this.MaximumSize = new System.Drawing.Size(1218, 702);
             this.MinimumSize = new System.Drawing.Size(533, 324);
             this.Name = "FrmPainel";
-            this.Text = "Cem Idéias Pics - Painel Principal";
+            this.Text = "Painel Principal";
             this.Load += new System.EventHandler(this.FrmPainel_Load);
             this.Controls.SetChildIndex(this.panel1, 0);
             this.Controls.SetChildIndex(this.pnlMenus, 0);
