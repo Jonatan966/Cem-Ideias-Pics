@@ -8,37 +8,44 @@
 			if(!is_dir($diretorioEnsaio)) mkdir($diretorioEnsaio);
 			 
 			if (count($opts) == 2){
-				if ($opts[1] == "envia"){
-					$filename_path = md5(time().uniqid()).".jpg";
-					$decoded=base64_decode($_POST["cmd"]); 
-					file_put_contents($diretorioEnsaio.$filename_path,$decoded);   
-				}
-				else if($opts[1] == "recebe"){
-					$ensaio = scandir($diretorioEnsaio);
-					$jsonFinal = array();
-					foreach($ensaio as $foto){
-						if ($foto != "." && $foto != ".."){
-							$x =  base64_encode(file_get_contents($diretorioEnsaio.$foto));
-							array_push($jsonFinal,"{\"nomeImagem\":\"".$foto."\",\"imagem\":\"".$x."\"}");
+				switch ($opts[1])
+				{
+					case "envia":
+						$filename_path = md5(time().uniqid()).".jpg";
+						$decoded=base64_decode($_POST["cmd"]); 
+						file_put_contents($diretorioEnsaio.$filename_path,$decoded);  
+						break; 	
+
+					case "recebe":
+						$ensaio = scandir($diretorioEnsaio);
+						$jsonFinal = array();
+						foreach($ensaio as $foto){
+							if ($foto != "." && $foto != ".."){
+								$x =  base64_encode(file_get_contents($diretorioEnsaio.$foto));
+								array_push($jsonFinal,"{\"nomeImagem\":\"".$foto."\",\"imagem\":\"".$x."\"}");
+							}
 						}
-					}
-					echo "[".implode(",",$jsonFinal)."]";
-				}
-				else if($opts[1] == "exclui"){
-					$target = $diretorioEnsaio.$_POST["cmd"];
-					$sucess = false;
-					if(is_dir($target)){
-						$files = glob( $target . '*', GLOB_MARK );
-						foreach( $files as $file ){
-							unlink( $file );      
+						echo "[".implode(",",$jsonFinal)."]";	
+						break;
+
+					case "exclui":
+						$target = $diretorioEnsaio.$_POST["cmd"];
+						$sucess = false;
+						if(is_dir($target)){
+							$files = glob( $target . '*', GLOB_MARK );
+							foreach( $files as $file ){
+								unlink( $file );      
+							}
+							$sucess = rmdir( $target );
+						} elseif(is_file($target)) {
+							$sucess = unlink( $target );  
 						}
-						$sucess = rmdir( $target );
-					} elseif(is_file($target)) {
-						$sucess = unlink( $target );  
-					}
-					echo $sucess ? "true" : "false";
+						echo $sucess ? "true" : "false";
+						break;
+
+					default:
+						echo "false";	
 				}
-				else echo "false";
 				exit();	
 			}
 		}
