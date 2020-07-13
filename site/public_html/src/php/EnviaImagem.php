@@ -43,6 +43,8 @@
 						echo $sucess ? "true" : "false";
 						break;
 
+					case "conta":
+						echo count(scandir($diretorioEnsaio));
 					default:
 						echo "false";	
 				}
