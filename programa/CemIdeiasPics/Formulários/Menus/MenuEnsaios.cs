@@ -39,6 +39,8 @@ namespace CemIdeiasPics.Formulários.Menus
             dtpDataEnsaio.Value = DateTime.Now.Date;
             btnRegistrar.Text = "Registrar";
             btnLimpar.Text = "Limpar";
+            btnFinalizarEnsaio.Text = "Finalizar Ensaio";
+            btnFinalizarEnsaio.Tag = "f";
             cbxClientes.Enabled = true;
         }
         void FiltraCliente(string filtro)
@@ -131,6 +133,8 @@ namespace CemIdeiasPics.Formulários.Menus
                 dtpDataEnsaio.Value = DateTime.Parse(ensaios[selected].Ensdata);
                 txbNumeroRes.Text = ensaios[selected].Ensnumlocal;
 
+                btnFinalizarEnsaio.Text = "Visualizar Valores";
+                btnFinalizarEnsaio.Tag = 'v';
                 btnRegistrar.Text = "Salvar";
                 btnLimpar.Text = "Excluir";
                 cbxClientes.Enabled = false;
@@ -152,7 +156,10 @@ namespace CemIdeiasPics.Formulários.Menus
 
         private void btnFinalizarEnsaio_Click(object sender, EventArgs e)
         {
-            _ = new MenuFinalizaEnsaio() { EnsaioID = dgvEnsaios.SelectedRows[0].Cells[0].Value.ToString() }.ShowDialog();
+            if (new MenuFinalizaEnsaio() { EnsaioID = dgvEnsaios.SelectedRows[0].Cells[0].Value.ToString(), Modo = char.Parse(btnFinalizarEnsaio.Tag.ToString()) }.ShowDialog() == DialogResult.Yes)
+            {
+                btnRecarregar.PerformClick();
+            }
         }
     }
 }

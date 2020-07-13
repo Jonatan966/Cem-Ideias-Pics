@@ -58,11 +58,13 @@
             this.btnFinalizar.TabIndex = 23;
             this.btnFinalizar.Text = "Finalizar Ensaio";
             this.btnFinalizar.UseVisualStyleBackColor = false;
+            this.btnFinalizar.Click += new System.EventHandler(this.btnFinalizar_Click);
             // 
             // btnCancelar
             // 
             this.btnCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnCancelar.BackColor = System.Drawing.Color.Black;
+            this.btnCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancelar.FlatAppearance.BorderSize = 0;
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -108,6 +110,7 @@
             this.txbSubtotal.ReadOnly = true;
             this.txbSubtotal.Size = new System.Drawing.Size(462, 20);
             this.txbSubtotal.TabIndex = 33;
+            this.txbSubtotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label3
             // 
@@ -116,7 +119,7 @@
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(39, 13);
             this.label3.TabIndex = 30;
-            this.label3.Text = "Extras:";
+            this.label3.Text = "Album:";
             // 
             // txbExtras
             // 
@@ -163,6 +166,7 @@
             // MenuFinalizaEnsaio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.CancelButton = this.btnCancelar;
             this.ClientSize = new System.Drawing.Size(552, 324);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnCancelar);
