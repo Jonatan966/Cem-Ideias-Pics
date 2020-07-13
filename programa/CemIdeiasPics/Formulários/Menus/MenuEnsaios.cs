@@ -119,7 +119,7 @@ namespace CemIdeiasPics.Formulários.Menus
             FiltraCliente(txbPesquisa.Text);
         }
 
-        private async void dgvEnsaios_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void dgvEnsaios_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dgvEnsaios.SelectedRows.Count > 0)
             {
@@ -146,13 +146,13 @@ namespace CemIdeiasPics.Formulários.Menus
                 ManipulaMensagens.MostrarMensagem(MensagensPredefinidas.EXIGE_CADASTRO);
                 return;
             }
-            new MenuCadPortifolio 
+            _ = new MenuCadPortifolio 
                 { EnsaioID = dgvEnsaios.SelectedRows[0].Cells[0].Value.ToString() }.ShowDialog();
         }
 
         private void btnFinalizarEnsaio_Click(object sender, EventArgs e)
         {
-            _ = new MenuFinalizaEnsaio().ShowDialog();
+            _ = new MenuFinalizaEnsaio() { EnsaioID = dgvEnsaios.SelectedRows[0].Cells[0].Value.ToString() }.ShowDialog();
         }
     }
 }
