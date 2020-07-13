@@ -45,8 +45,10 @@
 
 					case "conta":
 						echo count(scandir($diretorioEnsaio));
+						break;
 					default:
 						echo "false";	
+						break;
 				}
 				exit();	
 			}
