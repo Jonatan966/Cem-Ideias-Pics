@@ -24,7 +24,7 @@ namespace CemIdeiasPics.Formulários.Menus
         async Task<bool> AtualizaLista()
         {
             ensaios = JsonConvert.DeserializeObject<Ensaio[]>(
-            await ConectaServidor.EnviarItem("SELECT ENSID, ENSCLIENTE, ENSUSUARIO, TPETIPO AS 'ENSTIPO', ENSCEP, ENSNUMLOCAL, ENSDATA, ENSPRECO, ENSDIRETORIO, ENSADERECO FROM ENSAIOS INNER JOIN TIPO_ENSAIO ON TPEID = ENSTIPO"));
+            await ConectaServidor.EnviarItem("SELECT * FROM VW_ENSAIOS"));
             dgvEnsaios.DataSource = ManipulaTabela.ConverteClassesEmTabela(ensaios,false,
                 "ID", "Cliente", "Usuario", "Tipo", "CEP", "Num", "Data", "Preco", "Diretorio", "Adereco");
             ManipulaTabela.OcultarColunas(ref dgvEnsaios,"ID","Usuario","CEP","Num", "Diretorio","Adereco");
