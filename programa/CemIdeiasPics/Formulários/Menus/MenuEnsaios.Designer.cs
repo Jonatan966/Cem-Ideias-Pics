@@ -55,6 +55,8 @@
             this.btnLimpar = new System.Windows.Forms.Button();
             this.btnRegistrar = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
+            this.cbxMetodoPagamento = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -204,6 +206,8 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.panel1.Controls.Add(this.cbxMetodoPagamento);
+            this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.btnFinalizarEnsaio);
             this.panel1.Controls.Add(this.groupBox1);
             this.panel1.Controls.Add(this.btnPortifolio);
@@ -466,6 +470,35 @@
             this.label5.Text = "Dados do Ensaio";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // cbxMetodoPagamento
+            // 
+            this.cbxMetodoPagamento.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.cbxMetodoPagamento.BackColor = System.Drawing.Color.Silver;
+            this.cbxMetodoPagamento.DisplayMember = "tipo";
+            this.cbxMetodoPagamento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxMetodoPagamento.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cbxMetodoPagamento.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbxMetodoPagamento.FormattingEnabled = true;
+            this.cbxMetodoPagamento.Items.AddRange(new object[] {
+            "Album Fisico"});
+            this.cbxMetodoPagamento.Location = new System.Drawing.Point(171, 306);
+            this.cbxMetodoPagamento.Margin = new System.Windows.Forms.Padding(2, 3, 3, 3);
+            this.cbxMetodoPagamento.Name = "cbxMetodoPagamento";
+            this.cbxMetodoPagamento.Size = new System.Drawing.Size(176, 24);
+            this.cbxMetodoPagamento.TabIndex = 34;
+            this.cbxMetodoPagamento.ValueMember = "ID";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(12, 311);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 3, 2, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(155, 17);
+            this.label3.TabIndex = 33;
+            this.label3.Text = "Metodo de Pagamento:";
+            // 
             // MenuEnsaios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -518,5 +551,7 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.ComboBox cbxFiltro;
         private System.Windows.Forms.Button btnFinalizarEnsaio;
+        private System.Windows.Forms.ComboBox cbxMetodoPagamento;
+        private System.Windows.Forms.Label label3;
     }
 }
