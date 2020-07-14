@@ -15,7 +15,7 @@ namespace CemIdeiasPics.Formulários.Menus
     {
         public string EnsaioID { get; set; } = string.Empty;
         private float Subtotal { get; set; } = 0;
-        public char Modo { get; set; } = 'f';
+        public bool View { get; set; } = false;
         private class Contabilidade
         {
             [JsonProperty("TPEVALOR")]

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel2 = new System.Windows.Forms.Panel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.txbPesquisa = new System.Windows.Forms.TextBox();
@@ -42,7 +43,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.btnFinalizarEnsaio = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.mdlEndereco1 = new CemIdeiasPics.Utils.Modelos.MdlEndereco();
             this.txbNumeroRes = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.btnPortifolio = new System.Windows.Forms.Button();
@@ -57,6 +57,7 @@
             this.btnLimpar = new System.Windows.Forms.Button();
             this.btnRegistrar = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
+            this.mdlEndereco1 = new CemIdeiasPics.Utils.Modelos.MdlEndereco();
             this.panel2.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -197,11 +198,15 @@
             this.dgvEnsaios.ReadOnly = true;
             this.dgvEnsaios.RowHeadersVisible = false;
             this.dgvEnsaios.RowHeadersWidth = 62;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Yellow;
+            this.dgvEnsaios.RowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvEnsaios.RowTemplate.Height = 28;
             this.dgvEnsaios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvEnsaios.Size = new System.Drawing.Size(396, 324);
             this.dgvEnsaios.TabIndex = 0;
             this.dgvEnsaios.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvEnsaios_CellClick);
+            this.dgvEnsaios.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvEnsaios_CellFormatting);
             // 
             // panel1
             // 
@@ -290,19 +295,6 @@
             this.groupBox1.TabIndex = 31;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Local do Ensaio";
-            // 
-            // mdlEndereco1
-            // 
-            this.mdlEndereco1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.mdlEndereco1.AutoSize = true;
-            this.mdlEndereco1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.mdlEndereco1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.mdlEndereco1.Location = new System.Drawing.Point(7, 14);
-            this.mdlEndereco1.Margin = new System.Windows.Forms.Padding(1);
-            this.mdlEndereco1.Name = "mdlEndereco1";
-            this.mdlEndereco1.Size = new System.Drawing.Size(290, 117);
-            this.mdlEndereco1.TabIndex = 30;
             // 
             // txbNumeroRes
             // 
@@ -499,6 +491,19 @@
             this.label5.TabIndex = 8;
             this.label5.Text = "Dados do Ensaio";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // mdlEndereco1
+            // 
+            this.mdlEndereco1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.mdlEndereco1.AutoSize = true;
+            this.mdlEndereco1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.mdlEndereco1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.mdlEndereco1.Location = new System.Drawing.Point(7, 14);
+            this.mdlEndereco1.Margin = new System.Windows.Forms.Padding(1);
+            this.mdlEndereco1.Name = "mdlEndereco1";
+            this.mdlEndereco1.Size = new System.Drawing.Size(290, 117);
+            this.mdlEndereco1.TabIndex = 30;
             // 
             // MenuEnsaios
             // 

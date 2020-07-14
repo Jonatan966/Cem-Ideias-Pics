@@ -133,8 +133,9 @@ namespace CemIdeiasPics.Formulários.Menus
                 dtpDataEnsaio.Value = DateTime.Parse(ensaios[selected].Ensdata);
                 txbNumeroRes.Text = ensaios[selected].Ensnumlocal;
 
-                btnFinalizarEnsaio.Text = "Visualizar Valores";
-                btnFinalizarEnsaio.Tag = 'v';
+                btnFinalizarEnsaio.Text = float.TryParse(dgvEnsaios.SelectedRows[0].Cells[7].Value.ToString(), out _) ? "Visualizar Valores" : "Finalizar Ensaio";
+                btnFinalizarEnsaio.Tag = float.TryParse(dgvEnsaios.SelectedRows[0].Cells[7].Value.ToString(), out _) ? 'v' : 'f';
+
                 btnRegistrar.Text = "Salvar";
                 btnLimpar.Text = "Excluir";
                 cbxClientes.Enabled = false;
@@ -156,10 +157,16 @@ namespace CemIdeiasPics.Formulários.Menus
 
         private void btnFinalizarEnsaio_Click(object sender, EventArgs e)
         {
-            if (new MenuFinalizaEnsaio() { EnsaioID = dgvEnsaios.SelectedRows[0].Cells[0].Value.ToString(), Modo = char.Parse(btnFinalizarEnsaio.Tag.ToString()) }.ShowDialog() == DialogResult.Yes)
-            {
+            if (new MenuFinalizaEnsaio() { EnsaioID = dgvEnsaios.SelectedRows[0].Cells[0].Value.ToString(), View = (bool)btnFinalizarEnsaio.Tag }.ShowDialog() == DialogResult.Yes)
                 btnRecarregar.PerformClick();
-            }
+        }
+
+        private void dgvEnsaios_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (float.TryParse(dgvEnsaios.Rows[e.RowIndex].Cells[7].Value.ToString(), out _))
+                dgvEnsaios.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.LightGreen;
+            else
+                dgvEnsaios.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.LightYellow;
         }
     }
 }
