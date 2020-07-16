@@ -30,7 +30,7 @@ namespace CemIdeiasPics.Formulários.Menus
 
         private async void MenuFinalizaEnsaio_Load(object sender, EventArgs e)
         {
-            btnFinalizar.Text = Modo == 'f' ? "Finalizar Ensaio" : "OK";
+            btnFinalizar.Text = View ? "OK" : "Finalizar Ensaio";
             
             Contabilidade contabilidade = JsonConvert.DeserializeObject<Contabilidade[]>(
                 await ConectaServidor.EnviarItem(

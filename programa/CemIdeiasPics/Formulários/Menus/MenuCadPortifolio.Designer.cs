@@ -40,6 +40,7 @@
             this.lblContagem = new System.Windows.Forms.Label();
             this.pbxImagem = new System.Windows.Forms.PictureBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.objExportaImagens = new System.Windows.Forms.SaveFileDialog();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxImagem)).BeginInit();
             this.SuspendLayout();
@@ -81,6 +82,7 @@
             this.btnExportar.TabIndex = 16;
             this.btnExportar.Text = "Exportar Tudo";
             this.btnExportar.UseVisualStyleBackColor = false;
+            this.btnExportar.Click += new System.EventHandler(this.btnExportar_Click);
             // 
             // btnAdicionar
             // 
@@ -208,6 +210,12 @@
             // 
             this.openFileDialog1.Filter = "Imagens|*.jpg;*.png";
             // 
+            // objExportaImagens
+            // 
+            this.objExportaImagens.FileName = "exportacao.zip";
+            this.objExportaImagens.Filter = "Arquivo Zip|*.zip";
+            this.objExportaImagens.Title = "Exportação do Portifólio";
+            // 
             // MenuCadPortifolio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -248,5 +256,6 @@
         private System.Windows.Forms.Label lblContagem;
         private System.Windows.Forms.PictureBox pbxImagem;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.SaveFileDialog objExportaImagens;
     }
 }

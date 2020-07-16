@@ -40,7 +40,7 @@ namespace CemIdeiasPics.Formulários.Menus
             btnRegistrar.Text = "Registrar";
             btnLimpar.Text = "Limpar";
             btnFinalizarEnsaio.Text = "Finalizar Ensaio";
-            btnFinalizarEnsaio.Tag = "f";
+            btnFinalizarEnsaio.Tag = false;
             cbxClientes.Enabled = true;
         }
         void FiltraCliente(string filtro)
@@ -134,7 +134,7 @@ namespace CemIdeiasPics.Formulários.Menus
                 txbNumeroRes.Text = ensaios[selected].Ensnumlocal;
 
                 btnFinalizarEnsaio.Text = float.TryParse(dgvEnsaios.SelectedRows[0].Cells[7].Value.ToString(), out _) ? "Visualizar Valores" : "Finalizar Ensaio";
-                btnFinalizarEnsaio.Tag = float.TryParse(dgvEnsaios.SelectedRows[0].Cells[7].Value.ToString(), out _) ? 'v' : 'f';
+                btnFinalizarEnsaio.Tag = float.TryParse(dgvEnsaios.SelectedRows[0].Cells[7].Value.ToString(), out _);
 
                 btnRegistrar.Text = "Salvar";
                 btnLimpar.Text = "Excluir";
