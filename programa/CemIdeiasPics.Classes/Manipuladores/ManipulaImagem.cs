@@ -65,7 +65,7 @@ namespace CemIdeiasPics.Classes.Manipuladores
             }
         }
 
-        public static void ConverteImagensParaZip(string zipPath, params Image[] images)
+        public static bool ConverteImagensParaZip(string zipPath, params Image[] images)
         {
             using (var memoryStream = new MemoryStream())
             {
@@ -87,6 +87,7 @@ namespace CemIdeiasPics.Classes.Manipuladores
                     memoryStream.CopyTo(final);
                 }
             }
+            return File.Exists(zipPath);
         }
     }
 }
