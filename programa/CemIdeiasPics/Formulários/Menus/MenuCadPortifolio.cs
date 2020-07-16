@@ -103,5 +103,19 @@ namespace CemIdeiasPics.Formulários.Menus
                 pbrProgresso.Style = ProgressBarStyle.Blocks;
             }
         }
+
+        private void btnExportar_Click(object sender, EventArgs e)
+        {
+            if (objExportaImagens.ShowDialog() == DialogResult.OK)
+            {
+                List<Image> final = new List<Image>();
+                for(int x = 0; x < PortifolioLoader.portifolio.Length; x++)
+                {
+                    final.Add(PortifolioLoader.CarregaImagem(x));
+                }
+                if (ManipulaImagem.ConverteImagensParaZip(objExportaImagens.FileName, final.ToArray()))
+                    ManipulaMensagens.MostrarMensagem(MensagensPredefinidas.OPERACAO_CONCLUIDA);
+            }
+        }
     }
 }
