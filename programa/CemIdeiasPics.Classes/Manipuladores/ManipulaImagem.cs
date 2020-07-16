@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
+using System.IO.Compression;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -44,5 +45,23 @@ namespace CemIdeiasPics.Classes.Manipuladores
             gp.AddEllipse(5, 5, w - 15, h - 5);
             return new Region(gp);
         }
+
+        public static byte[] ConverteImagemParaByte(Image img)
+        {
+            using (var ms = new MemoryStream())
+            {
+                img.Save(ms, img.RawFormat);
+                return ms.ToArray();
+            }
+        }
+
+        public static Image ConverteByteParaImage(byte[] img)
+        {
+            using (var ms = new MemoryStream(img))
+            {
+                return Image.FromStream(ms);
+            }
+        }
+
     }
 }
