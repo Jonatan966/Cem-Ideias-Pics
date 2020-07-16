@@ -63,5 +63,28 @@ namespace CemIdeiasPics.Classes.Manipuladores
             }
         }
 
+        public static void ConverteImagensParaZip(string zipPath, params Image[] images)
+        {
+            using (var memoryStream = new MemoryStream())
+            {
+                using (var zip = new ZipArchive(memoryStream, ZipArchiveMode.Create, true))
+                {
+                    foreach (Image img in images)
+                    {
+                        var file = zip.CreateEntry($"{Guid.NewGuid()}-{DateTime.Now:ddMMyyhhmmss}.jpg");
+                        using (var entryStream = file.Open())
+                        {
+                            byte[] vs = ConverteImagemParaByte(img);
+                            entryStream.Write(vs, 0, vs.Length);
+                        }
+                    }
+                }
+                using (var final = new FileStream(zipPath, FileMode.Create))
+                {
+                    memoryStream.Seek(0, SeekOrigin.Begin);
+                    memoryStream.CopyTo(final);
+                }
+            }
+        }
     }
 }
