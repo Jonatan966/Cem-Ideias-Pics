@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
@@ -48,9 +49,10 @@ namespace CemIdeiasPics.Classes.Manipuladores
 
         public static byte[] ConverteImagemParaByte(Image img)
         {
+            Bitmap copy = new Bitmap(img);
             using (var ms = new MemoryStream())
             {
-                img.Save(ms, img.RawFormat);
+                copy.Save(ms,ImageFormat.Jpeg);
                 return ms.ToArray();
             }
         }
