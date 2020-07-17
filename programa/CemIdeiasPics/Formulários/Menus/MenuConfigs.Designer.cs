@@ -76,6 +76,7 @@
             this.btnGerenciarUsuarios.TabIndex = 12;
             this.btnGerenciarUsuarios.Text = "Gerenciar Usuários";
             this.btnGerenciarUsuarios.UseVisualStyleBackColor = false;
+            this.btnGerenciarUsuarios.Click += new System.EventHandler(this.btnGerenciarUsuarios_Click);
             // 
             // groupBox2
             // 
