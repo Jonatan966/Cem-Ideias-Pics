@@ -144,6 +144,7 @@
             this.Margin = new System.Windows.Forms.Padding(1);
             this.Name = "FrmModeloDialogo";
             this.Load += new System.EventHandler(this.FrmModeloDialogo_Load);
+            this.TextChanged += new System.EventHandler(this.FrmModeloDialogo_TextChanged);
             this.pnlBarraTitulo.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbxCemIdeias)).EndInit();
             this.ResumeLayout(false);

@@ -69,5 +69,10 @@ namespace CemIdeiasPics.Utils.Modelos
             }
             this.MinimumSize = this.Size;
         }
+
+        private void FrmModeloDialogo_TextChanged(object sender, EventArgs e)
+        {
+            lblTitulo.Text = Text;
+        }
     }
 }
