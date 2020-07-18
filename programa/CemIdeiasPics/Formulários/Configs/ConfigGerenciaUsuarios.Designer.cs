@@ -33,27 +33,27 @@
             this.lblNomeUsuario = new System.Windows.Forms.Label();
             this.txbNome = new System.Windows.Forms.TextBox();
             this.gbxDadosPessoais = new System.Windows.Forms.GroupBox();
-            this.txbTelefone = new System.Windows.Forms.MaskedTextBox();
-            this.lblTelefone = new System.Windows.Forms.Label();
-            this.rbnMasculino = new System.Windows.Forms.RadioButton();
-            this.lblSexo = new System.Windows.Forms.Label();
-            this.rbnFeminino = new System.Windows.Forms.RadioButton();
+            this.txbCPF = new System.Windows.Forms.MaskedTextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.pbxFotoPerfil = new System.Windows.Forms.PictureBox();
             this.lblEmail = new System.Windows.Forms.Label();
             this.txbEmail = new System.Windows.Forms.MaskedTextBox();
-            this.pbxFotoPerfil = new System.Windows.Forms.PictureBox();
+            this.rbnFeminino = new System.Windows.Forms.RadioButton();
+            this.lblSexo = new System.Windows.Forms.Label();
+            this.rbnMasculino = new System.Windows.Forms.RadioButton();
+            this.lblTelefone = new System.Windows.Forms.Label();
+            this.txbTelefone = new System.Windows.Forms.MaskedTextBox();
             this.gbxDadosAcesso = new System.Windows.Forms.GroupBox();
-            this.txbLogin = new System.Windows.Forms.TextBox();
-            this.lblLogin = new System.Windows.Forms.Label();
-            this.txbSenha = new System.Windows.Forms.TextBox();
-            this.lblSenha = new System.Windows.Forms.Label();
+            this.lblTipoAcesso = new System.Windows.Forms.Label();
+            this.cbxTipoAcesso = new System.Windows.Forms.ComboBox();
             this.txbConfSenha = new System.Windows.Forms.TextBox();
             this.lblConfSenha = new System.Windows.Forms.Label();
-            this.cbxTipoAcesso = new System.Windows.Forms.ComboBox();
-            this.lblTipoAcesso = new System.Windows.Forms.Label();
+            this.txbSenha = new System.Windows.Forms.TextBox();
+            this.lblSenha = new System.Windows.Forms.Label();
+            this.txbLogin = new System.Windows.Forms.TextBox();
+            this.lblLogin = new System.Windows.Forms.Label();
             this.btnSalvar = new System.Windows.Forms.Button();
             this.btnLimparTudo = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txbCPF = new System.Windows.Forms.MaskedTextBox();
             this.gbxListaUsuarios.SuspendLayout();
             this.gbxDadosPessoais.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxFotoPerfil)).BeginInit();
@@ -128,55 +128,33 @@
             this.gbxDadosPessoais.TabStop = false;
             this.gbxDadosPessoais.Text = "Dados Pessoais";
             // 
-            // txbTelefone
+            // txbCPF
             // 
-            this.txbTelefone.Location = new System.Drawing.Point(285, 52);
-            this.txbTelefone.Mask = "(00)00000000";
-            this.txbTelefone.Name = "txbTelefone";
-            this.txbTelefone.Size = new System.Drawing.Size(148, 20);
-            this.txbTelefone.TabIndex = 33;
-            this.txbTelefone.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txbTelefone.Enter += new System.EventHandler(this.VerificaMudanca);
+            this.txbCPF.Location = new System.Drawing.Point(198, 26);
+            this.txbCPF.Mask = "000,000,000-00";
+            this.txbCPF.Name = "txbCPF";
+            this.txbCPF.Size = new System.Drawing.Size(148, 20);
+            this.txbCPF.TabIndex = 42;
+            this.txbCPF.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txbCPF.Enter += new System.EventHandler(this.VerificaMudanca);
             // 
-            // lblTelefone
+            // label1
             // 
-            this.lblTelefone.AutoSize = true;
-            this.lblTelefone.Location = new System.Drawing.Point(227, 59);
-            this.lblTelefone.Name = "lblTelefone";
-            this.lblTelefone.Size = new System.Drawing.Size(52, 13);
-            this.lblTelefone.TabIndex = 34;
-            this.lblTelefone.Text = "Telefone:";
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(162, 33);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(30, 13);
+            this.label1.TabIndex = 41;
+            this.label1.Text = "CPF:";
             // 
-            // rbnMasculino
+            // pbxFotoPerfil
             // 
-            this.rbnMasculino.AutoSize = true;
-            this.rbnMasculino.Location = new System.Drawing.Point(79, 78);
-            this.rbnMasculino.Name = "rbnMasculino";
-            this.rbnMasculino.Size = new System.Drawing.Size(73, 17);
-            this.rbnMasculino.TabIndex = 35;
-            this.rbnMasculino.TabStop = true;
-            this.rbnMasculino.Text = "Masculino";
-            this.rbnMasculino.UseVisualStyleBackColor = true;
-            // 
-            // lblSexo
-            // 
-            this.lblSexo.AutoSize = true;
-            this.lblSexo.Location = new System.Drawing.Point(35, 82);
-            this.lblSexo.Name = "lblSexo";
-            this.lblSexo.Size = new System.Drawing.Size(34, 13);
-            this.lblSexo.TabIndex = 36;
-            this.lblSexo.Text = "Sexo:";
-            // 
-            // rbnFeminino
-            // 
-            this.rbnFeminino.AutoSize = true;
-            this.rbnFeminino.Location = new System.Drawing.Point(158, 78);
-            this.rbnFeminino.Name = "rbnFeminino";
-            this.rbnFeminino.Size = new System.Drawing.Size(67, 17);
-            this.rbnFeminino.TabIndex = 37;
-            this.rbnFeminino.TabStop = true;
-            this.rbnFeminino.Text = "Feminino";
-            this.rbnFeminino.UseVisualStyleBackColor = true;
+            this.pbxFotoPerfil.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pbxFotoPerfil.Location = new System.Drawing.Point(481, 19);
+            this.pbxFotoPerfil.Name = "pbxFotoPerfil";
+            this.pbxFotoPerfil.Size = new System.Drawing.Size(100, 96);
+            this.pbxFotoPerfil.TabIndex = 40;
+            this.pbxFotoPerfil.TabStop = false;
             // 
             // lblEmail
             // 
@@ -195,14 +173,55 @@
             this.txbEmail.TabIndex = 38;
             this.txbEmail.Enter += new System.EventHandler(this.VerificaMudanca);
             // 
-            // pbxFotoPerfil
+            // rbnFeminino
             // 
-            this.pbxFotoPerfil.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pbxFotoPerfil.Location = new System.Drawing.Point(481, 19);
-            this.pbxFotoPerfil.Name = "pbxFotoPerfil";
-            this.pbxFotoPerfil.Size = new System.Drawing.Size(100, 96);
-            this.pbxFotoPerfil.TabIndex = 40;
-            this.pbxFotoPerfil.TabStop = false;
+            this.rbnFeminino.AutoSize = true;
+            this.rbnFeminino.Location = new System.Drawing.Point(158, 78);
+            this.rbnFeminino.Name = "rbnFeminino";
+            this.rbnFeminino.Size = new System.Drawing.Size(67, 17);
+            this.rbnFeminino.TabIndex = 37;
+            this.rbnFeminino.TabStop = true;
+            this.rbnFeminino.Text = "Feminino";
+            this.rbnFeminino.UseVisualStyleBackColor = true;
+            // 
+            // lblSexo
+            // 
+            this.lblSexo.AutoSize = true;
+            this.lblSexo.Location = new System.Drawing.Point(35, 82);
+            this.lblSexo.Name = "lblSexo";
+            this.lblSexo.Size = new System.Drawing.Size(34, 13);
+            this.lblSexo.TabIndex = 36;
+            this.lblSexo.Text = "Sexo:";
+            // 
+            // rbnMasculino
+            // 
+            this.rbnMasculino.AutoSize = true;
+            this.rbnMasculino.Location = new System.Drawing.Point(79, 78);
+            this.rbnMasculino.Name = "rbnMasculino";
+            this.rbnMasculino.Size = new System.Drawing.Size(73, 17);
+            this.rbnMasculino.TabIndex = 35;
+            this.rbnMasculino.TabStop = true;
+            this.rbnMasculino.Text = "Masculino";
+            this.rbnMasculino.UseVisualStyleBackColor = true;
+            // 
+            // lblTelefone
+            // 
+            this.lblTelefone.AutoSize = true;
+            this.lblTelefone.Location = new System.Drawing.Point(227, 59);
+            this.lblTelefone.Name = "lblTelefone";
+            this.lblTelefone.Size = new System.Drawing.Size(52, 13);
+            this.lblTelefone.TabIndex = 34;
+            this.lblTelefone.Text = "Telefone:";
+            // 
+            // txbTelefone
+            // 
+            this.txbTelefone.Location = new System.Drawing.Point(285, 52);
+            this.txbTelefone.Mask = "(00)00000000";
+            this.txbTelefone.Name = "txbTelefone";
+            this.txbTelefone.Size = new System.Drawing.Size(148, 20);
+            this.txbTelefone.TabIndex = 33;
+            this.txbTelefone.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txbTelefone.Enter += new System.EventHandler(this.VerificaMudanca);
             // 
             // gbxDadosAcesso
             // 
@@ -221,40 +240,27 @@
             this.gbxDadosAcesso.TabStop = false;
             this.gbxDadosAcesso.Text = "Dados de Acesso";
             // 
-            // txbLogin
+            // lblTipoAcesso
             // 
-            this.txbLogin.Location = new System.Drawing.Point(72, 19);
-            this.txbLogin.Name = "txbLogin";
-            this.txbLogin.Size = new System.Drawing.Size(123, 20);
-            this.txbLogin.TabIndex = 42;
-            this.txbLogin.Enter += new System.EventHandler(this.VerificaMudanca);
+            this.lblTipoAcesso.AutoSize = true;
+            this.lblTipoAcesso.Location = new System.Drawing.Point(28, 53);
+            this.lblTipoAcesso.Name = "lblTipoAcesso";
+            this.lblTipoAcesso.Size = new System.Drawing.Size(84, 13);
+            this.lblTipoAcesso.TabIndex = 48;
+            this.lblTipoAcesso.Text = "Tipo de Acesso:";
             // 
-            // lblLogin
+            // cbxTipoAcesso
             // 
-            this.lblLogin.AutoSize = true;
-            this.lblLogin.Location = new System.Drawing.Point(28, 26);
-            this.lblLogin.Name = "lblLogin";
-            this.lblLogin.Size = new System.Drawing.Size(36, 13);
-            this.lblLogin.TabIndex = 41;
-            this.lblLogin.Text = "Login:";
-            // 
-            // txbSenha
-            // 
-            this.txbSenha.Location = new System.Drawing.Point(250, 19);
-            this.txbSenha.Name = "txbSenha";
-            this.txbSenha.Size = new System.Drawing.Size(123, 20);
-            this.txbSenha.TabIndex = 44;
-            this.txbSenha.UseSystemPasswordChar = true;
-            this.txbSenha.Enter += new System.EventHandler(this.VerificaMudanca);
-            // 
-            // lblSenha
-            // 
-            this.lblSenha.AutoSize = true;
-            this.lblSenha.Location = new System.Drawing.Point(203, 26);
-            this.lblSenha.Name = "lblSenha";
-            this.lblSenha.Size = new System.Drawing.Size(41, 13);
-            this.lblSenha.TabIndex = 43;
-            this.lblSenha.Text = "Senha:";
+            this.cbxTipoAcesso.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxTipoAcesso.FormattingEnabled = true;
+            this.cbxTipoAcesso.Items.AddRange(new object[] {
+            "Comum",
+            "Administrador"});
+            this.cbxTipoAcesso.Location = new System.Drawing.Point(118, 45);
+            this.cbxTipoAcesso.Name = "cbxTipoAcesso";
+            this.cbxTipoAcesso.Size = new System.Drawing.Size(468, 21);
+            this.cbxTipoAcesso.TabIndex = 47;
+            this.cbxTipoAcesso.Enter += new System.EventHandler(this.VerificaMudanca);
             // 
             // txbConfSenha
             // 
@@ -274,27 +280,40 @@
             this.lblConfSenha.TabIndex = 45;
             this.lblConfSenha.Text = "Repetir Senha:";
             // 
-            // cbxTipoAcesso
+            // txbSenha
             // 
-            this.cbxTipoAcesso.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbxTipoAcesso.FormattingEnabled = true;
-            this.cbxTipoAcesso.Items.AddRange(new object[] {
-            "Comum",
-            "Administrador"});
-            this.cbxTipoAcesso.Location = new System.Drawing.Point(118, 45);
-            this.cbxTipoAcesso.Name = "cbxTipoAcesso";
-            this.cbxTipoAcesso.Size = new System.Drawing.Size(468, 21);
-            this.cbxTipoAcesso.TabIndex = 47;
-            this.cbxTipoAcesso.Enter += new System.EventHandler(this.VerificaMudanca);
+            this.txbSenha.Location = new System.Drawing.Point(250, 19);
+            this.txbSenha.Name = "txbSenha";
+            this.txbSenha.Size = new System.Drawing.Size(123, 20);
+            this.txbSenha.TabIndex = 44;
+            this.txbSenha.UseSystemPasswordChar = true;
+            this.txbSenha.Enter += new System.EventHandler(this.VerificaMudanca);
             // 
-            // lblTipoAcesso
+            // lblSenha
             // 
-            this.lblTipoAcesso.AutoSize = true;
-            this.lblTipoAcesso.Location = new System.Drawing.Point(28, 53);
-            this.lblTipoAcesso.Name = "lblTipoAcesso";
-            this.lblTipoAcesso.Size = new System.Drawing.Size(84, 13);
-            this.lblTipoAcesso.TabIndex = 48;
-            this.lblTipoAcesso.Text = "Tipo de Acesso:";
+            this.lblSenha.AutoSize = true;
+            this.lblSenha.Location = new System.Drawing.Point(203, 26);
+            this.lblSenha.Name = "lblSenha";
+            this.lblSenha.Size = new System.Drawing.Size(41, 13);
+            this.lblSenha.TabIndex = 43;
+            this.lblSenha.Text = "Senha:";
+            // 
+            // txbLogin
+            // 
+            this.txbLogin.Location = new System.Drawing.Point(72, 19);
+            this.txbLogin.Name = "txbLogin";
+            this.txbLogin.Size = new System.Drawing.Size(123, 20);
+            this.txbLogin.TabIndex = 42;
+            this.txbLogin.Enter += new System.EventHandler(this.VerificaMudanca);
+            // 
+            // lblLogin
+            // 
+            this.lblLogin.AutoSize = true;
+            this.lblLogin.Location = new System.Drawing.Point(28, 26);
+            this.lblLogin.Name = "lblLogin";
+            this.lblLogin.Size = new System.Drawing.Size(36, 13);
+            this.lblLogin.TabIndex = 41;
+            this.lblLogin.Text = "Login:";
             // 
             // btnSalvar
             // 
@@ -329,25 +348,6 @@
             this.btnLimparTudo.Text = "Limpar Tudo";
             this.btnLimparTudo.UseVisualStyleBackColor = false;
             this.btnLimparTudo.Click += new System.EventHandler(this.btnLimparTudo_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(162, 33);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(30, 13);
-            this.label1.TabIndex = 41;
-            this.label1.Text = "CPF:";
-            // 
-            // txbCPF
-            // 
-            this.txbCPF.Location = new System.Drawing.Point(198, 26);
-            this.txbCPF.Mask = "000,000,000-00";
-            this.txbCPF.Name = "txbCPF";
-            this.txbCPF.Size = new System.Drawing.Size(148, 20);
-            this.txbCPF.TabIndex = 42;
-            this.txbCPF.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txbCPF.Enter += new System.EventHandler(this.VerificaMudanca);
             // 
             // ConfigGerenciaUsuarios
             // 
