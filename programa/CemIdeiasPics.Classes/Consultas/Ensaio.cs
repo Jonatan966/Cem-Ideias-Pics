@@ -45,6 +45,8 @@ namespace CemIdeiasPics.Classes.Consultas
         public string ID { get; set; }
         [JsonProperty("TPNOME")]
         public string Tipo { get; set; }
+        [JsonProperty("TPVALOR")]
+        public string Valor { get; set; }
     }
 
 }
