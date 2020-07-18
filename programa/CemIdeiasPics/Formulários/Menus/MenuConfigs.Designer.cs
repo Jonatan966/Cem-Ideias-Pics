@@ -31,12 +31,12 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnGerenciarUsuarios = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.btnCadTipoAlbum = new System.Windows.Forms.Button();
             this.btnCadTipoEnsaio = new System.Windows.Forms.Button();
+            this.btnCadTipoAlbum = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btnLimparTudo = new System.Windows.Forms.Button();
             this.btnExportarBackup = new System.Windows.Forms.Button();
             this.btnImportarBackup = new System.Windows.Forms.Button();
-            this.btnLimparTudo = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.btnAlteraAPI = new System.Windows.Forms.Button();
             this.btnViewLog = new System.Windows.Forms.Button();
@@ -92,22 +92,6 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Outros Cadastros";
             // 
-            // btnCadTipoAlbum
-            // 
-            this.btnCadTipoAlbum.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btnCadTipoAlbum.BackColor = System.Drawing.Color.Black;
-            this.btnCadTipoAlbum.FlatAppearance.BorderSize = 0;
-            this.btnCadTipoAlbum.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCadTipoAlbum.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCadTipoAlbum.ForeColor = System.Drawing.Color.Yellow;
-            this.btnCadTipoAlbum.Location = new System.Drawing.Point(8, 21);
-            this.btnCadTipoAlbum.Margin = new System.Windows.Forms.Padding(5);
-            this.btnCadTipoAlbum.Name = "btnCadTipoAlbum";
-            this.btnCadTipoAlbum.Size = new System.Drawing.Size(253, 35);
-            this.btnCadTipoAlbum.TabIndex = 12;
-            this.btnCadTipoAlbum.Text = "Tipos de Álbum";
-            this.btnCadTipoAlbum.UseVisualStyleBackColor = false;
-            // 
             // btnCadTipoEnsaio
             // 
             this.btnCadTipoEnsaio.Anchor = System.Windows.Forms.AnchorStyles.Top;
@@ -121,8 +105,28 @@
             this.btnCadTipoEnsaio.Name = "btnCadTipoEnsaio";
             this.btnCadTipoEnsaio.Size = new System.Drawing.Size(254, 35);
             this.btnCadTipoEnsaio.TabIndex = 13;
+            this.btnCadTipoEnsaio.Tag = "1";
             this.btnCadTipoEnsaio.Text = "Tipos de Ensaio";
             this.btnCadTipoEnsaio.UseVisualStyleBackColor = false;
+            this.btnCadTipoEnsaio.Click += new System.EventHandler(this.btnCadTipos_Click);
+            // 
+            // btnCadTipoAlbum
+            // 
+            this.btnCadTipoAlbum.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnCadTipoAlbum.BackColor = System.Drawing.Color.Black;
+            this.btnCadTipoAlbum.FlatAppearance.BorderSize = 0;
+            this.btnCadTipoAlbum.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCadTipoAlbum.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCadTipoAlbum.ForeColor = System.Drawing.Color.Yellow;
+            this.btnCadTipoAlbum.Location = new System.Drawing.Point(8, 21);
+            this.btnCadTipoAlbum.Margin = new System.Windows.Forms.Padding(5);
+            this.btnCadTipoAlbum.Name = "btnCadTipoAlbum";
+            this.btnCadTipoAlbum.Size = new System.Drawing.Size(253, 35);
+            this.btnCadTipoAlbum.TabIndex = 12;
+            this.btnCadTipoAlbum.Tag = "0";
+            this.btnCadTipoAlbum.Text = "Tipos de Álbum";
+            this.btnCadTipoAlbum.UseVisualStyleBackColor = false;
+            this.btnCadTipoAlbum.Click += new System.EventHandler(this.btnCadTipos_Click);
             // 
             // groupBox3
             // 
@@ -138,6 +142,23 @@
             this.groupBox3.TabIndex = 14;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Integridade dos Dados";
+            // 
+            // btnLimparTudo
+            // 
+            this.btnLimparTudo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnLimparTudo.BackColor = System.Drawing.Color.DarkRed;
+            this.btnLimparTudo.FlatAppearance.BorderSize = 0;
+            this.btnLimparTudo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLimparTudo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLimparTudo.ForeColor = System.Drawing.Color.Yellow;
+            this.btnLimparTudo.Location = new System.Drawing.Point(8, 66);
+            this.btnLimparTudo.Margin = new System.Windows.Forms.Padding(5);
+            this.btnLimparTudo.Name = "btnLimparTudo";
+            this.btnLimparTudo.Size = new System.Drawing.Size(516, 35);
+            this.btnLimparTudo.TabIndex = 14;
+            this.btnLimparTudo.Text = "Limpar todas as informações";
+            this.btnLimparTudo.UseVisualStyleBackColor = false;
             // 
             // btnExportarBackup
             // 
@@ -170,23 +191,6 @@
             this.btnImportarBackup.TabIndex = 12;
             this.btnImportarBackup.Text = "Importar Backup";
             this.btnImportarBackup.UseVisualStyleBackColor = false;
-            // 
-            // btnLimparTudo
-            // 
-            this.btnLimparTudo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnLimparTudo.BackColor = System.Drawing.Color.DarkRed;
-            this.btnLimparTudo.FlatAppearance.BorderSize = 0;
-            this.btnLimparTudo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLimparTudo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLimparTudo.ForeColor = System.Drawing.Color.Yellow;
-            this.btnLimparTudo.Location = new System.Drawing.Point(8, 66);
-            this.btnLimparTudo.Margin = new System.Windows.Forms.Padding(5);
-            this.btnLimparTudo.Name = "btnLimparTudo";
-            this.btnLimparTudo.Size = new System.Drawing.Size(516, 35);
-            this.btnLimparTudo.TabIndex = 14;
-            this.btnLimparTudo.Text = "Limpar todas as informações";
-            this.btnLimparTudo.UseVisualStyleBackColor = false;
             // 
             // groupBox4
             // 
