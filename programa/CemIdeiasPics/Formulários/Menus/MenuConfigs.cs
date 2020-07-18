@@ -22,5 +22,10 @@ namespace CemIdeiasPics.Formulários.Menus
         {
             _ = new ConfigGerenciaUsuarios().ShowDialog();
         }
+
+        private void btnCadTipos_Click(object sender, EventArgs e)
+        {
+            _ = new ConfigCadTipos() { Tipo = (ConfigCadTipos.TipoCadastro)Convert.ToUInt16(((Control)sender).Tag) }.ShowDialog();
+        }
     }
 }
