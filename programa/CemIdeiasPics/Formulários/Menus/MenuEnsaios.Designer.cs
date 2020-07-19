@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel2 = new System.Windows.Forms.Panel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.txbPesquisa = new System.Windows.Forms.TextBox();
@@ -43,6 +43,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.btnFinalizarEnsaio = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.mdlEndereco1 = new CemIdeiasPics.Utils.Modelos.MdlEndereco();
             this.txbNumeroRes = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.btnPortifolio = new System.Windows.Forms.Button();
@@ -57,7 +58,8 @@
             this.btnLimpar = new System.Windows.Forms.Button();
             this.btnRegistrar = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
-            this.mdlEndereco1 = new CemIdeiasPics.Utils.Modelos.MdlEndereco();
+            this.label4 = new System.Windows.Forms.Label();
+            this.dtpHoraEnsaio = new System.Windows.Forms.DateTimePicker();
             this.panel2.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -198,9 +200,9 @@
             this.dgvEnsaios.ReadOnly = true;
             this.dgvEnsaios.RowHeadersVisible = false;
             this.dgvEnsaios.RowHeadersWidth = 62;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Yellow;
-            this.dgvEnsaios.RowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Yellow;
+            this.dgvEnsaios.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvEnsaios.RowTemplate.Height = 28;
             this.dgvEnsaios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvEnsaios.Size = new System.Drawing.Size(396, 324);
@@ -211,6 +213,8 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.panel1.Controls.Add(this.label4);
+            this.panel1.Controls.Add(this.dtpHoraEnsaio);
             this.panel1.Controls.Add(this.cbxMetodoPagamento);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.btnFinalizarEnsaio);
@@ -243,8 +247,6 @@
             this.cbxMetodoPagamento.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbxMetodoPagamento.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxMetodoPagamento.FormattingEnabled = true;
-            this.cbxMetodoPagamento.Items.AddRange(new object[] {
-            "Album Fisico"});
             this.cbxMetodoPagamento.Location = new System.Drawing.Point(171, 306);
             this.cbxMetodoPagamento.Margin = new System.Windows.Forms.Padding(2, 3, 3, 3);
             this.cbxMetodoPagamento.Name = "cbxMetodoPagamento";
@@ -295,6 +297,19 @@
             this.groupBox1.TabIndex = 31;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Local do Ensaio";
+            // 
+            // mdlEndereco1
+            // 
+            this.mdlEndereco1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.mdlEndereco1.AutoSize = true;
+            this.mdlEndereco1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.mdlEndereco1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.mdlEndereco1.Location = new System.Drawing.Point(7, 14);
+            this.mdlEndereco1.Margin = new System.Windows.Forms.Padding(1);
+            this.mdlEndereco1.Name = "mdlEndereco1";
+            this.mdlEndereco1.Size = new System.Drawing.Size(290, 117);
+            this.mdlEndereco1.TabIndex = 30;
             // 
             // txbNumeroRes
             // 
@@ -412,14 +427,16 @@
             this.dtpDataEnsaio.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.dtpDataEnsaio.CalendarMonthBackground = System.Drawing.Color.Silver;
             this.dtpDataEnsaio.CalendarTitleBackColor = System.Drawing.Color.Yellow;
+            this.dtpDataEnsaio.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.dtpDataEnsaio.CustomFormat = "";
             this.dtpDataEnsaio.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpDataEnsaio.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpDataEnsaio.Location = new System.Drawing.Point(65, 223);
             this.dtpDataEnsaio.Margin = new System.Windows.Forms.Padding(2, 3, 3, 3);
             this.dtpDataEnsaio.Name = "dtpDataEnsaio";
-            this.dtpDataEnsaio.Size = new System.Drawing.Size(283, 23);
+            this.dtpDataEnsaio.Size = new System.Drawing.Size(107, 23);
             this.dtpDataEnsaio.TabIndex = 23;
-            this.dtpDataEnsaio.Value = new System.DateTime(2019, 12, 1, 0, 0, 0, 0);
+            this.dtpDataEnsaio.Value = new System.DateTime(2020, 7, 18, 0, 0, 0, 0);
             // 
             // cbxClientes
             // 
@@ -492,18 +509,33 @@
             this.label5.Text = "Dados do Ensaio";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // mdlEndereco1
+            // label4
             // 
-            this.mdlEndereco1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.mdlEndereco1.AutoSize = true;
-            this.mdlEndereco1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.mdlEndereco1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.mdlEndereco1.Location = new System.Drawing.Point(7, 14);
-            this.mdlEndereco1.Margin = new System.Windows.Forms.Padding(1);
-            this.mdlEndereco1.Name = "mdlEndereco1";
-            this.mdlEndereco1.Size = new System.Drawing.Size(290, 117);
-            this.mdlEndereco1.TabIndex = 30;
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(180, 226);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 3, 2, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(43, 17);
+            this.label4.TabIndex = 36;
+            this.label4.Text = "Hora:";
+            // 
+            // dtpHoraEnsaio
+            // 
+            this.dtpHoraEnsaio.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.dtpHoraEnsaio.CalendarMonthBackground = System.Drawing.Color.Silver;
+            this.dtpHoraEnsaio.CalendarTitleBackColor = System.Drawing.Color.Yellow;
+            this.dtpHoraEnsaio.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.dtpHoraEnsaio.CustomFormat = "";
+            this.dtpHoraEnsaio.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpHoraEnsaio.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.dtpHoraEnsaio.Location = new System.Drawing.Point(232, 223);
+            this.dtpHoraEnsaio.Margin = new System.Windows.Forms.Padding(2, 3, 3, 3);
+            this.dtpHoraEnsaio.Name = "dtpHoraEnsaio";
+            this.dtpHoraEnsaio.ShowUpDown = true;
+            this.dtpHoraEnsaio.Size = new System.Drawing.Size(115, 23);
+            this.dtpHoraEnsaio.TabIndex = 35;
+            this.dtpHoraEnsaio.Value = new System.DateTime(2020, 7, 18, 0, 0, 0, 0);
             // 
             // MenuEnsaios
             // 
@@ -559,5 +591,7 @@
         private System.Windows.Forms.Button btnFinalizarEnsaio;
         private System.Windows.Forms.ComboBox cbxMetodoPagamento;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.DateTimePicker dtpHoraEnsaio;
     }
 }
