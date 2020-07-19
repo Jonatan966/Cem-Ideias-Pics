@@ -14,6 +14,7 @@
 						$filename_path = md5(time().uniqid()).".jpg";
 						$decoded=base64_decode($_POST["cmd"]); 
 						file_put_contents($diretorioEnsaio.$filename_path,$decoded);  
+						echo $filename_path;
 						break; 	
 
 					case "recebe":
