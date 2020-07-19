@@ -26,8 +26,8 @@ namespace CemIdeiasPics.Formulários.Menus
             ensaios = JsonConvert.DeserializeObject<Ensaio[]>(
             await ConectaServidor.EnviarItem("SELECT * FROM VW_ENSAIOS"));
             dgvEnsaios.DataSource = ManipulaTabela.ConverteClassesEmTabela(ensaios,false,
-                "ID", "Cliente", "Usuario", "Tipo", "CEP", "Num", "Data", "Preco", "Diretorio", "Adereco");
-            ManipulaTabela.OcultarColunas(ref dgvEnsaios,"ID","Usuario","CEP","Num", "Diretorio","Adereco");
+                "ID", "Cliente", "Usuario", "CEP", "Num", "Data", "Preco", "Tipo", "Album", "Pagamento");
+            ManipulaTabela.OcultarColunas(ref dgvEnsaios,"ID","Usuario","CEP","Num","Tipo","Album","Pagamento");
             return true;
         }
         void LimpaTudo()
@@ -35,8 +35,11 @@ namespace CemIdeiasPics.Formulários.Menus
             cbxClientes.SelectedIndex = 0;
             cbxTipoAlbum.SelectedIndex = 0;
             cbxTipoEnsaio.SelectedIndex = 0;
+            cbxMetodoPagamento.SelectedIndex = 0;
+
             mdlEndereco1.LimpaTudo();
             dtpDataEnsaio.Value = DateTime.Now.Date;
+            dtpHoraEnsaio.Value = DateTime.Now;
             btnRegistrar.Text = "Registrar";
             btnLimpar.Text = "Limpar";
             btnFinalizarEnsaio.Text = "Finalizar Ensaio";
@@ -55,8 +58,9 @@ namespace CemIdeiasPics.Formulários.Menus
             Cliente[] clientes = JsonConvert.DeserializeObject<Cliente[]>(await ConectaServidor.EnviarItem("SELECT CLICPF, CONCAT(CLINOME,' - ', CLICPF) CLINOME FROM CLIENTES GROUP BY CLICPF"));
 
             cbxClientes.DataSource = ManipulaTabela.ConverteClassesEmTabela(clientes,true, "CPF", "NOME");
-            cbxTipoEnsaio.DataSource = ManipulaTabela.ConverteClassesEmTabela((JsonConvert.DeserializeObject<TipoItens[]>(await ConectaServidor.EnviarItem("SELECT TPEID AS TPID, CONCAT(TPETIPO, ' - R$', TPEVALOR) AS TPNOME FROM TIPO_ENSAIO"))),false, "ID", "TIPO");
-            cbxTipoAlbum.DataSource = ManipulaTabela.ConverteClassesEmTabela((JsonConvert.DeserializeObject<TipoItens[]>(await ConectaServidor.EnviarItem("SELECT ADRID AS TPID, CONCAT(ADRNOME, ' - R$', ADRVALOR) AS TPNOME FROM ADERECOS"))), false, "ID", "TIPO");
+            cbxTipoEnsaio.DataSource = ManipulaTabela.ConverteClassesEmTabela((JsonConvert.DeserializeObject<TipoItens[]>(await ConectaServidor.EnviarItem("SELECT TPID, CONCAT(TPNOME, ' - R$', TPVALOR) AS TPNOME FROM TIPOS WHERE TPTIPO = 2"))),true, "ID", "TIPO");
+            cbxTipoAlbum.DataSource = ManipulaTabela.ConverteClassesEmTabela((JsonConvert.DeserializeObject<TipoItens[]>(await ConectaServidor.EnviarItem("SELECT TPID, CONCAT(TPNOME, ' - R$', TPVALOR) AS TPNOME FROM TIPOS WHERE TPTIPO = 1"))), true, "ID", "TIPO");
+            cbxMetodoPagamento.DataSource = ManipulaTabela.ConverteClassesEmTabela((JsonConvert.DeserializeObject<TipoItens[]>(await ConectaServidor.EnviarItem("SELECT TPID, TPNOME FROM TIPOS WHERE TPTIPO = 3"))), true, "ID", "TIPO");
 
             foreach (DataGridViewColumn coluna in dgvEnsaios.Columns)
             {
@@ -99,10 +103,10 @@ namespace CemIdeiasPics.Formulários.Menus
             {
                 if (mdlEndereco1.ResultCEP != null ? int.Parse(mdlEndereco1.ResultCEP.Resultado) > 0 : string.IsNullOrWhiteSpace(mdlEndereco1.NumCEP))
                 {
-                    string cmd = $"INSERT INTO ENSAIOS(ENSCLIENTE, ENSUSUARIO, ENSTIPO, ENSCEP, ENSNUMLOCAL, ENSDATA, ENSADERECO) VALUES('{cbxClientes.SelectedValue}', {Program.Usuario.USUID}, {cbxTipoEnsaio.SelectedValue}, {mdlEndereco1.NumCEP}, {txbNumeroRes.Text}, '{dtpDataEnsaio.Value:yy-MM-dd}', {cbxTipoEnsaio.SelectedValue})";
+                    string cmd = $"INSERT INTO ENSAIOS(ENSCLIENTE, ENSUSUARIO, ENSTIPO, ENSCEP, ENSNUMLOCAL, ENSDATA, ENSALBUM, ENSPAGAMENTO) VALUES('{cbxClientes.SelectedValue}', {Program.Usuario.USUID}, {cbxTipoEnsaio.SelectedValue}, {mdlEndereco1.NumCEP}, {txbNumeroRes.Text}, '{dtpDataEnsaio.Value:yy-MM-dd} {dtpHoraEnsaio.Value:hh:mm:ss}', {cbxTipoEnsaio.SelectedValue}, {cbxMetodoPagamento.SelectedValue})";
                     if (btnRegistrar.Text != "Registrar")
                     {
-                        cmd = $"UPDATE ENSAIOS SET ENSCLIENTE = '{cbxClientes.SelectedValue}',ENSUSUARIO = {Program.Usuario.USUID},ENSTIPO = {cbxTipoEnsaio.SelectedValue},ENSCEP = {mdlEndereco1.NumCEP},ENSNUMLOCAL = {txbNumeroRes.Text},ENSDATA = '{dtpDataEnsaio.Value:yy-MM-dd}', ENSADERECO = {cbxTipoAlbum.SelectedValue}, ENSTIPO = {cbxTipoEnsaio.SelectedValue} WHERE ENSID = {dgvEnsaios.SelectedRows[0].Cells[0].Value}";
+                        cmd = $"UPDATE ENSAIOS SET ENSCLIENTE = '{cbxClientes.SelectedValue}',ENSUSUARIO = {Program.Usuario.USUID},ENSTIPO = {cbxTipoEnsaio.SelectedValue},ENSCEP = {mdlEndereco1.NumCEP},ENSNUMLOCAL = {txbNumeroRes.Text},ENSDATA = '{dtpDataEnsaio.Value:yy-MM-dd} {dtpHoraEnsaio.Value:hh:mm:ss}', ENSALBUM = {cbxTipoAlbum.SelectedValue}, ENSTIPO = {cbxTipoEnsaio.SelectedValue}, ENSPAGAMENTO = {cbxMetodoPagamento.SelectedValue} WHERE ENSID = {dgvEnsaios.SelectedRows[0].Cells[0].Value}";
                     }
 
                     bool confirm = bool.Parse(await ConectaServidor.EnviarItem(cmd));
@@ -130,7 +134,9 @@ namespace CemIdeiasPics.Formulários.Menus
                 cbxClientes.SelectedValue = ensaios[selected].Enscliente;
                 cbxTipoEnsaio.SelectedItem = ensaios[selected].Enstipo;
                 cbxTipoAlbum.SelectedValue = ensaios[selected].EnsAdereco;
-                dtpDataEnsaio.Value = DateTime.Parse(ensaios[selected].Ensdata);
+                cbxMetodoPagamento.SelectedValue = ensaios[selected].Pagamento;
+                dtpDataEnsaio.Value = DateTime.Parse(ensaios[selected].Ensdata).Date;
+                dtpHoraEnsaio.Value = DateTime.Parse(ensaios[selected].Ensdata);
                 txbNumeroRes.Text = ensaios[selected].Ensnumlocal;
 
                 btnFinalizarEnsaio.Text = float.TryParse(dgvEnsaios.SelectedRows[0].Cells[7].Value.ToString(), out _) ? "Visualizar Valores" : "Finalizar Ensaio";
@@ -163,7 +169,7 @@ namespace CemIdeiasPics.Formulários.Menus
 
         private void dgvEnsaios_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            if (float.TryParse(dgvEnsaios.Rows[e.RowIndex].Cells[7].Value.ToString(), out _))
+            if (float.TryParse(dgvEnsaios.Rows[e.RowIndex].Cells[6].Value.ToString(), out _))
                 dgvEnsaios.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.LightGreen;
             else
                 dgvEnsaios.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.LightYellow;
