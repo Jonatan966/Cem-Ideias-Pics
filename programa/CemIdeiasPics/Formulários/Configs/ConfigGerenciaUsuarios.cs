@@ -22,7 +22,7 @@ namespace CemIdeiasPics.Formulários.Configs
 
         async Task<bool> LimpaTudo()
         {
-            string res = await ConectaServidor.EnviarItem("SELECT '-1' USUID, '(Novo Usuário)' USUNOME FROM USUARIOS UNION SELECT USUID, CONCAT(USUID, ' - ',USUNOME) FROM USUARIOS");
+            string res = await ConectaServidor.EnviarItem($"{(Program.Usuario.USUTIPO == "Administrador" ? "SELECT '-1' USUID, '(Novo Usuário)' USUNOME FROM USUARIOS UNION" : "")} SELECT USUID, CONCAT(USUID, ' - ',USUNOME) USUNOME FROM USUARIOS {(Program.Usuario.USUTIPO != "Administrador" ? $"WHERE USUID = {Program.Usuario.USUID}" : "")}");
             Usuario[] usuarios = JsonConvert.DeserializeObject<Usuario[]>(res);
             cbxUsuarios.DataSource = ManipulaTabela.ConverteClassesEmTabela(usuarios, true, "id", "user");
 
@@ -72,7 +72,7 @@ namespace CemIdeiasPics.Formulários.Configs
 
         private async void cbxUsuarios_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cbxUsuarios.SelectedIndex != 0)
+            if (Convert.ToInt32(cbxUsuarios.SelectedValue) != -1)
             {
                 string res = await ConectaServidor.EnviarItem($"SELECT USUCPF, USUNOME, USUSEXO, USUTELEFONE, USULOGIN, USUBLOQUEIO, USUEMAIL, USUIMG, USUTIPO FROM USUARIOS WHERE USUID = {cbxUsuarios.SelectedValue}");
                 Usuario usuario = JsonConvert.DeserializeObject<Usuario[]>(res)[0];
