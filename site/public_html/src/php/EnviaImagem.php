@@ -47,6 +47,19 @@
 					case "conta":
 						echo count(scandir($diretorioEnsaio));
 						break;
+
+					case "baixa":
+						echo base64_encode(file_get_contents($diretorioEnsaio.$_POST["cmd"]));
+						break;
+
+					//Serve para excluir apenas uma imagem
+					case "elimina":
+						$final = $diretorioEnsaio.$_POST["cmd"];
+						if (is_file($final))
+							echo unlink($final) ? "true" : "false";
+						else echo "false";
+						break;
+						
 					default:
 						echo "false";	
 						break;
