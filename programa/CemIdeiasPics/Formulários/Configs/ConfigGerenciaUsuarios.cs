@@ -48,14 +48,15 @@ namespace CemIdeiasPics.Formulários.Configs
                 {
                     if (txbSenha.Text == txbConfSenha.Text)
                     {
+                        string img = await ConectaPortifolio.EnviaImagem(objEscolheImg.FileName, -1);
                         if (cbxUsuarios.SelectedIndex == 0)
                         {
-                            sql = "INSERT INTO USUARIOS(USUCPF,USUNOME,USUSEXO,USUTELEFONE,USULOGIN,USUSENHA,USUTIPO,USUEMAIL) " +
-                                $"VALUES('{txbCPF.Text}','{txbNome.Text}',{1 + Convert.ToUInt16(rbnFeminino.Checked)},'{txbTelefone.Text}','{txbLogin.Text}',md5('{txbSenha.Text}'),{cbxTipoAcesso.SelectedIndex + 1},'{txbEmail.Text}')";
+                            sql = "INSERT INTO USUARIOS(USUCPF,USUNOME,USUSEXO,USUTELEFONE,USULOGIN,USUSENHA,USUTIPO,USUEMAIL, USUIMG) " +
+                                $"VALUES('{txbCPF.Text}','{txbNome.Text}',{1 + Convert.ToUInt16(rbnFeminino.Checked)},'{txbTelefone.Text}','{txbLogin.Text}',md5('{txbSenha.Text}'),{cbxTipoAcesso.SelectedIndex + 1},'{txbEmail.Text}', '{img}')";
                         }
                         else
                         {
-                            sql = $"UPDATE USUARIOS SET USUCPF = '{txbCPF.Text}', USUNOME = '{txbNome.Text}', USUSEXO = {1 + Convert.ToUInt16(rbnFeminino.Checked)}, USUTELEFONE = '{txbTelefone.Text}', USULOGIN = '{txbLogin.Text}', {(!string.IsNullOrWhiteSpace(txbSenha.Text) ? $"USUSENHA = md5('{txbSenha.Text}'), " : "")} USUTIPO = {1 + cbxTipoAcesso.SelectedIndex}, USUEMAIL = '{txbEmail.Text}' WHERE USUID = {cbxUsuarios.SelectedValue}";
+                            sql = $"UPDATE USUARIOS SET USUCPF = '{txbCPF.Text}', USUNOME = '{txbNome.Text}', USUSEXO = {1 + Convert.ToUInt16(rbnFeminino.Checked)}, USUTELEFONE = '{txbTelefone.Text}', USULOGIN = '{txbLogin.Text}', {(!string.IsNullOrWhiteSpace(txbSenha.Text) ? $"USUSENHA = md5('{txbSenha.Text}'), " : "")} USUTIPO = {1 + cbxTipoAcesso.SelectedIndex}, USUEMAIL = '{txbEmail.Text}', USUIMG = '{img}' WHERE USUID = {cbxUsuarios.SelectedValue}";
                         }
                         if (bool.Parse(await ConectaServidor.EnviarItem(sql)))
                         {
@@ -82,8 +83,17 @@ namespace CemIdeiasPics.Formulários.Configs
                 txbEmail.Text = usuario.USUEMAIL;
                 txbLogin.Text = usuario.USULOGIN;
                 cbxTipoAcesso.SelectedItem = usuario.USUTIPO;
+                pbxFotoPerfil.Image = ManipulaImagem.ConverteBase64ParaImagem(await ConectaServidor.EnviarItem(usuario.USUIMG,"-1|baixa", TipoEnvio.Imagem));
 
                 rbnFeminino.Checked = !(rbnMasculino.Checked = usuario.USUSEXO == "M");
+            }
+        }
+
+        private void pbxFotoPerfil_DoubleClick(object sender, EventArgs e)
+        {
+            if (objEscolheImg.ShowDialog() == DialogResult.OK)
+            {
+                pbxFotoPerfil.Image = Image.FromFile(objEscolheImg.FileName);
             }
         }
     }

@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using CemIdeiasPics.Classes.Manipuladores;
+using CemIdeiasPics.Classes.Online;
 using CemIdeiasPics.Formulários.Menus;
 using CemIdeiasPics.Utils.Classes;
 
@@ -23,11 +24,11 @@ namespace CemIdeiasPics.Formulários
             }
         }
 
-        private void FrmPainel_Load(object sender, EventArgs e)
+        private async void FrmPainel_Load(object sender, EventArgs e)
         {
             lblUsuario.Text = Program.Usuario.USUNOME;
             pbxImgUsuario.Region = ManipulaImagem.ImagemRedonda(pbxImgUsuario.Width, pbxImgUsuario.Height);
-            pbxImgUsuario.ImageLocation = Program.Usuario.USUIMG;
+            pbxImgUsuario.Image = await ConectaPortifolio.BaixaImagem(Program.Usuario.USUIMG, -1);
             rbnPortifolio.PerformClick();
         }
 

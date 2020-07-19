@@ -54,6 +54,7 @@
             this.lblLogin = new System.Windows.Forms.Label();
             this.btnSalvar = new System.Windows.Forms.Button();
             this.btnLimparTudo = new System.Windows.Forms.Button();
+            this.objEscolheImg = new System.Windows.Forms.OpenFileDialog();
             this.gbxListaUsuarios.SuspendLayout();
             this.gbxDadosPessoais.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxFotoPerfil)).BeginInit();
@@ -150,11 +151,13 @@
             // pbxFotoPerfil
             // 
             this.pbxFotoPerfil.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pbxFotoPerfil.Location = new System.Drawing.Point(481, 19);
+            this.pbxFotoPerfil.Location = new System.Drawing.Point(481, 15);
             this.pbxFotoPerfil.Name = "pbxFotoPerfil";
             this.pbxFotoPerfil.Size = new System.Drawing.Size(100, 96);
+            this.pbxFotoPerfil.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbxFotoPerfil.TabIndex = 40;
             this.pbxFotoPerfil.TabStop = false;
+            this.pbxFotoPerfil.DoubleClick += new System.EventHandler(this.pbxFotoPerfil_DoubleClick);
             // 
             // lblEmail
             // 
@@ -349,6 +352,10 @@
             this.btnLimparTudo.UseVisualStyleBackColor = false;
             this.btnLimparTudo.Click += new System.EventHandler(this.btnLimparTudo_Click);
             // 
+            // objEscolheImg
+            // 
+            this.objEscolheImg.Filter = "Imagens|*.jpg;*.jpeg";
+            // 
             // ConfigGerenciaUsuarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -406,5 +413,6 @@
         private System.Windows.Forms.Button btnLimparTudo;
         private System.Windows.Forms.MaskedTextBox txbCPF;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.OpenFileDialog objEscolheImg;
     }
 }
