@@ -139,8 +139,8 @@ namespace CemIdeiasPics.Formulários.Menus
                 dtpHoraEnsaio.Value = DateTime.Parse(ensaios[selected].Ensdata);
                 txbNumeroRes.Text = ensaios[selected].Ensnumlocal;
 
-                btnFinalizarEnsaio.Text = float.TryParse(dgvEnsaios.SelectedRows[0].Cells[7].Value.ToString(), out _) ? "Visualizar Valores" : "Finalizar Ensaio";
-                btnFinalizarEnsaio.Tag = float.TryParse(dgvEnsaios.SelectedRows[0].Cells[7].Value.ToString(), out _);
+                btnFinalizarEnsaio.Text = float.TryParse(dgvEnsaios.SelectedRows[0].Cells[6].Value.ToString(), out _) ? "Visualizar Valores" : "Finalizar Ensaio";
+                btnFinalizarEnsaio.Tag = float.TryParse(dgvEnsaios.SelectedRows[0].Cells[6].Value.ToString(), out _);
 
                 btnRegistrar.Text = "Salvar";
                 btnLimpar.Text = "Excluir";
