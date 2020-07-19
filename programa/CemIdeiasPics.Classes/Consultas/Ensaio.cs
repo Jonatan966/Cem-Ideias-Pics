@@ -18,9 +18,6 @@ namespace CemIdeiasPics.Classes.Consultas
         [JsonProperty("ENSUSUARIO")]
         public string Ensusuario { get; set; }
 
-        [JsonProperty("ENSTIPO")]
-        public string Enstipo { get; set; }
-
         [JsonProperty("ENSCEP")]
         public string Enscep { get; set; }
 
@@ -33,11 +30,13 @@ namespace CemIdeiasPics.Classes.Consultas
         [JsonProperty("ENSPRECO")]
         public string Enspreco { get; set; }
 
-        [JsonProperty("ENSDIRETORIO")]
-        public string Ensdiretorio { get; set; }
+        [JsonProperty("ENSTIPO")]
+        public string Enstipo { get; set; }
 
-        [JsonProperty("ENSADERECO")]
+        [JsonProperty("ENSALBUM")]
         public string EnsAdereco { get; set; }
+        [JsonProperty("ENSPAGAMENTO")]
+        public string Pagamento { get;set; }
     }
     public class TipoItens
     {
@@ -48,5 +47,4 @@ namespace CemIdeiasPics.Classes.Consultas
         [JsonProperty("TPVALOR")]
         public string Valor { get; set; }
     }
-
 }
