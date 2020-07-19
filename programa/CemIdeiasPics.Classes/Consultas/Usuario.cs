@@ -30,7 +30,7 @@ namespace CemIdeiasPics.Classes.Consultas
         [JsonProperty("USUIMG")]
         public string USUIMG { get; set; }
         [JsonProperty("USUTIPO")]
-        public string USUTIPO { get; set; }
+        public string USUTIPO { get; private set; }
     }
 
 }
