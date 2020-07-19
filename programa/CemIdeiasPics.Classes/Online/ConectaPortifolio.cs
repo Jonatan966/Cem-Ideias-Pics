@@ -37,6 +37,18 @@ namespace CemIdeiasPics.Classes.Online
             await CarregaImagens(ensaioID);
         }
 
+        public static async Task<Image> BaixaImagem(string imgName, int id)
+        {
+            string imgBase64 = await ConectaServidor.EnviarItem(imgName, $"{id}|baixa", TipoEnvio.Imagem);
+            return ManipulaImagem.ConverteBase64ParaImagem(imgBase64);
+        }
+
+        public static async Task<string> EnviaImagem(string imgCaminho, int id)
+        {
+            string imgBase64 = ManipulaImagem.ConverteImagemParaBase64(imgCaminho);
+            return await ConectaServidor.EnviarItem(imgBase64, $"{id}|envia", TipoEnvio.Imagem);
+        }
+
         public async Task ExcluiImagem(int img, string ensaioID, bool carregaImgs = true)
         {
             if (portifolio.Length > 0)
