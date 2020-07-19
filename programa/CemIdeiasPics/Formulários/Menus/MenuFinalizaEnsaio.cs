@@ -1,4 +1,5 @@
-﻿using CemIdeiasPics.Classes.Manipuladores;
+﻿using CemIdeiasPics.Classes.Consultas;
+using CemIdeiasPics.Classes.Manipuladores;
 using CemIdeiasPics.Classes.Online;
 using Newtonsoft.Json;
 using System;
@@ -18,9 +19,8 @@ namespace CemIdeiasPics.Formulários.Menus
         public bool View { get; set; } = false;
         private class Contabilidade
         {
-            [JsonProperty("TPEVALOR")]
+            [JsonProperty("valor")]
             public float ValorPorFoto { get; set; }
-            [JsonProperty("ADRVALOR")]
             public float ValorExtra { get; set; }
         }
         public MenuFinalizaEnsaio()
@@ -31,15 +31,11 @@ namespace CemIdeiasPics.Formulários.Menus
         private async void MenuFinalizaEnsaio_Load(object sender, EventArgs e)
         {
             btnFinalizar.Text = View ? "OK" : "Finalizar Ensaio";
+
+            Contabilidade contabilidade = new Contabilidade();
+            contabilidade.ValorPorFoto = JsonConvert.DeserializeObject<Contabilidade[]>(await ConectaServidor.EnviarItem($"SELECT TPVALOR valor FROM TIPOS WHERE TPID IN (SELECT ENSTIPO FROM ENSAIOS WHERE ENSID = {EnsaioID})"))[0].ValorPorFoto;
+            contabilidade.ValorExtra = JsonConvert.DeserializeObject<Contabilidade[]>(await ConectaServidor.EnviarItem($"SELECT TPVALOR valor FROM TIPOS WHERE TPID IN (SELECT ENSALBUM FROM ENSAIOS WHERE ENSID = {EnsaioID})"))[0].ValorPorFoto;
             
-            Contabilidade contabilidade = JsonConvert.DeserializeObject<Contabilidade[]>(
-                await ConectaServidor.EnviarItem(
-                    $"SELECT TPEVALOR, ADRVALOR " +
-                    $"FROM ENSAIOS " +
-                    $"INNER JOIN ADERECOS ON ADRID = ENSADERECO " +
-                    $"INNER JOIN TIPO_ENSAIO ON ENSTIPO = TPEID " +
-                    $"WHERE ENSID = {EnsaioID}")
-            )[0];
             txbContFotos.Text = await ConectaServidor.EnviarItem(string.Empty, $"{EnsaioID}|conta", TipoEnvio.Imagem);
             txbValorFoto.Text = $"R${contabilidade.ValorPorFoto}";
             txbExtras.Text = $"R${contabilidade.ValorExtra}";
@@ -53,9 +49,14 @@ namespace CemIdeiasPics.Formulários.Menus
             {
                 if (ManipulaMensagens.MostrarMensagem(MensagensPredefinidas.CONFIRMA_ACAO, MessageBoxButtons.YesNoCancel) == DialogResult.Yes)
                 {
-                    await ConectaServidor.EnviarItem($"UPDATE ENSAIOS SET ENSPRECO = {Subtotal} WHERE ENSID = {EnsaioID}");
-                    ManipulaMensagens.MostrarMensagem(MensagensPredefinidas.OPERACAO_CONCLUIDA);
-                    DialogResult = DialogResult.Yes;
+                    if (bool.Parse(await ConectaServidor.EnviarItem($"UPDATE ENSAIOS SET ENSPRECO = {Subtotal.ToString().Replace(',', '.')} WHERE ENSID = {EnsaioID}")))
+                    {
+                        ManipulaMensagens.MostrarMensagem(MensagensPredefinidas.OPERACAO_CONCLUIDA);
+                        DialogResult = DialogResult.Yes;
+                    }
+                    else
+                        ManipulaMensagens.MostrarMensagem(MensagensPredefinidas.ERRO_INESPERADO);
+
                 }
             }
             else this.Close();
